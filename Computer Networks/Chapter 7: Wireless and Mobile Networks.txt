@@ -1,0 +1,109 @@
+Chapter 7: Wireless and Mobile Networks
+-wireless host: laptop, smartphone, etc. may be stationary
+-base station: connected to wired network, sends pkts b/w wired ntwrk and wireless host
+-wireless link: use to connect mobile to base station
+
+7.2 Wireless Links, Characteristics
+-decreased signal strength: radio signal attenuates (path loss)
+-interference from other sources
+-multipath propogation
+-SNR: signal-to-noise ratio. Larger SNR, easier to extract signal from noise
+
+Code Division Multiple Access (CDMA)
+-unique code assigned to each user
+	-all usrs share same freq, each usr has own "chipping" seq to encode data
+	-allows multiple usrs to coexist and transmit simultaneously w/ min interference
+-encoded signal = (data) X (chipping sequence)
+-decoding: inner-product of encoded signal and chipping sequence
+
+7.3 IEEE 802.11 Wireless LANs (Wi-Fi)
+-all use CSMA/CA for multiple access
+-all have base station and ad hoc network versions
+802.11b
+-2.4-5 GHz unlicensed spectrum
+-up to 11Mbps
+
+802.11a
+-5-6GHz range
+-up to 54Mbps
+
+802.11g
+-2.4-5GHz range
+-up to 54 Mbps
+
+802.11n
+-2.4-5GHz range
+-up to 200 Mbps
+
+-wireless host communicates with base station (access point)
+-basic service set (BBS) in infrastructure mode contains: wireless hosts, AP, ad hoc mode
+
+IEEE 802.11 MAC Protocol: CSMA/CA
+Sender:
+-if sense channel idle for DIFS, then transmit entire frame
+-if sense channel busy, start random backoff time, timer counts down while channel idle, transmit when timer expires. If no ACK, increase backoff interval, repeat step
+Receiver:
+-if frame received OK, return ACK after SIFS
+
+Avoiding Collisions
+-sender first transmits small request-to-send (RTS) packets to BS using CSMA
+-BS broadcasts clear-to-send (CTS) in response to RTS
+-CTS heard by all nodes
+
+802.11 Frame: addressing
+-address 1: MAC address of wireless host or AP to receive frame
+-address 2: MAC address of wireless host or AP transmitting the frame
+-address 3: MAC address of router interface which AP is attached
+-address 4: used only in ad hoc mode
+
+7.4 Cellular Internet Access
+-two techniques for sharing mobile to BS radio spectrum
+	-combined FDMA/TDMA: divide spectrum in freq channels, devide each channel into time slots
+	-CDMA: code deivision multiple access
+
+7.5 Principles: Addressing and Routing to Mobile Users
+3 approaches:
+-routers advertise permanent address of mobile-nodes-in-residence via routing table exchange (not scalable to millions of mobiles)
+-communication from correspondent to mobile goes through home agent, fwrd to remote
+-corresepondent gets foreign addr from mobile, sends directly to mobile
+
+Registration:
+-mobile contacts foreign agent on entering visited network
+-foreign agent contacts home agent 
+
+Indirect Routing:
+-mobile uses two addresses: permanent address (used by correspondent), care-of-address (used by home agent to forward datagrams to mobile)
+
+7.6 Mobile IP
+3 components to standard:
+-indirect routing of datagrams
+-agent discovery
+-registration with home agent
+
+Indirect Routing:
+-packet sent by home agent to foreign agent: packet w/in a packet
+
+Agent Discovery
+-foreign/home agents advertise service by broadcasting ICMP messages (type=9)
+
+home network: network of cellular provider you subscribe to
+home location register: DB in home network containing subscriber info
+visited network: network in which mobile currently resides
+visited location register: DB w/ entry for each user in network
+
+GSM: Indirect Routing to Mobile
+-call routed to home network
+-home mobile switching center consults HLR, gets roaming # of mobile in visited network
+-home MSC sets up 2nd leg of call to MSC in visited network
+-MSC in visited network completed call through base sation to mobile
+
+GSM: Handoff with Commong MSC
+-goal: route call via new base station (w/o interruption)
+-reasons: stronger signal from new BSS, load balance
+-old BSS informs MSC of impending handoff, provides list of 1+ new BSSs
+-MSC sets up path to new BSS
+-new BSS allocates radio channel for use by mobile
+-old BSS tells mobile: perform handoff to new BSS
+-mobile, new BSS signal to activate new channel
+-mobile signals via new BSS to MSC: handoff complete. MSC reroutes call
+-MSC old BSS resources released

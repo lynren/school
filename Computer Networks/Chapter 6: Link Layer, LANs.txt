@@ -1,0 +1,68 @@
+Chapter 6: Link Layer, LANs
+
+6.3 Multiple Access Protocols
+-two types: point-to-point, broadcast
+-2+ transmission by nodes: interference
+-collision if node recieved 2+ signals at the same time
+-distributed algo determines how nodes share channel
+
+Channel Partitioning:
+-divide channel into smaller pieces (time slot, freq, code)
+-allocate piece to node for exclusive use
+Random Access
+-channel not divided, allow collisions
+-recover from collisions
+-eg: ALOHA, S-ALOHA, CSMA, CSMA/CD
+Taking Turns
+-nodes take turns, nodes w/ more to send can take longer turns
+-polling from central site, token passing
+-bluetooth, FDDI, token ring
+
+Channel Partitioning MAC protocols: TDMA (time division multiple access)
+-access to channel in rounds
+-each station gets fixed length slot in each round
+Channel Partitioning MAC protocols: FDMA (frequency division multiple access)
+-channel spectrum divided into frequency bands
+-each station assigned fixed frequency band
+
+6.4 LANs
+MAC Addresses
+-function: used locally to get frame from one interface to another physically connected interface (on same network)
+-48 bit MAC address burned in NIC ROM, sometimes software settable
+
+ARP: Adress Resolution Protocol
+-how to determine interface's MAC address, knowing its IP address?
+-ARP table: IP/MAC address mappings for some LAN nodes
+
+Ethernet
+-sender encapsulates IP datagram in Ethernet frame
+	-premable: 7 bytes used to sync receiver, sender clock rates
+	-addresses: 6 byte src, dst MAC addresses
+	-type: indicates higher layer protocol (eg IP, Novell IPX, AppleTalk)
+	-CRC: cyclic redundancy check at receiver. error -> frame dropped
+-connectionless: no handshaking b/w sending and receiving NICs
+-unreliable: receiving NIC doesn't send acks or nacks to sending NIC
+-mac protocol: unslotted CSMA/CD w/ binary backoff
+
+Ethernet Switch
+-store, forward Ethernet crames
+-examine incoming frame's MAC addr, selectively forward frame 
+-transparent: hosts are unaware of presence of switches
+-hosts have dedicated, direct connection to switch
+-switches buffer packets
+
+VLANs: Virtual Local Area Network
+Port-based VLAN
+-traffic isolation: frames to/from VLAN can only reach ports in VLAN
+-dynamic membership: ports dynamically asssigned among VLANs
+-forwarding b/w VLANs: done via routing 
+-trunk port: carries frames b/w VLANs defined over multiple physical switches
+
+Multiprotocol Label Switching (MPLS)
+-highspeed IP forwarding using fixed length label
+-forward packets to outgoing interface based only on label value
+-path to dst can be based on src and dst address
+
+Data Center Networking
+-load balancer: received external client request, returns result to external client
+-rich interconnection among switches, racks

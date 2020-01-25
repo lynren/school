@@ -1,0 +1,48 @@
+Lecture 1: Inception in Unified Process
+
+1. CONCEPTS OF OBJECT ORIENTATION
+	-"OO is about viewing and modelling the world as a set of interactice and interrelated objects"
+
+	Four Main Principles:
+	|	Abstraction: a model to include most important aspects while ignoring less important details
+	|	Encapsulation: mechanism for restricting access to some components of an object
+	|	Inheritance: mechanism of basing an object/class upon another
+	|	Polymorphism: ability of different objects to respond to the same request message in different ways
+
+OBJECTS
+	-Corresponds to something in real world, tangible or untangible
+	-contains information and exhibits behaviour
+
+CLASSES
+	-an abstraction of a set of logically related instances
+		-includes rules to define object as its instances
+		-includes a def. or template describing how to build the object
+	-an attribute is a main property of a class
+	-an operation is the implementstion of a service
+
+2. O-O SOFTWARE DEVELOPMENT
+	Object-Oriented Analysis (OOA)
+		-emphasis on finding the objects in the problem domain
+	Object-Oriented Design (OOD)
+		-emphasis on defining software objects, and how they will collab to fulfill requirements
+
+THE UNIFIED PROCESS
+	-requirements
+	-analysis
+	-design
+	-implementation
+	-testing
+
+	UP: Use-Case Driven
+		-a written description of interactions between a role and a system
+		-links requirements to implementation
+	UP: Architecture-Centric
+		-it is a theme from the earliest stages of a project
+	UP: Workflow in Iterations
+		duration: small and fixed length
+		tasks: correct previous requirements and tackle new ones
+		outcomes: tested, integrated, executable partial system
+		usage: discover what works and what is of value
+
+	Inception is the initial short step of a project
+		-Outcomes, methods, objectives

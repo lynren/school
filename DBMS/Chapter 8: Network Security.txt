@@ -1,0 +1,126 @@
+Chapter 8: Network Security
+
+8.1 What is Network Security?
+Confedentiality: only sender, intended receiver should "understand" msg contents
+Authentication: sender, receiver want to confirm identity of each other
+Message Integrity: sender, receiver want to ensure msg not altered w/o detection
+Access & Availability: services must be accessible and available to end users
+
+8.2 Principles of Cryptography
+
+AES: Advanced Encryption Standard
+-processes data in 128-bit blocks
+-128, 192, or 256 bit keys
+
+Public Key Crypto
+-sender, receiver do not share secret key
+-public encryption key known to all
+-private decryption key known only to receiver
+
+RSA: Rivest, Shamir, Adelson algorithm
+-msg: just a bit pattern, can be uniquely represented by an integer number
+-encrypting a msg is equivalent to encrypting a number
+
+RSA: Creating Public/Private Key Pair
+1. choose two large prime numbers p, q (eg 1024 bits each)
+2. compute n=pq, z=(p-1)(q-1)
+3. choose {e | e<n} that has no common facts with z (relatively prime)
+4. choose d such that ed-1 is exactly divisible by z (ed % z = 1)
+5. public key is (n,e). private key is (n,d)
+
+RSA: Encryption, Decryption
+1. to encrypt msg m (<n), compute c=m^e % n
+2. to decrypt received bit pattern, c, compute m=c^d % n
+
+8.31 Authentication
+-goal: avoid playback attack
+-nonce: number (R) used only once in a lifetime
+-ap4.0: to prove Alice "live", Bob sends Alice nonce, R. Alice must return R, encrypted with shared secret key
+-ap5.0: use nonce, public key cryptography
+
+8.32 Message Integrity
+Digital Signatures
+-cryptographic technique analogous to hand-written signatures
+-sender digitally signs document, establishing he is document owner/creator
+-virifiable, nonforgeable: recipient can prove that sender, and no one else must have signed document
+
+Message Digests
+-fixed length, easy to compute, digital "fingerprint"
+-apply has function H to msg m, get fixed size message digest, H(m)
+
+Certification Authorities
+-CA: binds public key to particular entity, E
+-E (person, router) registers its public key with CA
+
+8.5 Securing TCP Connections - SSL (Secure Sockets Layer)
+-variations: TLS: transport layer security, RFC 2246
+-provides: confidentiality, integrity, authentication
+-handshake: alice, bob use their certs, private keys to authenticate each other and exchange shared secret
+-key derivation: alice, bob use shared secret to derive set of keys
+-data transfer: data to be transferred is broken up into series of records
+-connection closure: special msgs to securely close connection
+
+8.6 Network Layer Security: IPsec
+VPN (Virtual Private Network)
+-data encrypted before entering public internet
+-logically separate from other traffic
+
+IPsec services: data integrity, origin authentication, replay attack prevention, confidentiality
+IPsec Transport Mode: IPsec datagram emitted, received by end system
+IPsec Tunnel Mode: edge routers IPsec-aware, hosts IPsec-aware
+Authentication Header protocol: provides src authenticaction & data integrity, not confidentiality
+Encapuslation Security protocol: provides src authentication, data integrity, confidentiality
+
+8.7 Securing Wireless LANs
+-symmetric key crypto: confidentiality, end host auth, data integrity
+-self sync: each packet separately encrypted
+-efficient: implemented in hardware or software
+
+WEP Encryption
+-sender calculates integrity check value (ICV, 4byte hash/CRC over data)
+-each side has 104-bit shared key
+-sender creates 24-bit initialization vector (IV), appends to key: gives 128-bit key
+-sender appends keyID (in 8-bit field)
+-128bit key inputted into psuedo rng to get keystream
+-data in frame + ICV encrypted w/ RC4
+	-bytes of keystream XORd with bytes of data + ICV
+	-IV, keyID appended to encrypted data to create payload
+	-payload inserted into 802.11 frame
+
+WEP Decrytion
+-receiver extracts IV
+-inputs IV, shared secret key, into psuedo rng, gets keystream
+-XORs keystreamm w/ encrypted data to decrypt data + ICV
+-verifies integrity of data w/ ICV
+
+802.11i: Improved Security
+-numerous (stronger) forms of encryption possible
+-provides key distribution
+-uses authentication server separate from access point
+
+802.11i: Four Phases of Operation
+1. Disovery of security capabilities
+2. STA and AS mutually authenticate, together generate Master Key (MK)
+3. STA derives Pairwise Master Key (PMK), AS derives same PMK, sends to AP
+4. STA, AP use PMK to derive Temporary Key (TK) used for msg encryption, integrity
+
+8.8 Operation Security: Firewalls & IDS
+Firewalls
+-isolates organization's internal net from larger internet, allowing some packets to pass, blocking others
+
+Stateless Packet Filtering
+-internal network connected to internet via router firewall
+-router filters packet-by-packet, decision to forward/drop packet based on:
+	-src IP addr, dst IP addr
+	-TCP/UDP src and dst port numbers
+	-ICMP msg types
+	-TCP SYN and ACK bits
+
+Statefule Packet Filtering
+-track status of every TCP connection
+-track connection setup (SYN), teardown (FIN): determine whether incoming, outgoing packets "make sense"
+-timeout inactive connections at firewall: no longer admit packets
+
+Intrusion Detection Systems (IDS)
+-deep packet inspection: look at packet contents
+-examine correlation among multiple packets: port scanning, network mapping, DoS attack

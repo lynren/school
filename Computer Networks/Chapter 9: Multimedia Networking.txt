@@ -1,0 +1,124 @@
+Chapter 9: Multimedia Networking
+
+9.1 Multimedia Networking Applications
+Audio:
+	-analog audio signal sampled at constant rate. eg. CD music: 44100 samples/sec
+	-each sampled quantized, ie rounded
+
+Video:
+	-sequence of images displayed at a constant rate. eg. 24 images/sec
+	-digital image: array of pixels, pixel represented by bits
+	-coding: use redundancy w/in and b/w images to decrease # bits used to encode image
+		-spatial: within image, temporal: from one image to next
+	-CBR (constant bit rate): video encoding rate fixed
+	-VBR (variable bit rate): video encoding rate changes as amount of spatial, temporal coding changes
+
+9.2 Streaming Stored Video
+	-continuous playout constraint: once client playout begins, playback must match original timing. Network delays are variable (jitter), so will need client-side buffer to match playout requirements
+	-client side buffering & playout delay: compensate for network-added delay, delay jitter
+
+Streaming Multimedia: UDP
+	-server sends @ rate appropriate for client (often send rate=encoding rate=constant rate)
+		-transmission rate can be oblivious to congestion level
+	-short playout delay (2-5 seconds) to remove network jitter
+	-RTP: multimedia payload types
+
+Streaming Multimedia: HTTP
+	-multimedia file retrieved via HTTP GET
+	-send at maximum possible rate under TCP
+	-larger playout delay: smooth TCP delivery rate
+
+9.3 Voice-over-IP (VoIP)
+VoIP end-end-delay requirement: needed to maintain "conversational" aspect
+Session initialization: how does callee advertise IP addr, port #, encoding algos?
+Value-added services: call forwarding, screening, recording
+Emergency services: 911
+Speaker's audio: alternating talk spurts, silent periods
+	-application sends segment into socket every 20ms during talkspurts
+Network loss: IP datagram lost due to network congestion (router buffer overflow)
+Delay loss: IP datagram arrives too late for playout at receiver
+Loss tolerance: depending on voice encoding, loss concealment, packet loss b/w 1%, 10% can be tolerated
+
+VoIP: Fixed Playout Delay
+	-rcvr attempts to playout each chunk qms after chunk was generated
+		-chunk has timestamp t: playout chunk at t+q
+	-large q: less packet loss, small q: better interactive experience
+
+Adaptive Playout Delay
+	-goal: low playout delay, low loss rate
+	-approach: adaptive playout delay adjustment:
+		-estimate network delay, adjust playout delay at beginning of talk spurt
+		-silent periods compressed, elongated
+		-chunks still played out every 20ms during talk spurt
+
+VoIP: Recovery from Packet Loss
+	-Forward Error Correction (FEC): send enough bits to allow recovery w/o retransmission
+	Simple FEC:
+		-for every group of n chunks, create redundant chunk by XORing n original chunks
+		-send n+1 chunks, increasing bandwidth by factor 1/n
+		-can reconstruct original n chunks if at most one lost chunk from n+1 chunks, w/o playout delay
+	Another FEC scheme: "piggyback lower quality stream"
+		-send lower resolution audio stream as redundant information
+		-non-consecutive loss: receiver can conceal loss
+		-generalization: can also append (n-1)st and (n-2)nd low-bit rate chunk
+	Interleaving to Conceal Loss:
+		-chunks fivided into smaller units eg. four 5ms units/20ms chunk
+
+VoIP: Skype
+	-proprietary application-layer protocol
+	-P2P components:
+		-clients: skype peers connect directly to each other for VoIP call
+		-super nodes (SN): Skype peers w/ special functions
+		-overlay network: among SNs to locate Skype clients (SCs)
+		-login server
+
+9.4 Protocols for Real-Time Conversational Applications: RTP, SIP
+Real-Time Protocol (RTP) (RFC 3550)
+	-specifies packet structure for packets carrying audio, video data
+	-provides: payload type id, packet sequence #, timestamping
+	-runs in end systems, packets encapsulated in UDP segments
+RTP Header
+	-payload type (7bits): indicates type of encoding currently being used
+	-sequence # (16bits): increment by one for each RTP packet sent
+	-timestamp (32bits): sampling instant of first byte in this RTP data packet
+	-SSRC (32bits): identifies src of RTP stream. Each stream in RTP session has distinct SSRC
+
+Real-Time Control Protocol (RTCP)
+	-each participant in RTP session periodically sends RTCP control packets to all other participants
+	-each RTCP packet contrains sender and/or receiver reports
+	-feedback used to control performance
+
+SIP: Session Initiation Protocol
+	-provides mechanism for call setup
+	-determine current IP address of callee
+	-call management: add new media streams during call, change encoding during call, invite others, transfer/hold calls
+SIP Registrar
+	-once function of SIP server: registrar
+	-when BOB starts SIP client, client sends SIP REGISTER msg to BOB's registrar server
+SIP Proxy
+	-another function of SIP server: proxy
+	-proxy responsible for routing msgs to callee
+
+9.5 Network Support for Multimedia
+Dimensioning Best Effor Networks
+	-approach: deploy enough link capacity so that congestion doesn't occur
+
+Policing Mechanisms
+	-goal: limit traffic to not exceed declared parameters
+		-(long term) avg rate: how many pkts can be sent per unit time
+		-peak rate: eg. 6000 pkts/min (ppm) avg: 1500 ppm
+		-(max) burst size: max number of pkts sent consecutively
+	-token bucket: limit input to specified burst size and avg rate
+		-bucket can hold b tokens
+		-tokens generated at rate r token/sec unless bucket full
+		-over interval of length t: # of pkts admitted <= (rt + b)
+
+Differentiated Services
+	-want "qualitative" service classes
+	-scalability: simple function in network core, relatively complex functions at edge routers
+	-don't define service classes, provide functional components to build service classes
+
+Forwarding Per-Hop Behaviour (PHB)
+	-PHB does not specify mechanisms to ensure required PHB performance behaviour
+	-expedited forwarding: packet departure rate of a class >= specified rate
+	-assured forwarding: 4 classes of traffic: each guaranteed min amount of bandwidth

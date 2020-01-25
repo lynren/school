@@ -1,0 +1,199 @@
+Chapter 6: Basic SQL
+
+6.1 SQL DATA DEFINITION & DATA TYPES
+
+SQL language has features for:
+	1. Data definition (DDL)
+	2. Data manipulation (DML)
+	3. Transaction control, Indexing, Security specification, etc. (DCL)
+
+	|CREATE 
+	-main SQL command for data definition 
+
+CREATE SCHEMA in SQL
+	-identified by a schema name
+	-includes an authorization identifier (eg 'Jsmith') to indicate the owner of the schema and descriptors (eg Grant select) for each element
+
+	Schema elements include:
+		-tables, constraints, views, domains, and other constructs
+	-each statement ends w/ a semicolon
+	-eg: CREATE SCHEMA COMPANY AUTHORIZATION 'Jsmith'
+
+Catalog
+	-names collection of schemas in an SQL environment
+	-contains a special schema called INFORMATION_SCHEMA for providing information on all schemas and element descriptors in these schemas
+
+CREATE TABLE in SQL
+	-used to specify a new relation
+	-provides name of table
+	-specifies attributes, their types, and initial constraints
+	-eg. CREATE TABLE COMPANY.EMPLOYEE or CREATE TABLE EMPLOYEE
+
+	Base Tables
+	-relation and its tuples are actually created and stored as a file by DBMS
+
+	Virtual Relations
+	-created through the CREATE VIEW statement. Do not correspond to any physical file
+
+	Some foreign keys may cause errors
+	-cirular references
+	-refer to a table that has not yet been created
+	-use ALTER TABLE statement to change tables when they can no longer cause violation
+
+DATA TYPES & DOMAINS
+	Basic data types (6 main types)
+
+	NUMERIC
+	integers: INTEGER, INT, SMALLINT
+	floats: FLOAT, REAL, DOUBLE PRECISION
+
+	CHARACTER-STRING
+	fixed length: CHAR(n), CHARACTER(n)
+	varying length: VARCHAR(n), CHAR VARYING(n), CHARACTER VARYING(n)
+	varying large text: CHARACTER LARGE OBJECT, CLOB
+	-eg CLOB(20M) specifies a maximum of 20MB of text
+
+	BIT-STRING
+	fixed length: BIT(n)
+	varying length: BIT VARYING(n)
+	BLOB: eg. BLOB(30G) for large binary values like images
+
+	BOOLEAN
+	-TRUE, FALSE, or NULL
+
+	DATE
+	-has ten positions w/ components as YEAR, MONTH, DAY in the form YYYY-MM-DD
+	-multiple mapping functions in RDBMSs to change date formats
+
+	ADDITIONAL DATA TYPES
+	TIMESTAMP: includes the DATE and TIME fields
+	INTERVAL: specifies a relative value that can be used to increment or decrement an absolute value of a date, time, or timestamp
+	-DATE, TIME, TIMESTAMP, INTERVAL can be cast or converted to string formats for comparison
+
+CREATE DOMAIN 
+	-can be used to declare the data type of an attr such as SSN_TYPE
+	-eg: CREATE DOMAIN SSN_TYPE AS CHAR(9)
+	-makes it easier to change data type for a domain that is used by numerous attrs
+	-use of domain improves schema readability
+	-CREATE TYPE can be used to create user defined types
+
+SPECIFYING CONSTRAINTS
+	-relational model has 3 basic constraint types supported in SQL
+	CONSTRAINTS:
+		-KEY: primary key value cannot be a duplicate
+		-ENTITY INTEGRITY: primary key value cannot be null
+		-REFERENTIAL INTEGRITY: FK must have a value that is present as a PK, or may be null
+
+	Other 3 restrictions on attr domains are:
+		-DEFAULT <value>: default value of an attr
+		-NOT NULL: null not permitted for a particular attr
+		-CHECK: clause for restricting attr or domain values at declaration of attr
+
+	SPECIFYING KEY & RELATIONAL INTEGRITY CONSTAINTS
+		-PRIMARY KEY clause: specify 1+ attrs that make up PK of relation
+		-UNIQUE clause: specify alternate keys (called CANDIDATE keys)
+
+		-ENITITY integrity is enforced from PRIMARY KEY although NOT NULL can still be specified
+		-FOREIGN KEY clause:
+			-default: reject update on violation
+			-attach referential triggered action clause
+				-options include SET NULL, CASCADE, SET DEFAULT
+				-CASCADE option suitable for "relationship" relations
+
+	GIVING NAMES TO CONSTRAINTS
+	-using keyword CONSTRAINT
+
+BASIC RETRIVAL QUERIES in SQL
+	
+	Basic SQL Retrieval Query Block
+	|	SELECT 	<attribute list>
+	|	FROM 	<table list>
+	|	[WHERE	<condition>]
+	|	[ORDER BY <attribute list>];
+
+	SELECT satement: statement for retrieving info from a db
+	usage: 
+	SELECT <attribute list> FROM <table list> WHERE <condition>;
+	<attribute list>: list of attr names whose values are to be retrieved (projection attributes)
+	<table list>: list of the relation names required to process the query
+	<condition>: conditional (boolean) expression that identifies the tuples to be retrieved by the query
+
+	Logical comparison operators:
+	=, <, <=, >, >=, <> (not equal)
+
+	BOOLEAN logic:
+	AND, OR, NOT
+
+	Ambiguous Attribute Names
+	-involves only selection and join conditions plus projection of attributes (spj)
+	-must include relation name with attr (EMP.name) to prevent ambiguity
+
+	Aliasing and Renaming
+	-can be used to declare alternative relation names to refer to rel twice in a query
+	-eg: SELECT E.name, S.name FROM employee as E, employee as S
+
+	Missing WHERE clause
+	-indicates no condition on tuple selection
+	-result is all possible tuple combinations
+
+	Asterisk
+	-retrieve all the attribute values of the selected tuples
+
+	DISTINCT
+	-sql keyword removes duplicate tuples in result
+
+	Set Operations
+	-UNION, EXCEPT(difference), INTERSECT
+	-multiset operations: UNION ALL, EXCEPT ALL, INTERSECT ALL
+	-type compatibility is needed for these operations to be valid
+
+	Substring Pattern Matching and Arithmetic Operators
+	-LIKE comparison operator
+		-used for string pattern matching
+		-% replaces an arbitrary number of zero+ characters
+		-_ replaces a single character
+		-eg: WHERE address LIKE '%Houston, TX%'; WHERE ssn LIKE '__1__8901'
+
+	BETWEEN comparison operator
+		-eg: SELECT * FROM emp WHERE (salary BETWEEN 30 and 40);
+
+	Standard arithmetic operators
+		-addition (+), subtraction (-), multiplication (*), and division (/) may be included as part of SELECT clause
+		-eg: SELECT e.name, 1.1*e.salary AS increased_salary
+
+	Ordering of Query Results
+	-ORDER BY clause
+	-DESC to see result in descending order of values
+	-ASC to specify ascending order exlicitly
+	-typically placed at end of query: ORDER BY D.Dname DESC;
+
+INSERT, DELETE and UPDATE Statements in SQL
+	-INSERT typically inserts a tuple in a relation
+	-UPDATE may update a number of tuples in a relation that satisfy the condition
+	-DELETE may also update a number of tuples in a relation that satisfy the condition
+
+	INSERT
+	-attr values listed in same order as attrs specfied in CREATE TABLE command
+	-constraints on data types observed automatically
+	-any integrity constraints as part of DDL spec are enforced
+
+	Bulk Loading of Tables
+	-variation of INSERT used for bulk-loading several tuples into tables
+	-new table T2 can be created with same attrs as T1. Using LIKE and DATA in the syntax, it can be loaded with entire data
+	-eg: CREATE TABLE d5emps LIKE EMPLOYEE
+		(SELECT e.* FROM employee AS e WHERE e.Dno=5) WITH DATA;
+
+	DELETE
+	-removes tuples from a relation
+	-WHERE clause selects tuples to be deleted
+	-referential integrity should be enforced
+	-tuples deleted from only one table at a time unless CASCADE is specified on refInteg constraint
+	-missing WHERE clase specifies that all tuples in a rel are to be deleted
+	-eg: DELETE FROM emp WHERE name='john'
+
+	UPDATE
+	-modifies attribute values of one or more selected tuples
+	-WHERE clause selects tuples to be modified
+	-SET clause specifies attributes to be modified and sets their new values
+	-eg: UPDATE project SET pname='proj1' WHERE pname='projOne';
+	-eg: UPDATE emp SET salary=salary*1.1;

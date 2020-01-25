@@ -1,0 +1,191 @@
+Script started on Tue 30 Oct 2018 06:05:07 PM EDT
+]0;lyn@XPS15: ~/Desktoplyn@XPS15:~/Desktop$ sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Oct 30 18:05:09 2018
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: instagramlol
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> select * from airport;
+
+AIRPORT_CODE	NAME
+--------------- --------------------------------------------------
+CITY						   STATE
+-------------------------------------------------- ---------------
+YYZ		Pearson Airport
+Toronto 					   ON
+
+YTZ		Island Airport
+Toronto 					   ON
+
+YQT		Thunder Bay Airport
+Thunder Bay					   ON
+
+
+AIRPORT_CODE	NAME
+--------------- --------------------------------------------------
+CITY						   STATE
+-------------------------------------------------- ---------------
+YQG		Windsor Airport
+Windsor 					   ON
+
+YYC		Calgary Airport
+Calgary 					   ON
+
+
+SQL> select * from flight;
+
+FLIGHT_NUMBER	AIRLINE 					     WEEKDAYS
+--------------- -------------------------------------------------- ----------
+WJ250		WestJet 						    3
+WJ261		WestJet 						    4
+AC275		Air Canada						    2
+AC300		Air Canada						    3
+AC320		Air Canada						    2
+PA233		Porter Airline						    5
+PA280		Porter Airline						    4
+
+7 rows selected.
+
+SQL> select * from flight_leg;
+
+FLIGHT_NUMBER	LEG_NUMBER DEPARTURE_AIRPO SCHEDULED_DEPARTURE_TIME
+--------------- ---------- --------------- ------------------------
+ARRIVAL_AIRPORT SCHEDULED_ARRIVAL_TIME
+--------------- ----------------------
+WJ250			 1 YQG					8.8
+YYZ				     9
+
+WJ250			 2 YYZ					 12
+YYC				    17
+
+AC275			 1 YQT					 10
+YYZ				    11
+
+
+FLIGHT_NUMBER	LEG_NUMBER DEPARTURE_AIRPO SCHEDULED_DEPARTURE_TIME
+--------------- ---------- --------------- ------------------------
+ARRIVAL_AIRPORT SCHEDULED_ARRIVAL_TIME
+--------------- ----------------------
+AC275			 2 YYZ					 13
+YQG				    14
+
+PA233			 1 YQG					 16
+YYZ				    17
+
+PA280			 1 YYZ					 11
+YQG				    12
+
+
+6 rows selected.
+
+SQL> select * from leg_instance;
+
+FLIGHT_NUMBER	LEG_NUMBER FDATE	      NUM_AVAILABLE_SEATS
+--------------- ---------- ------------------ -------------------
+AIRPLANE_ID	DEPARTURE_AIRPO DEPARTURE_TIME ARRIVAL_AIRPORT ARRIVAL_TIME
+--------------- --------------- -------------- --------------- ------------
+WJ250			 1 17-JAN-15			      200
+Boeing_777	YQG			     8 YYZ			8.5
+
+WJ250			 2 17-JAN-15			      200
+Boeing_777	YYZ			  12.3 YYC		       16.5
+
+AC275			 1 17-JAN-10			       60
+Airbus_200	YQT			    10 YYZ			 11
+
+
+FLIGHT_NUMBER	LEG_NUMBER FDATE	      NUM_AVAILABLE_SEATS
+--------------- ---------- ------------------ -------------------
+AIRPLANE_ID	DEPARTURE_AIRPO DEPARTURE_TIME ARRIVAL_AIRPORT ARRIVAL_TIME
+--------------- --------------- -------------- --------------- ------------
+AC275			 2 17-JAN-10			       60
+Airbus_200	YYZ			    13 YQG			 14
+
+PA233			 1 17-JAN-30			      120
+Boeing_737	YQG			    16 YYZ			 17
+
+PA280			 1 17-JAN-20			      120
+Boeing_737	YYZ			    11 YQG			 12
+
+
+6 rows selected.
+
+SQL> select * from fare;
+
+FLIGHT_NUMBER	FARE_CODE	AMOUNT		RESTRICTIONS
+--------------- --------------- --------------- ---------------
+WJ250		F1		$250		None
+WJ250		F2		$350		None
+AC275		F1		$275		Non-refundable
+AC275		F2		$300		Non-refundable
+PA233		F3		$150		None
+PA280		F3		$150		None
+
+6 rows selected.
+
+SQL> select * from seat_reservation;
+
+FLIGHT_NUMBER	LEG_NUMBER FDATE	      SEAT_NUMBER
+--------------- ---------- ------------------ ---------------
+CUSTOMER_NAME					   CUSTOMER_PHONE
+-------------------------------------------------- --------------------
+WJ250			 1 17-JAN-15	      20A
+Mariane Mooer					   519-253-3000
+
+WJ250			 2 17-JAN-15	      13D
+Mariane Mooer					   519-253-3000
+
+WJ250			 1 17-JAN-15	      6A
+Tony Appa					   226-253-4000
+
+
+FLIGHT_NUMBER	LEG_NUMBER FDATE	      SEAT_NUMBER
+--------------- ---------- ------------------ ---------------
+CUSTOMER_NAME					   CUSTOMER_PHONE
+-------------------------------------------------- --------------------
+WJ250			 2 17-JAN-15	      7D
+Tony Appa					   226-253-4000
+
+WJ250			 1 17-JAN-15	      6B
+Karen Appa					   226-253-4000
+
+WJ250			 2 17-JAN-15	      7C
+Karen Appa					   226-253-4000
+
+
+FLIGHT_NUMBER	LEG_NUMBER FDATE	      SEAT_NUMBER
+--------------- ---------- ------------------ ---------------
+CUSTOMER_NAME					   CUSTOMER_PHONE
+-------------------------------------------------- --------------------
+AC275			 1 17-JAN-10	      5C
+Mark Black					   226-212-5341
+
+AC275			 2 17-JAN-10	      14B
+Mark Black					   226-212-5341
+
+PA233			 1 17-JAN-30	      5A
+Peter Opo					   519-444-1234
+
+
+FLIGHT_NUMBER	LEG_NUMBER FDATE	      SEAT_NUMBER
+--------------- ---------- ------------------ ---------------
+CUSTOMER_NAME					   CUSTOMER_PHONE
+-------------------------------------------------- --------------------
+PA280			 1 17-JAN-20	      16D
+Chris Natta					   226-123-5555
+
+
+10 rows selected.
+
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+]0;lyn@XPS15: ~/Desktoplyn@XPS15:~/Desktop$ exit
+exit
+
+Script done on Tue 30 Oct 2018 06:06:28 PM EDT

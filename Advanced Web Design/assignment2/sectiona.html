@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assignment 2: Section A</title>
+	</head>
+	<body>
+		<h1>Section A: XML Format & Design & System Administration</h2>
+		<h3>Q1: Convert the following loose HTML5 format into XML format. Mention the required changes as comments. Then write the code in the answer.</h3>
+		<p><code>
+			&lthtml&gt<br />
+			&emsp;&ltBody&gt &lt!-- in XML, all elements must be lowercase: &ltbody&gt --&gt <br />
+				&emsp;&emsp;&lt!-- incorrect nesting with italic element. put closing tag inside p --&gt<br />
+				&emsp;&emsp;&ltp&gt&ltitalic&gt Welcome to my web site&lt/p&gt&lt/italic&gt<br />
+
+				&emsp;&emsp;&lt!-- p element is not closed. It must be closed in XML --&gt<br />
+				&emsp;&emsp;&ltp&gtthe site more often PLEASE!<br />
+				&emsp;&lt/body&gt<br />
+			&lt/html&gt
+		</code></p>
+
+		<h4>XML code:</h4>
+		<p><code>
+			&lt!-- XML declaration with version and encoding type --&gt<br />
+			&lt?xml version="1.0" encoding="utf-8"?&gt<br />
+			&lthtml&gt<br />
+			&emsp;&ltbody&gt<br />
+			&emsp;&emsp;&ltp&gt&ltitalic&gtWelcome to my web site&lt/italic&gt&lt/p&gt<br />
+			&emsp;&emsp;&ltp&gtthe site more often PLEASE!&lt/p&gt<br />
+			&emsp;&lt/body&gt</br>
+			&lt/html&gt
+		</code></p>
+
+		<h3>Q2: Do the minimum changes to rename the following files so they are compatible with Windows 7 and higher versions of Windows OS, mention the reason why they are not compatible with these operating systems.</h3>
+
+		<h3>a. 0360-270/advancedWebsiteDesign.txt</h3>
+		<p>Windows does not allow the "/" character in a filename and is not case sensitive. We can replace the "/" with "-" and make all the letters lowercase. This gives us: <code>0360-270-advancedwebsitedesign.txt</code></p>
+
+		<h3>b. ?Webdesign.html</h3>
+		<p>Windows does not allow the "?" character in a file name and is not case sensitive. We can remove the "?" and make all the letters lowercase. This gives us: <code>webdesign.html</code></p>
+
+		<h3>c. &ltHello&gt.html</h3>
+		<p>Windows does not allow "&lt" and "&gt" characters in a filename and is not case sensitive. We can remove the "&lt" and "&gt" characters and make all the letters lowercase. This gives us: <code>hello.html</code></p>
+
+		<h3>Q3: Fill in the blank:</h3>
+		<h3>a. <u>Type selector</u>, the part of a style rule that determines which HTML element to match.</h3>
+		<h3>b. The <u>pseudo</u>-class selector lets you apply a style that appears when hover over an element with a pointer.</h3>
+		<h3>c. <u>Javascript</u> is a client-side scripting language used with HTML forms.</h3>
+	</body>
+</html>

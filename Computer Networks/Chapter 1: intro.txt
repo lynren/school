@@ -1,0 +1,33 @@
+Lecture 1
+
+Four Sources of Packet Delay
+	dproc:	nodal processing
+		-check bit errors
+		-determine output link
+	dqueue:	queueing delay
+		-time waiting at output link for transmission
+		-depends on congestion level of router
+	dtrans: transmission delay = L/R
+		-L: packet length (bits)
+		-R: link bandwidth (bps)
+	dprop:	propogation delay = d/s
+		-d: length
+		-s: propogation speed
+	dnodal = dproc + dqueue + dtrans + dprop
+
+Throughput
+
+Protocol "layers"
+	Internet Protocol Stack
+		application: suuporting network apps. ex FTP, SMTP, HTTP
+		transport:	process-process data transfer. TCP, UDP
+		network:	routing of datagrams from source to destination. IP, routing protocols
+		link:	data transfer between neighboring network elements. Ethernet, 802.111, PPP
+		physical:	bits "on the wire"
+
+	ISO/OSI reference model
+		presentation: allow apps to interpret data. ex encryption, compression, etc
+		session: synchronization, checkpointing, recovery of data exchange
+		Internet stack missing these layers!
+
+	

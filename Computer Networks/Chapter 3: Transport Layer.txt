@@ -1,0 +1,131 @@
+Chapter 3: Transport Layer
+
+3.1 TRANSPORT LAYER
+	-provide logical communication b/w app processes on diff hosts
+	-send side: breaks msgs into segments, passes to network layer
+	-rcv side: reassembles segments into msgs, passes to app layer
+
+	NETWORK LAYER: logical communication b/w hosts
+	TRANSPORT LAYER: communication b/w processes
+	TCP: reliable, in-order delivery
+	UDP: unreliable, unordered delivery
+
+3.2 MULTIPLEXING AND DEMULTIPLEXING
+	-multiplexing at sender handles data from multiple sockets, add transport header
+	-demultiplexing at rcvr uses header info to deliver rcvd segments to correct socket
+
+	DEMULTIPLEXING
+	-host receives IP datagrams
+	-each datagram has src IP addr, dest IP addr
+	-each datagram carries one transport-layer segment
+	-each segment has sourc, destination port number
+	-host uses IP addr & port num to direct segment to appropriate socket
+
+	CONNECTION-ORIENTED DEMUX
+	-TCP socket identified by 4-tuple (src ip, src port, dest ip, dest port)
+	-demux: rcvr uses all four values to direct segment to appropraite socket
+	-server host may support many simultaneous TCP sockets
+
+3.3 CONNECTIONLESS TRANSPORT: UDP
+	-no handshaking b/w UDP sender, receiver
+	-each UDP segment handled independently of others
+	-no connection state at sender or receiver
+	-no congestion control
+
+	UDP CHECKSUM
+	-detect "errors" in transmitted segment
+	sender:
+		-treat segment contents including header as sequence of 16-bit integers
+		-checksum: addition (one's compliment sum) of segment contents
+		-sender puts checksum value into UDP checksum field
+	receiver:
+		-compute checksum of received segment
+		-check if computed checksum equals checksum field value
+			-NO = error detected
+			-YES = no error detected, may be errors nonetheless
+
+3.4 PRINCIPLES OF RELIABLE TRANSFER
+	-important in application, transport, link layers
+	-characteristics of unreliable channel will determine complexity of reliable data transfer protocol (rdt)
+
+	FINITE STATE MACHINE DIAGRAMS
+	-incrementally develop sender, receiver sides of rdt protocol
+	-consider only unidirectional data transfer
+	-use FSM to specify sender, receiver
+
+	rdt1.0: reliable transfer over a reliable channel
+	-underlying channel perfectly reliable
+	-separate FSMs for sender, receiver
+
+	rdt2.0: channel with bit errors
+	-underlying channel may flip bits in packet
+	ACK: receiver explicitly tells sender that pkt received OK
+	NAK: receiver explicitly tells sender that pkt has errors
+	-sender retransmits pkt on receipt of NAK
+	-new mechs in rdt2.0:
+		-uses error detection
+		-receiver feedback: control msgs (ACK,NAK) rcvr -> sender
+	-if ACK/NAK corrupted
+		-sender doesn't know what happened to receiver
+		-cant retransmit, possible duplicate
+	-handling duplicates
+		-sender retransmits current pkt if ACK/NAK corrupted
+		-sender adds sequence number to each pkt
+		-receiver discards duplicate pkt
+
+	rdt1.1
+	-sequence number added to packets
+	-two sequence numbers (0,1) will suffice
+	-must check if received ACK/NAK corrupted
+	-twice as many states, state must remember whether expected pkt should have seq# of 0 or 1
+
+	rdt2.2: a NAK-free protocol
+	-same functionality as rdt2.1, using ACKs only
+	-instead of NAK, receiver sends ACK for last pkt received OK
+		-receiver must explicitly include seq# of pkt being ACKd
+	-duplicate ACK at sender results in same action as NAK, retransmits current pkt
+
+	rdt3.0: channels with errors and loss
+	-new assumption: underlying channel can also lose packets (data, ACKs)
+		-checksum, seq#, ACKs, retransmission will be of help but not enough
+	approach: sender waits "reasonable" amount of time for ACK
+		-retransmits if no ACK received in this time
+		-if pkt (or ACK) just delayed (not lost)
+			-retransmission will be duplicate, but seq#s already handles this
+			-receiver must specify seq# of pkt being ACKd
+		-requires countdown timer
+	-rdt3.0 is correct, but performance sucks
+
+	PIPELINED PROTOCOLS
+	-pipelining: sender allows multiple "in-flight", yet-to-be-acknowledged pkts
+		-range of sequence numbers must be increased
+		-buffering at sender and/or receiver
+	-two generic forms: go-Back-N, selective repeat
+
+	GO-BACK-N
+	-sender can have up to N unACKd packaets in pipeline
+	-receiver only sends cumulative ACK
+	-sender has timer for oldest unACKd packet, when timer's out, retransmit all unACKd pkts
+
+	SELECTIVE REPEAT
+	-sender can have up N unACKd packets in pipeline
+	-receiver sends individual ACK for each packet
+	-sender maintains timer for each unACKd packet, when timer's out, retransmit all unACKd pkts
+
+	GO-BACK-N: SENDER
+	-k-bit seq# in packet header
+	-"window" of up to N consecutive unACKd pkts allowed
+	-ACK(n): ACKs all pkts up to, including seq# n (cumulative ACK)
+	-timer for oldest in-flight packet
+	-timeout(n): retransmit packet n and all higher seq# packets in window
+
+	GO-BACK-N: RECEIVER
+	-ACK-only: always send ACK for correctly-received pkt w/ highest in-order seq#
+		-may generate duplicate ACKs
+		-need only remember expecetedSeqNum
+	-out-of-order pkt: discard or reACK pkt with highest in-order seq#
+
+	SELECTIVE REPEAT
+	-receiver individually acknowledges all correctly received packets
+	-sender only resends pkts for which ACK not received
+	-sender window: N consecutive seq#s, limits seq#s of sent, unACKd pkts

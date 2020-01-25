@@ -1,0 +1,85 @@
+import java_cup.runtime.*;
+import java.io.*;
+
+terminal String NUMBER, VOID, INT, RETURN, MAIN, PLUS, MINUS, SEMI, COMMA, LPAR, RPAR, LBRA, RBRA, EQUAL, PRINTF, HASH, ID, QUOTES, COMMENTS, INLINECOMMENTS, QString;
+
+non terminal String program, type, methodDecl, formalParams, formalParam, block, statement, statements, localVarDecl, assignStmt, returnStmt, expression, multiplicativeExpr, primaryExpr, actualParams, printStmt, full;
+
+precedence nonassoc  PLUS, MINUS, INT, RETURN, ID, LPAR, LBRA, VOID, PRINTF;
+
+full::= program:e {: RESULT = ("public class A51_Testoutput {\n"+e+"\n}"); :};
+
+program ::=methodDecl:e program:e2
+        {: RESULT= e+ "\n" + e2;:}
+        |methodDecl:e {: RESULT= e;:}
+        ;
+
+type ::=INT {: RESULT= ("int "); :}
+        |VOID;
+
+methodDecl ::= type MAIN LPAR RPAR block
+        |type MAIN LPAR formalParams RPAR block:b {: RESULT= ("\tpublic static void main(String [] args)\n" + b); :}
+        |type MAIN ID LPAR RPAR block:b {: RESULT= ("public static void main(String [] args)\n" + b); :}
+        |type ID LPAR RPAR block
+        |type MAIN ID LPAR formalParams RPAR block:b {: RESULT= ("public static void main(String [] args)\n" + b); :}
+        |type:t ID:i LPAR formalParams:fp RPAR block:b {: RESULT= ("static "+t+" "+i+"("+fp+")\n" + b); :}
+        ;
+
+formalParams ::=formalParam:fp COMMA formalParams:fps {: RESULT= (fp +", "+fps); :}
+        |formalParam:fp {: RESULT= (fp); :}
+        ;
+
+formalParam ::= type:t ID:i {: RESULT= (t +" "+i); :}
+        |type
+        ;
+
+block ::= LBRA statements:sts RBRA {: RESULT= ("{\n"+ sts+"\n}"); :}
+       ;
+
+statements::= statement:s {: RESULT= (s); :}
+        | statement:s statements:sts {: RESULT= (s + " " + sts); :}
+        ;
+
+statement ::= block:b {: RESULT= (b+"\n"); :}
+        |localVarDecl:e {: RESULT= (e+"\n"); :}
+        |assignStmt:e {:RESULT= (e+"\n");:}
+        |returnStmt:e {:RESULT= (e);:}
+        |printStmt:e {:RESULT= (e+"\n");:}
+        ;
+
+localVarDecl ::= type:t ID:i SEMI {: RESULT= (t + " " + i+ ";"); :}
+        |type:t ID:i COMMA localVarDecl:lv {: RESULT= (t + " " + i+ ", " +lv); :}
+        |type:t assignStmt:a {:RESULT= (t + " " + a);:}
+        |ID SEMI
+        |ID COMMA localVarDecl
+        ;
+
+assignStmt ::= ID:i EQUAL expression:e SEMI {: RESULT= (i+" = "+e+";"); :}
+        |ID:i EQUAL expression:e COMMA assignStmt:as {: RESULT= (i+" = "+e+", " +as); :}
+        ;
+
+returnStmt ::= RETURN expression:e SEMI {:RESULT= ("");:}
+        ;
+
+printStmt ::= PRINTF LPAR QUOTES:q COMMA ID:i RPAR SEMI {: RESULT= ("System.out.println( "+q.replace("%d","")+"+"+i+ ");"); :}
+        ;
+
+expression ::= multiplicativeExpr:me {:RESULT= (me);:}
+        |multiplicativeExpr:me PLUS expression:e {:RESULT= (me+"+"+e);:}
+        |multiplicativeExpr:me MINUS expression:e {:RESULT= (me+"-"+e);:}
+        ;
+
+multiplicativeExpr ::= primaryExpr:pe1 {:RESULT= (pe1);:}
+        ;
+
+primaryExpr ::= ID LPAR actualParams RPAR
+        |LPAR expression:e RPAR {:RESULT= ("("+e+")");:}
+        |ID LPAR RPAR
+        |QUOTES
+        |NUMBER:n {: RESULT= (n); :}
+        |ID:i {: RESULT= (i); :} 
+        ;
+
+actualParams ::=expression:e COMMA actualParams:ap {:RESULT= (e +", " +ap);:}
+        |expression:e {:RESULT= (e);:}
+        ;

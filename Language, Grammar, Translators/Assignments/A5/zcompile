@@ -1,0 +1,9 @@
+#!/bin/bash
+jflex zflex.flex
+echo
+echo jflex finished
+echo
+java -jar java-cup-11b.jar -interface -parser A5Parser -symbols A5Symbol zcup.cup
+javac -cp java-cup-11b-runtime.jar:. A5Scanner.java A5Parser.java  A5Symbol.java Main.java
+echo
+echo cup finished

@@ -1,0 +1,80 @@
+Chapter 2: Database System Concepts and Architecture
+
+Data Models, Schemas and Instances
+
+DATA MODEL:
+	-defines the data structure, operations and constraints of the db (data elements, types, relationships)
+	-relational data model, entity-relationship (ER) model
+
+DATA MODEL CATEGORIES (4):
+	1) Conceptual (high-level, semantic) data models:
+		-ER model which describes data close to how users perceive data. Data are defined as entities, attributes, relationships. 
+		|	Entity: a real world object such as employee, project
+		|	Attribute: represents some property of interest that describes entity ex. name, gender
+		|	Relationship: Among multiple entities, represents an association among the entities. ex. "each employee works on 1 or more projects" is a "works on" relationship between employee and project.
+
+	2) Physical (low-level, internal) data models:
+		-Provide concepts that describe detals of how data is stored in the computers by showing record formats, ordering, access paths such as indexing structure for data retrieval.
+
+	3) Implementation (representational) data models:
+		- Provide concepts that fall between the above two, used by many commercial DBMS implementations
+
+	4) Self-Describing Data Models:
+		-Combine the description of data with the data values. ex. XML, key-value stores, some NOSQL systems. Used for non-traditional data types like posts, blobs, web data.
+
+SCHEMAS AND INSTANCES:
+	DATABASE SCHEMA: the description of the database and is made up of all the schemas of the tables or files in the whole database.
+
+	SCHEMA DIAGRAM: an illustrative displau of a database schema
+
+	SCHEMA CONSTRUCT: a component of the schema or object within schema, ex STUDENT, COURSE
+
+	DATABASE STATE: the actual data stored in a db at a certain time. Inclused the collection of all the data in the database. Also call occurence, snapshot, instance
+
+	INITIAL DATABASE STATE: refers to the db state when it is initially loaded into the system.
+
+	VALID STATE: a state that satisfies the structure and constrains of the db
+
+THREE SCHEMA ARCHITECTURE:
+	-DBMS uses 3-schema architecture to achieve:
+		-data-program seperation
+		-data independance
+		-use of catalogue for data description of the schema
+		-support for multiple user views
+
+	SCHEMAS:
+	1)	EXTERNAL SCHEMA for end users
+	2)	CONCEPTUAL SCHEMAs at the conceptual level representing the whole database for a community of users using a conceptual or implementation data model such as relational.
+	3)	INTERNAL SCHEMAs at the internal level which describe physical storage structures and access paths of db
+
+DATA INDEPENDANCE:
+	-ability of DBMS to change schema at lower level of DB w/o having to change schema at next higher level
+	-only the mappings between this schema and higher level schemas need to be changed in DBMS that supports data independance.
+
+	LOGICAL DATA INDEPENDANCE:
+	-ability to change conceptual schema w.o having to change external schema or program
+
+	PHYSICAL DATA INDEPENDANCE:
+	-ability to change the internal schema w.o having to change conceptual schema
+
+DBMS LANGUAGES & INTERFACES
+
+	Data Definition Language (DDL)
+		-used to define conceptual and external schemas
+		-SQL is used in the relational model for the DDL tasks
+		-3 subtasks for each of the 3 levels:
+			-physical (storage definition language-SDL done by DBA)
+			-conceptual (DDL)
+			-external (as view definition language-VDL)
+
+	Data Manipulation Language (DML)
+		-SQL db language is used for DML operations of insertion, deletion, modification,
+		and retrieval in the relational model
+		-Programmer interfaces for embedding DML in programming languages
+		|	Embedded: DML can be embedded in language like C as w/ Oracle Pro*C
+		|	Procedure Call: A library can be provided to access DBMS in Java, C, etc. (JDBC, ODBC)
+		|	DB Programming Language: PL/SQL, a programming language based on SQL
+		|	Scripting Laguages: PHP (client side scripting) and Python (server-side scripting) are used to write db programs
+
+		
+

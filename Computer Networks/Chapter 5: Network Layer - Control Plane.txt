@@ -1,0 +1,159 @@
+Chapter 5: Network Layer - Control Plane
+
+5.2 Routing Protocols
+	goal: determine "good" paths, from sending hosts to receiving hosts, thru network of routers
+
+	Routing Algorithm Classification
+	global info:
+	-all routers have complete topology, link cost info
+	-"link state" algorithms
+
+	decentralized info:
+	-router knows physically connected neighbors, link costs to neighbors
+	-iterative process of computation, exchange of info w/ neighbors
+	-"distance vector" algorithms
+
+	static:
+	-routes change slowly over time
+
+	dynamic:
+	-routes change more quickly
+
+	A Link-State Routing Algorithm
+	-Dijkstra's algorithm
+		-net topology, link costs known to all nodes
+		-computes least cost paths from src node to all other nodes
+
+5.3 Intra-AS Routing in the Internet: OSPF
+
+	Internet Approach to Scalable Routing
+	-aggregate routers into regions known as "autonomous systems" (AS)
+
+	intra-AS routing:
+		-routing among hosts, routers in same AS ("network")
+		-all routers in AS must run same intra-domain protocol
+		-gateway router: at "edge" of its own AS, has link(s) to router(s) in other AS
+		-determines forwarding table entries for destinations w/in AS
+		-also known as interior gateway protocols (IGP)
+		-most common intra-AS routing protocols: RIP, OSPF, IGRP
+
+	inter-AS routing:
+		-routing among AS'es
+		-gateways perform inter-domain routing
+		-with intra-AS, determines forwarding table entries for external destinations
+
+	OSPF (Open Shortest Path First)
+	-uses link-state algorithm
+	-router floods OSPF link-state advertisements to all other routers in entire AS
+	-IS-IS routing protocol: nearly identical to OSPF
+		-intermediate system to intermediate system
+
+	OSPF Advanced Features
+	-security: all OSPF messages authenticated
+	-multiple same-cose paths allowed
+	-for each link, multiple cost metrics for different TOS
+	-integrated uni- and multi-cast support
+	-hierarchical OSPF in large domains
+
+	Hierarchical OSPF
+	-two level hierarchy: local area, backbone
+	-area border routers: "summarize" distances to nets in own area, advertise to other Area Border routers
+	-backbone routers: run OSPF routing limited to backbone
+	-boundary routers: connected to other AS'es
+
+5.4 Routing Among the ISPs: BGP (Border Gateway Protocol)
+	-inter-domain routing protocol, "glue that holds the internet together"
+	-BGP provides each AS a means to:
+		-eBGP: obtain subnet reachability information from neighboring ASs
+		-iBGP: propogate reachability information to all AS-internal routers
+		-determine "good" routes to other networks based on reachability info and policy
+	-allows subnet to advertise its existence to rest of internet "I am here"
+
+	BGP Basics
+	-BGP session: two BGP routers exchange BGP messages over semi-permanent TCP connection
+	-advertised prefix includes BGP attrs: prefix + attributes = "route"
+		-AS-PATH: list of ASs thru which prefix advertisement has passed
+		-NEXT-HOP: indicates specific internal-AS router to next-hop AS
+	-Policy-based routing: 
+		-gateway receiving route advertisement uses import policy to accept/deline path
+		-AS policy determines whether to advertise patah to other neighboring ASs
+
+	BGP Messages
+	-BGP messages exchanged b/w peers over TCP connection
+	-OPEN: opens TCP connection to remote BGP peer and authenticates sending BGP peer
+	-UPDATE: advertises new path (or withdraws old)
+	-KEEPALIVE: keeps connection alive in absence of UPDATES; also ACKs OPEN request
+	-NOTIFICATION: reports errors in previous msg; also used to close connection
+
+	BGP Route Selection
+	-router selects route based on:
+		-local preference value attribute: policy decision
+		-shortest AS-PATH
+		-closest NEXT-HOP router; hot potato routing
+		-additional criteria
+
+5.5 The SDN Control Plane
+
+	Why a logically centralized control plane?
+	-easier network management: avoid router misconfig, greater flexibility of traffic flows
+	-table-based forwarding allows "programming" routers
+	-open (non-proprietary) implementation of control plane
+
+	SDN data plane switches
+	-fast, simple switches implementing generalized data-plane forwarding in hardware
+	-switch flow table computed, installed by controller
+	-API for table-based switch control (defines what is controllable, what is not)
+	-protocol for communicating w/ controller (eg. OpenFlow)
+
+	SDN controller (network OS):
+	-maintain network state information
+	-interacts w/ network control applications "above" via southbound API
+	-implemented as distributed system for performance, scalability, fault-tolerance, robustness
+
+	SDN network-control apps:
+	-"brains" of control: implement control functions using lower-level services, API provided by SDN controller
+	-unbundled: can be provided by 3rd party: distinct from routing vender, or SDN controller
+
+	OpenFlow Protcol
+	-operates b/w controller, switch
+	-TCP used to exchange messages, optional encryption
+	-3 classes of OpenFlow messages:
+		-controller-to-switch
+		-asynchronous (switch to controller)
+		-symmetric
+
+	OpenFlow: controller-to-switch messages
+	-features: controller queries switch features, switch replies
+	-configure: controller queries/sets switch configuration parameters
+	-modify-state: add, delete, modify flow entries in the OpenFlow tables
+	-packet-out: controller can send this packet out of specific switch port
+
+5.6 ICMP: The Internet Control Message Protocol
+	-used by hosts & routers to communicate network-level information
+	-network layer "above" IP: ICMP msgs carried in IP datagrams
+	-ICMP msg: type, code plus plus first 8 bytes of IP datagram causing error
+
+	Traceroute and ICMP
+	-src sends esries of UDP segments to destination
+		-first set has TTL=1, second set has TTL=2, etc
+	-when datagram in nth set arrives to nth router:
+		-router discards datagram and sends source ICMP msg (type 11, code 0)
+		-ICMP msg includes name of router & IP address
+		-when ICMP msg arrives, src records RTTs
+	-stopping criteria:
+		-UDP segment eventually arrives at destination host
+		-dst returns ICMP "port unreachable" msg (type 3, code 3)
+		-src stops
+
+5.7 Network Management and SNMP
+	Network management includes deployment, integration, and coordination of hardware, software, and human elements to monitor, test, poll, configure, analyze, evaluate, and control the network and element resources to meet the real-time, operational performance, and quality of service requirements at a reasonable cost
+
+	SNMP Protocol
+	-two ways to convey MIB info, commands: request/response mode, trap mode
+
+	SNMP Protocol: message types
+	GetRequest, GetNextRequest, GetBulkRequest: manager-to-agent "get me data"
+	InformRequest: manager-to-manager here's MIB value
+	SetRequest: manager-to-agent set MIB value
+	Response: agenet-to-manager value, response to request
+	Trap: agent-to-manager inform manager of exceptional event

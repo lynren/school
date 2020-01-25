@@ -1,0 +1,92 @@
+Lecture 2: Software Process
+
+Software processes all involve:
+	-SPECIFICATION:	define what the system should do
+	-DESIGN AND IMPLEMENTATION: defining the organization of the system and implementing
+	-VALIDATION:	checking that it does what the customer wants
+	-EVOLUTION:		changing the system in response to changing customer needs
+
+Design Activities
+	ARCHITECTURAL design
+	-identify the overall structure of the system, principal components, their relationships
+	INTERFACE design
+	-where you define the interfaces between system components
+	COMPONENT SELECTION and design
+	-search for reusable components. If unavailable, you design how it will operate
+	DATABASE/DATA MODEL design
+	-design the system data structure and how these are to be represented in a DB
+
+Selecting a Software Process Model
+	-understand pros and cons of every software process model
+	-understand the capabilities and objectives of the system stakeholders
+
+Software Process Model
+
+WATERFALL model
+	-Phases: requirements analysis & definition, system & software design, implementation & unit testing, integration & system testing, operation & maintenance
+	-Drawback: difficulty of accommodating change after the process is underway. A phase has to be complete before moving onto the next phase
+	-appropriate when the requirements are well-understood
+	-mostly used for large systems where a system is developed at several sites
+
+V-SHAPED model
+	-validation and verification software process, an extension or improvement of waterfall
+	-same issues as waterfall, focuses more on testing and validation of the system
+	-same activites of waterfall are executed sequentially, but after implementation the steps move upwards to demonstrate the relationships between each phase and its phase of testing
+	-appropriate when customer has well defines and documented requirements
+	-mission critical systems, major requirement changes not possible
+
+SPIRAL model
+	-Sectors: objective setting, risk assessment and reduction, development and validation, planning
+	-no fixed phases, loops are chosen depending on what is required
+	-risks are assessed and resolved throughout the process
+
+PROTOTYPING model
+	-prototype is an initial version of a system to demonstrate concepts and try design options
+	-can be used in requirements engineering, design process, and testing process
+
+	Evolutionary/Extreme Prototyping
+	-used in web applications mainly, breakds down into three phases
+	-first phase is static prototype consisting of html pages
+	-second phase, screends are programmed and fully functional using simulated services layer
+	-third phase, services are implemented
+
+ITERATIVE and INCREMENTAL model
+	-cost of accomodating changing customer requirements is reduced
+	-amount of analysis and doc to be redone is much less than required for waterfall
+	-easier to get customer feedback 
+	-rapid delivery and deployment of useful software to the customer
+	-Issues: system structure tends to degrade with each increment
+		-regular change tends to corrupt its structure
+	-used in shrink-wrap apps and large systems w/ built-in small phases or segments.
+	-can be used in a system w/ seperated components.
+
+INTEGRATION and CONFIGURATION model
+	Phases: requirements specification, software discovery and eval, requirements refinement, application system configuration, component adaptation and integration
+	-based on software reuse where systems are integrated from existing compoonents
+	-reused elements may be configured to adapt to requirements
+	-reuse is now the standard approach for building many types of business systems
+	Types:	stand-alone application systems, object collections developed as a package to be integrated, web services that are developed according to service standards
+	Pros:
+		-reduced costs and risks as less software is developed from scratch
+		-faster delivery and deployment of system
+	Cons:
+		-requirement compromises are inevitable so system may not meet real need of users
+		-loss of control over evolution of reused system elements
+
+AGILE model
+	-customer value can be delivered with each increment so system functionality is available earlier
+	-early increments act as a prototype to help elicit requirements for later increments
+	-lower risk of overall project failure
+	-highest priority system services tend to receive the most testing
+
+Software Process Improvement
+	-we use an iterative approach for process improvement
+	-we define a set of software metrics or software process metrics to allow use to measure the effectiveness of the process
+
+	Activities
+	Process Measurement
+		-measure one or more attributes of the software process. These form a baseline that helps decide if process improvements have been effective.
+	Process Analysis
+		-current process is assessed, and process weakness and bottlenecks are identifies. Process models that describe the process may be developed
+	Process Change
+		-changes are proposed to address some of the identifies process weaknesses. These are introduced and the cycle resumes to collect data about the effectiveness of the changes.

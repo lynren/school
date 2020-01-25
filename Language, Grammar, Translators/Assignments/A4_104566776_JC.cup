@@ -1,0 +1,116 @@
+/*
+03-60-214
+Assignment 4
+CUP specification
+Lyndon Renaud
+104 566 776
+*/
+
+import java_cup.runtime.*;
+import java.io.*;
+
+/* Terminals */
+terminal NUMBER;
+terminal VOID, INT, RETURN, MAIN, IF, FOR, PLUS, TIMES, DIVIDE, MINUS, SEMI, COMMA, LPAR, RPAR, LBRA, RBRA, EQUAL, GREATER, LESS, PRINTF, HASH, ID, QUOTES, COMMENTS, INLINECOMMENTS, METHOD, METHODERR;
+
+/* Non-terminals */
+non terminal Integer program;
+non terminal type, methodDecl, formalParams, formalParam, block, statement, localVarDecl, assignStmt, returnStmt, expression, multiplicativeExpr, primaryExpr, actualParams, printStmt, condStmt, iteration, condExpr, printIDs, paramErr;
+
+/* Precedence */
+precedence left         PLUS, MINUS;
+precedence left         TIMES, DIVIDE;
+precedence nonassoc     INT, RETURN, ID, LPAR, LBRA, VOID, PRINTF, GREATER, LESS, IF, FOR;
+
+program ::=methodDecl program:e {: RESULT =e+1; :}
+        |methodDecl {: RESULT = 1; :}
+        ;
+
+type ::=INT|VOID;
+
+methodDecl ::= type MAIN LPAR RPAR block
+        |type MAIN formalParams RPAR block
+        |type MAIN ID LPAR formalParams RPAR block
+        |type MAIN ID LPAR RPAR block
+        |type METHOD RPAR block
+        |type METHOD formalParams RPAR block
+        ;
+
+formalParams ::=formalParam COMMA formalParams
+        |formalParam
+        ;
+
+formalParam ::= type ID
+        |type
+        ;
+
+block ::= LBRA statement RBRA
+       ;
+
+statement ::=statement statement
+        |block
+        |localVarDecl
+        |assignStmt
+        |returnStmt
+        |printStmt
+        |condStmt
+        |iteration
+        ;
+
+localVarDecl ::= type ID SEMI
+        |type ID COMMA localVarDecl
+        |type assignStmt
+        |ID SEMI
+        |ID COMMA localVarDecl
+        ;
+
+assignStmt ::= ID EQUAL expression SEMI
+        |ID EQUAL expression COMMA assignStmt
+        |ID PLUS PLUS SEMI
+        |ID MINUS MINUS SEMI
+        |ID PLUS PLUS
+        |ID MINUS MINUS
+        ;
+
+returnStmt ::= RETURN expression SEMI
+        ;
+
+printStmt ::= PRINTF QUOTES printIDs RPAR SEMI
+        ;
+printIDs ::= COMMA expression
+        | COMMA expression printIDs
+        ;
+
+expression ::= multiplicativeExpr
+        |multiplicativeExpr PLUS expression
+        |multiplicativeExpr MINUS expression
+        |multiplicativeExpr TIMES expression
+        |multiplicativeExpr DIVIDE expression
+        ;
+
+condExpr ::= multiplicativeExpr GREATER multiplicativeExpr
+        |multiplicativeExpr LESS multiplicativeExpr
+        ;
+
+multiplicativeExpr ::= primaryExpr
+        ;
+
+primaryExpr ::= METHOD actualParams paramErr
+        |METHOD actualParams RPAR
+        |LPAR expression RPAR
+        |ID LPAR RPAR
+        |QUOTES
+        |NUMBER
+        |ID
+        ;
+
+actualParams ::=expression COMMA actualParams
+        |expression
+        ;
+
+condStmt  ::= IF LPAR condExpr RPAR statement;
+
+iteration ::= FOR LPAR assignStmt condExpr SEMI assignStmt RPAR statement;
+
+paramErr ::= METHODERR {: System.out.println("Syntax error\nIncorrect method parameters");System.exit(0);:} ;
+

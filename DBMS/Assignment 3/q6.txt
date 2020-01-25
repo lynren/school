@@ -1,0 +1,26 @@
+select σ
+project π
+rename ρ
+join ⋈
+union ∪
+intersection ∩
+function ℑ
+division ÷
+
+names of emps who have dependent with the same first name as themselves
+RESULT <- πFname, Lname (σFname=Dependent_name (EMPLOYEE ⋈Essn=Ssn DEPENDENT))
+
+names of emps directly supervised by 'James Borg'
+jamesSSN(Super_ssn) <- πSsn (σFname='James' and Lname='Borg' (EMPLOYEE))
+RESULT <- πFname, Lname (EMPLOYEE ÷ jamesSSN)
+
+for each proj, list project name and total hours per week by all emps spent on that proj
+RESULT <- PnoℑSUM Hours (WORKS_ON ⋈pno=pnumber PROJECT)
+
+retrieve names of emps who work on every project
+emp_works_on <- (WORKS_ON ⋈pno=pnumber PROJECT)
+proj_number(pno) <- πpnumber (PROJECT)
+RESULT <- πFname, Lname (emp_works_on ÷ proj_number)
+
+retrieve maximum salary of all female employees
+RESULT <- ℑMAX Salary (σSex='F' (EMPLOYEE))

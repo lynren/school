@@ -1,0 +1,2986 @@
+Reading "A4.flex"
+CharClasses:
+class 0:
+{ [0-9][11-12][14-'!']['$'-'''][':']['?'-'@']['['-'^']['`']['|']['~'-65535] }
+class 1:
+{ ['A'-'D']['F'-'N']['P']['R']['V'-'Z']['_']['b'-'c']['g'-'h']['j'-'l']['q']['s']['w'-'z'] }
+class 2:
+{ ['0'-'9'] }
+class 3:
+{ ['-'] }
+class 4:
+{ ['.'] }
+class 5:
+{ ['E'] }
+class 6:
+{ ['+'] }
+class 7:
+{ ['v'] }
+class 8:
+{ ['o'] }
+class 9:
+{ ['i'] }
+class 10:
+{ ['d'] }
+class 11:
+{ ['n'] }
+class 12:
+{ ['t'] }
+class 13:
+{ ['r'] }
+class 14:
+{ ['e'] }
+class 15:
+{ ['u'] }
+class 16:
+{ ['m'] }
+class 17:
+{ ['a'] }
+class 18:
+{ ['f'] }
+class 19:
+{ ['*'] }
+class 20:
+{ ['/'] }
+class 21:
+{ [';'] }
+class 22:
+{ [','] }
+class 23:
+{ ['('] }
+class 24:
+{ [')'] }
+class 25:
+{ ['{'] }
+class 26:
+{ ['}'] }
+class 27:
+{ ['='] }
+class 28:
+{ ['>'] }
+class 29:
+{ ['<'] }
+class 30:
+{ ['p'] }
+class 31:
+{ ['"'] }
+class 32:
+{ ['Q'] }
+class 33:
+{ ['U'] }
+class 34:
+{ ['O'] }
+class 35:
+{ ['T'] }
+class 36:
+{ ['S'] }
+class 37:
+{ [13] }
+class 38:
+{ [10] }
+class 39:
+{ ['#'] }
+
+Constructing NFA : NFA is
+State 0
+  with epsilon in {8, 13, 17, 24, 29, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 65, 71, 91, 99, 151, 206, 260, 262}
+State 1
+  with epsilon in {8, 13, 17, 24, 29, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 65, 71, 91, 99, 151, 206, 260, 262}
+State 2
+  with epsilon in {102, 149, 260, 262}
+State 3
+  with epsilon in {102, 149, 260, 262}
+State 4
+  with epsilon in {158, 204, 260, 262}
+State 5
+  with epsilon in {158, 204, 260, 262}
+State 6
+  with epsilon in {212, 258, 260, 262}
+State 7
+  with epsilon in {212, 258, 260, 262}
+State 8
+  with 7 in {9}
+State 9
+  with 8 in {10}
+State 10
+  with 9 in {11}
+State 11
+  with 10 in {12}
+State[FINAL] 12
+State 13
+  with 9 in {14}
+State 14
+  with 11 in {15}
+State 15
+  with 12 in {16}
+State[FINAL] 16
+State 17
+  with 13 in {18}
+State 18
+  with 14 in {19}
+State 19
+  with 12 in {20}
+State 20
+  with 15 in {21}
+State 21
+  with 13 in {22}
+State 22
+  with 11 in {23}
+State[FINAL] 23
+State 24
+  with 16 in {25}
+State 25
+  with 17 in {26}
+State 26
+  with 9 in {27}
+State 27
+  with 11 in {28}
+State[FINAL] 28
+State 29
+  with 9 in {30}
+State 30
+  with 18 in {31}
+State[FINAL] 31
+State 32
+  with 19 in {33}
+State[FINAL] 33
+State 34
+  with 20 in {35}
+State[FINAL] 35
+State 36
+  with 6 in {37}
+State[FINAL] 37
+State 38
+  with 3 in {39}
+State[FINAL] 39
+State 40
+  with 21 in {41}
+State[FINAL] 41
+State 42
+  with 22 in {43}
+State[FINAL] 43
+State 44
+  with 23 in {45}
+State[FINAL] 45
+State 46
+  with 24 in {47}
+State[FINAL] 47
+State 48
+  with 25 in {49}
+State[FINAL] 49
+State 50
+  with 26 in {51}
+State[FINAL] 51
+State 52
+  with 27 in {53}
+State[FINAL] 53
+State 54
+  with 28 in {55}
+State[FINAL] 55
+State 56
+  with 29 in {57}
+State[FINAL] 57
+State 58
+  with 30 in {59}
+State 59
+  with 13 in {60}
+State 60
+  with 9 in {61}
+State 61
+  with 11 in {62}
+State 62
+  with 12 in {63}
+State 63
+  with 18 in {64}
+State[FINAL] 64
+State 65
+  with 1 in {66}
+  with 5 in {66}
+  with 7 in {66}
+  with 8 in {66}
+  with 9 in {66}
+  with 10 in {66}
+  with 11 in {66}
+  with 12 in {66}
+  with 13 in {66}
+  with 14 in {66}
+  with 15 in {66}
+  with 16 in {66}
+  with 17 in {66}
+  with 18 in {66}
+  with 30 in {66}
+  with 32 in {66}
+  with 33 in {66}
+  with 34 in {66}
+  with 35 in {66}
+  with 36 in {66}
+State 66
+  with epsilon in {69}
+State 67
+  with 1 in {68}
+  with 2 in {68}
+  with 5 in {68}
+  with 7 in {68}
+  with 8 in {68}
+  with 9 in {68}
+  with 10 in {68}
+  with 11 in {68}
+  with 12 in {68}
+  with 13 in {68}
+  with 14 in {68}
+  with 15 in {68}
+  with 16 in {68}
+  with 17 in {68}
+  with 18 in {68}
+  with 30 in {68}
+  with 32 in {68}
+  with 33 in {68}
+  with 34 in {68}
+  with 35 in {68}
+  with 36 in {68}
+State 68
+  with epsilon in {67, 70}
+State 69
+  with epsilon in {67, 70}
+State[FINAL] 70
+State 71
+  with 3 in {72}
+  with epsilon in {72}
+State 72
+  with epsilon in {75}
+State 73
+  with 2 in {74}
+State 74
+  with epsilon in {73, 76}
+State 75
+  with epsilon in {73}
+State 76
+  with epsilon in {77}
+State 77
+  with 4 in {78}
+  with epsilon in {82}
+State 78
+  with epsilon in {81}
+State 79
+  with 2 in {80}
+State 80
+  with epsilon in {79, 82}
+State 81
+  with epsilon in {79}
+State 82
+  with epsilon in {83}
+State 83
+  with 5 in {84}
+  with 14 in {84}
+  with epsilon in {90}
+State 84
+  with epsilon in {85}
+State 85
+  with 3 in {86}
+  with 6 in {86}
+State 86
+  with epsilon in {89}
+State 87
+  with 2 in {88}
+State 88
+  with epsilon in {87, 90}
+State 89
+  with epsilon in {87}
+State[FINAL] 90
+State 91
+  with 31 in {92}
+State 92
+  with epsilon in {95}
+State 93
+  with 0 in {94}
+  with 1 in {94}
+  with 2 in {94}
+  with 3 in {94}
+  with 4 in {94}
+  with 5 in {94}
+  with 6 in {94}
+  with 7 in {94}
+  with 8 in {94}
+  with 9 in {94}
+  with 10 in {94}
+  with 11 in {94}
+  with 12 in {94}
+  with 13 in {94}
+  with 14 in {94}
+  with 15 in {94}
+  with 16 in {94}
+  with 17 in {94}
+  with 18 in {94}
+  with 19 in {94}
+  with 20 in {94}
+  with 21 in {94}
+  with 22 in {94}
+  with 23 in {94}
+  with 24 in {94}
+  with 25 in {94}
+  with 26 in {94}
+  with 27 in {94}
+  with 28 in {94}
+  with 29 in {94}
+  with 30 in {94}
+  with 32 in {94}
+  with 33 in {94}
+  with 34 in {94}
+  with 35 in {94}
+  with 36 in {94}
+  with 37 in {94}
+  with 38 in {94}
+  with 39 in {94}
+State 94
+  with epsilon in {93, 96}
+State 95
+  with epsilon in {93, 96}
+State 96
+  with epsilon in {97}
+State 97
+  with 31 in {98}
+State[FINAL] 98
+State 99
+  with 20 in {100}
+State 100
+  with 19 in {101}
+State[FINAL] 101
+State 102
+  with 19 in {103}
+State 103
+  with 20 in {104}
+State[FINAL] 104
+State 105
+  with 1 in {106}
+  with 5 in {106}
+  with 7 in {106}
+  with 8 in {106}
+  with 9 in {106}
+  with 10 in {106}
+  with 11 in {106}
+  with 12 in {106}
+  with 13 in {106}
+  with 14 in {106}
+  with 15 in {106}
+  with 16 in {106}
+  with 17 in {106}
+  with 18 in {106}
+  with 30 in {106}
+  with 32 in {106}
+  with 33 in {106}
+  with 34 in {106}
+  with 35 in {106}
+  with 36 in {106}
+State 106
+  with epsilon in {109}
+State 107
+  with 1 in {108}
+  with 2 in {108}
+  with 5 in {108}
+  with 7 in {108}
+  with 8 in {108}
+  with 9 in {108}
+  with 10 in {108}
+  with 11 in {108}
+  with 12 in {108}
+  with 13 in {108}
+  with 14 in {108}
+  with 15 in {108}
+  with 16 in {108}
+  with 17 in {108}
+  with 18 in {108}
+  with 30 in {108}
+  with 32 in {108}
+  with 33 in {108}
+  with 34 in {108}
+  with 35 in {108}
+  with 36 in {108}
+State 108
+  with epsilon in {107, 110}
+State 109
+  with epsilon in {107, 110}
+State 110
+  with epsilon in {132}
+State 111
+  with 3 in {112}
+  with epsilon in {112}
+State 112
+  with epsilon in {115}
+State 113
+  with 2 in {114}
+State 114
+  with epsilon in {113, 116}
+State 115
+  with epsilon in {113}
+State 116
+  with epsilon in {117}
+State 117
+  with 4 in {118}
+  with epsilon in {122}
+State 118
+  with epsilon in {121}
+State 119
+  with 2 in {120}
+State 120
+  with epsilon in {119, 122}
+State 121
+  with epsilon in {119}
+State 122
+  with epsilon in {123}
+State 123
+  with 5 in {124}
+  with 14 in {124}
+  with epsilon in {130}
+State 124
+  with epsilon in {125}
+State 125
+  with 3 in {126}
+  with 6 in {126}
+State 126
+  with epsilon in {129}
+State 127
+  with 2 in {128}
+State 128
+  with epsilon in {127, 130}
+State 129
+  with epsilon in {127}
+State 130
+  with epsilon in {132}
+State 131
+  with epsilon in {105, 111}
+State 132
+  with epsilon in {150}
+State 133
+  with 29 in {134}
+State 134
+  with epsilon in {135}
+State 135
+  with 32 in {136}
+State 136
+  with epsilon in {137}
+State 137
+  with 33 in {138}
+State 138
+  with epsilon in {139}
+State 139
+  with 34 in {140}
+State 140
+  with epsilon in {141}
+State 141
+  with 35 in {142}
+State 142
+  with epsilon in {143}
+State 143
+  with 5 in {144}
+State 144
+  with epsilon in {145}
+State 145
+  with 36 in {146}
+State 146
+  with epsilon in {147}
+State 147
+  with 28 in {148}
+State 148
+  with epsilon in {150}
+State 149
+  with epsilon in {131, 133}
+State[FINAL] 150
+State 151
+  with 20 in {152}
+State 152
+  with 20 in {153}
+State[FINAL] 153
+State 154
+  with 37 in {155}
+State 155
+  with epsilon in {159}
+State 156
+  with 38 in {157}
+State 157
+  with epsilon in {159}
+State 158
+  with epsilon in {154, 156}
+State[FINAL] 159
+State 160
+  with 1 in {161}
+  with 5 in {161}
+  with 7 in {161}
+  with 8 in {161}
+  with 9 in {161}
+  with 10 in {161}
+  with 11 in {161}
+  with 12 in {161}
+  with 13 in {161}
+  with 14 in {161}
+  with 15 in {161}
+  with 16 in {161}
+  with 17 in {161}
+  with 18 in {161}
+  with 30 in {161}
+  with 32 in {161}
+  with 33 in {161}
+  with 34 in {161}
+  with 35 in {161}
+  with 36 in {161}
+State 161
+  with epsilon in {164}
+State 162
+  with 1 in {163}
+  with 2 in {163}
+  with 5 in {163}
+  with 7 in {163}
+  with 8 in {163}
+  with 9 in {163}
+  with 10 in {163}
+  with 11 in {163}
+  with 12 in {163}
+  with 13 in {163}
+  with 14 in {163}
+  with 15 in {163}
+  with 16 in {163}
+  with 17 in {163}
+  with 18 in {163}
+  with 30 in {163}
+  with 32 in {163}
+  with 33 in {163}
+  with 34 in {163}
+  with 35 in {163}
+  with 36 in {163}
+State 163
+  with epsilon in {162, 165}
+State 164
+  with epsilon in {162, 165}
+State 165
+  with epsilon in {187}
+State 166
+  with 3 in {167}
+  with epsilon in {167}
+State 167
+  with epsilon in {170}
+State 168
+  with 2 in {169}
+State 169
+  with epsilon in {168, 171}
+State 170
+  with epsilon in {168}
+State 171
+  with epsilon in {172}
+State 172
+  with 4 in {173}
+  with epsilon in {177}
+State 173
+  with epsilon in {176}
+State 174
+  with 2 in {175}
+State 175
+  with epsilon in {174, 177}
+State 176
+  with epsilon in {174}
+State 177
+  with epsilon in {178}
+State 178
+  with 5 in {179}
+  with 14 in {179}
+  with epsilon in {185}
+State 179
+  with epsilon in {180}
+State 180
+  with 3 in {181}
+  with 6 in {181}
+State 181
+  with epsilon in {184}
+State 182
+  with 2 in {183}
+State 183
+  with epsilon in {182, 185}
+State 184
+  with epsilon in {182}
+State 185
+  with epsilon in {187}
+State 186
+  with epsilon in {160, 166}
+State 187
+  with epsilon in {205}
+State 188
+  with 29 in {189}
+State 189
+  with epsilon in {190}
+State 190
+  with 32 in {191}
+State 191
+  with epsilon in {192}
+State 192
+  with 33 in {193}
+State 193
+  with epsilon in {194}
+State 194
+  with 34 in {195}
+State 195
+  with epsilon in {196}
+State 196
+  with 35 in {197}
+State 197
+  with epsilon in {198}
+State 198
+  with 5 in {199}
+State 199
+  with epsilon in {200}
+State 200
+  with 36 in {201}
+State 201
+  with epsilon in {202}
+State 202
+  with 28 in {203}
+State 203
+  with epsilon in {205}
+State 204
+  with epsilon in {186, 188}
+State[FINAL] 205
+State 206
+  with 39 in {207}
+State[FINAL] 207
+State 208
+  with 37 in {209}
+State 209
+  with epsilon in {213}
+State 210
+  with 38 in {211}
+State 211
+  with epsilon in {213}
+State 212
+  with epsilon in {208, 210}
+State[FINAL] 213
+State 214
+  with 1 in {215}
+  with 5 in {215}
+  with 7 in {215}
+  with 8 in {215}
+  with 9 in {215}
+  with 10 in {215}
+  with 11 in {215}
+  with 12 in {215}
+  with 13 in {215}
+  with 14 in {215}
+  with 15 in {215}
+  with 16 in {215}
+  with 17 in {215}
+  with 18 in {215}
+  with 30 in {215}
+  with 32 in {215}
+  with 33 in {215}
+  with 34 in {215}
+  with 35 in {215}
+  with 36 in {215}
+State 215
+  with epsilon in {218}
+State 216
+  with 1 in {217}
+  with 2 in {217}
+  with 5 in {217}
+  with 7 in {217}
+  with 8 in {217}
+  with 9 in {217}
+  with 10 in {217}
+  with 11 in {217}
+  with 12 in {217}
+  with 13 in {217}
+  with 14 in {217}
+  with 15 in {217}
+  with 16 in {217}
+  with 17 in {217}
+  with 18 in {217}
+  with 30 in {217}
+  with 32 in {217}
+  with 33 in {217}
+  with 34 in {217}
+  with 35 in {217}
+  with 36 in {217}
+State 217
+  with epsilon in {216, 219}
+State 218
+  with epsilon in {216, 219}
+State 219
+  with epsilon in {241}
+State 220
+  with 3 in {221}
+  with epsilon in {221}
+State 221
+  with epsilon in {224}
+State 222
+  with 2 in {223}
+State 223
+  with epsilon in {222, 225}
+State 224
+  with epsilon in {222}
+State 225
+  with epsilon in {226}
+State 226
+  with 4 in {227}
+  with epsilon in {231}
+State 227
+  with epsilon in {230}
+State 228
+  with 2 in {229}
+State 229
+  with epsilon in {228, 231}
+State 230
+  with epsilon in {228}
+State 231
+  with epsilon in {232}
+State 232
+  with 5 in {233}
+  with 14 in {233}
+  with epsilon in {239}
+State 233
+  with epsilon in {234}
+State 234
+  with 3 in {235}
+  with 6 in {235}
+State 235
+  with epsilon in {238}
+State 236
+  with 2 in {237}
+State 237
+  with epsilon in {236, 239}
+State 238
+  with epsilon in {236}
+State 239
+  with epsilon in {241}
+State 240
+  with epsilon in {214, 220}
+State 241
+  with epsilon in {259}
+State 242
+  with 29 in {243}
+State 243
+  with epsilon in {244}
+State 244
+  with 32 in {245}
+State 245
+  with epsilon in {246}
+State 246
+  with 33 in {247}
+State 247
+  with epsilon in {248}
+State 248
+  with 34 in {249}
+State 249
+  with epsilon in {250}
+State 250
+  with 35 in {251}
+State 251
+  with epsilon in {252}
+State 252
+  with 5 in {253}
+State 253
+  with epsilon in {254}
+State 254
+  with 36 in {255}
+State 255
+  with epsilon in {256}
+State 256
+  with 28 in {257}
+State 257
+  with epsilon in {259}
+State 258
+  with epsilon in {240, 242}
+State[FINAL] 259
+State 260
+  with 37 in {261}
+  with 38 in {261}
+State[FINAL] 261
+State 262
+  with 0 in {263}
+  with 1 in {263}
+  with 2 in {263}
+  with 3 in {263}
+  with 4 in {263}
+  with 5 in {263}
+  with 6 in {263}
+  with 7 in {263}
+  with 8 in {263}
+  with 9 in {263}
+  with 10 in {263}
+  with 11 in {263}
+  with 12 in {263}
+  with 13 in {263}
+  with 14 in {263}
+  with 15 in {263}
+  with 16 in {263}
+  with 17 in {263}
+  with 18 in {263}
+  with 19 in {263}
+  with 20 in {263}
+  with 21 in {263}
+  with 22 in {263}
+  with 23 in {263}
+  with 24 in {263}
+  with 25 in {263}
+  with 26 in {263}
+  with 27 in {263}
+  with 28 in {263}
+  with 29 in {263}
+  with 30 in {263}
+  with 31 in {263}
+  with 32 in {263}
+  with 33 in {263}
+  with 34 in {263}
+  with 35 in {263}
+  with 36 in {263}
+  with 37 in {263}
+  with 39 in {263}
+State[FINAL] 263
+
+
+264 states in NFA
+Converting NFA to DFA : 
+...................................................................................................................
+DFA is
+State 0:
+  with 0 in 8
+  with 1 in 9
+  with 2 in 10
+  with 3 in 11
+  with 4 in 8
+  with 5 in 9
+  with 6 in 12
+  with 7 in 13
+  with 8 in 9
+  with 9 in 14
+  with 10 in 9
+  with 11 in 9
+  with 12 in 9
+  with 13 in 15
+  with 14 in 9
+  with 15 in 9
+  with 16 in 16
+  with 17 in 9
+  with 18 in 9
+  with 19 in 17
+  with 20 in 18
+  with 21 in 19
+  with 22 in 20
+  with 23 in 21
+  with 24 in 22
+  with 25 in 23
+  with 26 in 24
+  with 27 in 25
+  with 28 in 26
+  with 29 in 27
+  with 30 in 28
+  with 31 in 29
+  with 32 in 9
+  with 33 in 9
+  with 34 in 9
+  with 35 in 9
+  with 36 in 9
+  with 37 in 30
+  with 38 in 31
+  with 39 in 32
+State 1:
+  with 0 in 8
+  with 1 in 9
+  with 2 in 10
+  with 3 in 11
+  with 4 in 8
+  with 5 in 9
+  with 6 in 12
+  with 7 in 13
+  with 8 in 9
+  with 9 in 14
+  with 10 in 9
+  with 11 in 9
+  with 12 in 9
+  with 13 in 15
+  with 14 in 9
+  with 15 in 9
+  with 16 in 16
+  with 17 in 9
+  with 18 in 9
+  with 19 in 17
+  with 20 in 18
+  with 21 in 19
+  with 22 in 20
+  with 23 in 21
+  with 24 in 22
+  with 25 in 23
+  with 26 in 24
+  with 27 in 25
+  with 28 in 26
+  with 29 in 27
+  with 30 in 28
+  with 31 in 29
+  with 32 in 9
+  with 33 in 9
+  with 34 in 9
+  with 35 in 9
+  with 36 in 9
+  with 37 in 30
+  with 38 in 31
+  with 39 in 32
+State 2:
+  with 0 in 8
+  with 1 in 33
+  with 2 in 34
+  with 3 in 35
+  with 4 in 8
+  with 5 in 33
+  with 6 in 8
+  with 7 in 33
+  with 8 in 33
+  with 9 in 33
+  with 10 in 33
+  with 11 in 33
+  with 12 in 33
+  with 13 in 33
+  with 14 in 33
+  with 15 in 33
+  with 16 in 33
+  with 17 in 33
+  with 18 in 33
+  with 19 in 36
+  with 20 in 8
+  with 21 in 8
+  with 22 in 8
+  with 23 in 8
+  with 24 in 8
+  with 25 in 8
+  with 26 in 8
+  with 27 in 8
+  with 28 in 8
+  with 29 in 37
+  with 30 in 33
+  with 31 in 8
+  with 32 in 33
+  with 33 in 33
+  with 34 in 33
+  with 35 in 33
+  with 36 in 33
+  with 37 in 30
+  with 38 in 31
+  with 39 in 8
+State 3:
+  with 0 in 8
+  with 1 in 33
+  with 2 in 34
+  with 3 in 35
+  with 4 in 8
+  with 5 in 33
+  with 6 in 8
+  with 7 in 33
+  with 8 in 33
+  with 9 in 33
+  with 10 in 33
+  with 11 in 33
+  with 12 in 33
+  with 13 in 33
+  with 14 in 33
+  with 15 in 33
+  with 16 in 33
+  with 17 in 33
+  with 18 in 33
+  with 19 in 36
+  with 20 in 8
+  with 21 in 8
+  with 22 in 8
+  with 23 in 8
+  with 24 in 8
+  with 25 in 8
+  with 26 in 8
+  with 27 in 8
+  with 28 in 8
+  with 29 in 37
+  with 30 in 33
+  with 31 in 8
+  with 32 in 33
+  with 33 in 33
+  with 34 in 33
+  with 35 in 33
+  with 36 in 33
+  with 37 in 30
+  with 38 in 31
+  with 39 in 8
+State 4:
+  with 0 in 8
+  with 1 in 38
+  with 2 in 39
+  with 3 in 40
+  with 4 in 8
+  with 5 in 38
+  with 6 in 8
+  with 7 in 38
+  with 8 in 38
+  with 9 in 38
+  with 10 in 38
+  with 11 in 38
+  with 12 in 38
+  with 13 in 38
+  with 14 in 38
+  with 15 in 38
+  with 16 in 38
+  with 17 in 38
+  with 18 in 38
+  with 19 in 8
+  with 20 in 8
+  with 21 in 8
+  with 22 in 8
+  with 23 in 8
+  with 24 in 8
+  with 25 in 8
+  with 26 in 8
+  with 27 in 8
+  with 28 in 8
+  with 29 in 41
+  with 30 in 38
+  with 31 in 8
+  with 32 in 38
+  with 33 in 38
+  with 34 in 38
+  with 35 in 38
+  with 36 in 38
+  with 37 in 42
+  with 38 in 43
+  with 39 in 8
+State 5:
+  with 0 in 8
+  with 1 in 38
+  with 2 in 39
+  with 3 in 40
+  with 4 in 8
+  with 5 in 38
+  with 6 in 8
+  with 7 in 38
+  with 8 in 38
+  with 9 in 38
+  with 10 in 38
+  with 11 in 38
+  with 12 in 38
+  with 13 in 38
+  with 14 in 38
+  with 15 in 38
+  with 16 in 38
+  with 17 in 38
+  with 18 in 38
+  with 19 in 8
+  with 20 in 8
+  with 21 in 8
+  with 22 in 8
+  with 23 in 8
+  with 24 in 8
+  with 25 in 8
+  with 26 in 8
+  with 27 in 8
+  with 28 in 8
+  with 29 in 41
+  with 30 in 38
+  with 31 in 8
+  with 32 in 38
+  with 33 in 38
+  with 34 in 38
+  with 35 in 38
+  with 36 in 38
+  with 37 in 42
+  with 38 in 43
+  with 39 in 8
+State 6:
+  with 0 in 8
+  with 1 in 44
+  with 2 in 45
+  with 3 in 46
+  with 4 in 8
+  with 5 in 44
+  with 6 in 8
+  with 7 in 44
+  with 8 in 44
+  with 9 in 44
+  with 10 in 44
+  with 11 in 44
+  with 12 in 44
+  with 13 in 44
+  with 14 in 44
+  with 15 in 44
+  with 16 in 44
+  with 17 in 44
+  with 18 in 44
+  with 19 in 8
+  with 20 in 8
+  with 21 in 8
+  with 22 in 8
+  with 23 in 8
+  with 24 in 8
+  with 25 in 8
+  with 26 in 8
+  with 27 in 8
+  with 28 in 8
+  with 29 in 47
+  with 30 in 44
+  with 31 in 8
+  with 32 in 44
+  with 33 in 44
+  with 34 in 44
+  with 35 in 44
+  with 36 in 44
+  with 37 in 48
+  with 38 in 49
+  with 39 in 8
+State 7:
+  with 0 in 8
+  with 1 in 44
+  with 2 in 45
+  with 3 in 46
+  with 4 in 8
+  with 5 in 44
+  with 6 in 8
+  with 7 in 44
+  with 8 in 44
+  with 9 in 44
+  with 10 in 44
+  with 11 in 44
+  with 12 in 44
+  with 13 in 44
+  with 14 in 44
+  with 15 in 44
+  with 16 in 44
+  with 17 in 44
+  with 18 in 44
+  with 19 in 8
+  with 20 in 8
+  with 21 in 8
+  with 22 in 8
+  with 23 in 8
+  with 24 in 8
+  with 25 in 8
+  with 26 in 8
+  with 27 in 8
+  with 28 in 8
+  with 29 in 47
+  with 30 in 44
+  with 31 in 8
+  with 32 in 44
+  with 33 in 44
+  with 34 in 44
+  with 35 in 44
+  with 36 in 44
+  with 37 in 48
+  with 38 in 49
+  with 39 in 8
+State [FINAL] 8:
+State [FINAL] 9:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 10:
+  with 2 in 51
+  with 4 in 52
+  with 5 in 53
+  with 14 in 53
+State [FINAL] 11:
+  with 2 in 51
+State [FINAL] 12:
+State [FINAL] 13:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 54
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 14:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 55
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 56
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 15:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 57
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 16:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 58
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 17:
+State [FINAL] 18:
+  with 19 in 59
+  with 20 in 60
+State [FINAL] 19:
+State [FINAL] 20:
+State [FINAL] 21:
+State [FINAL] 22:
+State [FINAL] 23:
+State [FINAL] 24:
+State [FINAL] 25:
+State [FINAL] 26:
+State [FINAL] 27:
+State [FINAL] 28:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 61
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 29:
+  with 0 in 62
+  with 1 in 62
+  with 2 in 62
+  with 3 in 62
+  with 4 in 62
+  with 5 in 62
+  with 6 in 62
+  with 7 in 62
+  with 8 in 62
+  with 9 in 62
+  with 10 in 62
+  with 11 in 62
+  with 12 in 62
+  with 13 in 62
+  with 14 in 62
+  with 15 in 62
+  with 16 in 62
+  with 17 in 62
+  with 18 in 62
+  with 19 in 62
+  with 20 in 62
+  with 21 in 62
+  with 22 in 62
+  with 23 in 62
+  with 24 in 62
+  with 25 in 62
+  with 26 in 62
+  with 27 in 62
+  with 28 in 62
+  with 29 in 62
+  with 30 in 62
+  with 31 in 63
+  with 32 in 62
+  with 33 in 62
+  with 34 in 62
+  with 35 in 62
+  with 36 in 62
+  with 37 in 62
+  with 38 in 62
+  with 39 in 62
+State [FINAL] 30:
+State [FINAL] 31:
+State [FINAL] 32:
+State [FINAL] 33:
+  with 1 in 64
+  with 2 in 64
+  with 5 in 64
+  with 7 in 64
+  with 8 in 64
+  with 9 in 64
+  with 10 in 64
+  with 11 in 64
+  with 12 in 64
+  with 13 in 64
+  with 14 in 64
+  with 15 in 64
+  with 16 in 64
+  with 17 in 64
+  with 18 in 64
+  with 30 in 64
+  with 32 in 64
+  with 33 in 64
+  with 34 in 64
+  with 35 in 64
+  with 36 in 64
+State [FINAL] 34:
+  with 2 in 65
+  with 4 in 66
+  with 5 in 67
+  with 14 in 67
+State [FINAL] 35:
+  with 2 in 65
+State [FINAL] 36:
+  with 20 in 68
+State [FINAL] 37:
+  with 32 in 69
+State [FINAL] 38:
+  with 1 in 70
+  with 2 in 70
+  with 5 in 70
+  with 7 in 70
+  with 8 in 70
+  with 9 in 70
+  with 10 in 70
+  with 11 in 70
+  with 12 in 70
+  with 13 in 70
+  with 14 in 70
+  with 15 in 70
+  with 16 in 70
+  with 17 in 70
+  with 18 in 70
+  with 30 in 70
+  with 32 in 70
+  with 33 in 70
+  with 34 in 70
+  with 35 in 70
+  with 36 in 70
+State [FINAL] 39:
+  with 2 in 71
+  with 4 in 72
+  with 5 in 73
+  with 14 in 73
+State [FINAL] 40:
+  with 2 in 71
+State [FINAL] 41:
+  with 32 in 74
+State [FINAL] 42:
+State [FINAL] 43:
+State [FINAL] 44:
+  with 1 in 75
+  with 2 in 75
+  with 5 in 75
+  with 7 in 75
+  with 8 in 75
+  with 9 in 75
+  with 10 in 75
+  with 11 in 75
+  with 12 in 75
+  with 13 in 75
+  with 14 in 75
+  with 15 in 75
+  with 16 in 75
+  with 17 in 75
+  with 18 in 75
+  with 30 in 75
+  with 32 in 75
+  with 33 in 75
+  with 34 in 75
+  with 35 in 75
+  with 36 in 75
+State [FINAL] 45:
+  with 2 in 76
+  with 4 in 77
+  with 5 in 78
+  with 14 in 78
+State [FINAL] 46:
+  with 2 in 76
+State [FINAL] 47:
+  with 32 in 79
+State [FINAL] 48:
+State [FINAL] 49:
+State [FINAL] 50:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 51:
+  with 2 in 51
+  with 4 in 52
+  with 5 in 53
+  with 14 in 53
+State 52:
+  with 2 in 80
+State 53:
+  with 3 in 81
+  with 6 in 81
+State [FINAL] 54:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 82
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 55:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 83
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 56:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 57:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 84
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 58:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 85
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 59:
+State [FINAL] 60:
+State [FINAL] 61:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 86
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State 62:
+  with 0 in 62
+  with 1 in 62
+  with 2 in 62
+  with 3 in 62
+  with 4 in 62
+  with 5 in 62
+  with 6 in 62
+  with 7 in 62
+  with 8 in 62
+  with 9 in 62
+  with 10 in 62
+  with 11 in 62
+  with 12 in 62
+  with 13 in 62
+  with 14 in 62
+  with 15 in 62
+  with 16 in 62
+  with 17 in 62
+  with 18 in 62
+  with 19 in 62
+  with 20 in 62
+  with 21 in 62
+  with 22 in 62
+  with 23 in 62
+  with 24 in 62
+  with 25 in 62
+  with 26 in 62
+  with 27 in 62
+  with 28 in 62
+  with 29 in 62
+  with 30 in 62
+  with 31 in 63
+  with 32 in 62
+  with 33 in 62
+  with 34 in 62
+  with 35 in 62
+  with 36 in 62
+  with 37 in 62
+  with 38 in 62
+  with 39 in 62
+State [FINAL] 63:
+State [FINAL] 64:
+  with 1 in 64
+  with 2 in 64
+  with 5 in 64
+  with 7 in 64
+  with 8 in 64
+  with 9 in 64
+  with 10 in 64
+  with 11 in 64
+  with 12 in 64
+  with 13 in 64
+  with 14 in 64
+  with 15 in 64
+  with 16 in 64
+  with 17 in 64
+  with 18 in 64
+  with 30 in 64
+  with 32 in 64
+  with 33 in 64
+  with 34 in 64
+  with 35 in 64
+  with 36 in 64
+State [FINAL] 65:
+  with 2 in 65
+  with 4 in 66
+  with 5 in 67
+  with 14 in 67
+State 66:
+  with 2 in 87
+State 67:
+  with 3 in 88
+  with 6 in 88
+State [FINAL] 68:
+State 69:
+  with 33 in 89
+State [FINAL] 70:
+  with 1 in 70
+  with 2 in 70
+  with 5 in 70
+  with 7 in 70
+  with 8 in 70
+  with 9 in 70
+  with 10 in 70
+  with 11 in 70
+  with 12 in 70
+  with 13 in 70
+  with 14 in 70
+  with 15 in 70
+  with 16 in 70
+  with 17 in 70
+  with 18 in 70
+  with 30 in 70
+  with 32 in 70
+  with 33 in 70
+  with 34 in 70
+  with 35 in 70
+  with 36 in 70
+State [FINAL] 71:
+  with 2 in 71
+  with 4 in 72
+  with 5 in 73
+  with 14 in 73
+State 72:
+  with 2 in 90
+State 73:
+  with 3 in 91
+  with 6 in 91
+State 74:
+  with 33 in 92
+State [FINAL] 75:
+  with 1 in 75
+  with 2 in 75
+  with 5 in 75
+  with 7 in 75
+  with 8 in 75
+  with 9 in 75
+  with 10 in 75
+  with 11 in 75
+  with 12 in 75
+  with 13 in 75
+  with 14 in 75
+  with 15 in 75
+  with 16 in 75
+  with 17 in 75
+  with 18 in 75
+  with 30 in 75
+  with 32 in 75
+  with 33 in 75
+  with 34 in 75
+  with 35 in 75
+  with 36 in 75
+State [FINAL] 76:
+  with 2 in 76
+  with 4 in 77
+  with 5 in 78
+  with 14 in 78
+State 77:
+  with 2 in 93
+State 78:
+  with 3 in 94
+  with 6 in 94
+State 79:
+  with 33 in 95
+State [FINAL] 80:
+  with 2 in 80
+  with 5 in 53
+  with 14 in 53
+State 81:
+  with 2 in 96
+State [FINAL] 82:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 97
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 83:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 84:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 98
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 85:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 99
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 86:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 100
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 87:
+  with 2 in 87
+  with 5 in 67
+  with 14 in 67
+State 88:
+  with 2 in 101
+State 89:
+  with 34 in 102
+State [FINAL] 90:
+  with 2 in 90
+  with 5 in 73
+  with 14 in 73
+State 91:
+  with 2 in 103
+State 92:
+  with 34 in 104
+State [FINAL] 93:
+  with 2 in 93
+  with 5 in 78
+  with 14 in 78
+State 94:
+  with 2 in 105
+State 95:
+  with 34 in 106
+State [FINAL] 96:
+  with 2 in 96
+State [FINAL] 97:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 98:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 107
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 99:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 100:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 108
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 101:
+  with 2 in 101
+State 102:
+  with 35 in 109
+State [FINAL] 103:
+  with 2 in 103
+State 104:
+  with 35 in 110
+State [FINAL] 105:
+  with 2 in 105
+State 106:
+  with 35 in 111
+State [FINAL] 107:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 112
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 108:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 113
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State 109:
+  with 5 in 114
+State 110:
+  with 5 in 115
+State 111:
+  with 5 in 116
+State [FINAL] 112:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State [FINAL] 113:
+  with 1 in 50
+  with 2 in 50
+  with 5 in 50
+  with 7 in 50
+  with 8 in 50
+  with 9 in 50
+  with 10 in 50
+  with 11 in 50
+  with 12 in 50
+  with 13 in 50
+  with 14 in 50
+  with 15 in 50
+  with 16 in 50
+  with 17 in 50
+  with 18 in 50
+  with 30 in 50
+  with 32 in 50
+  with 33 in 50
+  with 34 in 50
+  with 35 in 50
+  with 36 in 50
+State 114:
+  with 36 in 117
+State 115:
+  with 36 in 118
+State 116:
+  with 36 in 119
+State 117:
+  with 28 in 120
+State 118:
+  with 28 in 121
+State 119:
+  with 28 in 122
+State [FINAL] 120:
+State [FINAL] 121:
+State [FINAL] 122:
+
+
+123 states before minimization, 72 states in minimized DFA
+Miniminal DFA is
+State 0:
+  with 0 in 3
+  with 1 in 4
+  with 2 in 5
+  with 3 in 6
+  with 4 in 3
+  with 5 in 4
+  with 6 in 7
+  with 7 in 8
+  with 8 in 4
+  with 9 in 9
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 10
+  with 14 in 4
+  with 15 in 4
+  with 16 in 11
+  with 17 in 4
+  with 18 in 4
+  with 19 in 12
+  with 20 in 13
+  with 21 in 14
+  with 22 in 15
+  with 23 in 16
+  with 24 in 17
+  with 25 in 18
+  with 26 in 19
+  with 27 in 20
+  with 28 in 21
+  with 29 in 22
+  with 30 in 23
+  with 31 in 24
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+  with 37 in 3
+  with 38 in 3
+  with 39 in 25
+State 1:
+  with 0 in 3
+  with 1 in 26
+  with 2 in 27
+  with 3 in 28
+  with 4 in 3
+  with 5 in 26
+  with 6 in 3
+  with 7 in 26
+  with 8 in 26
+  with 9 in 26
+  with 10 in 26
+  with 11 in 26
+  with 12 in 26
+  with 13 in 26
+  with 14 in 26
+  with 15 in 26
+  with 16 in 26
+  with 17 in 26
+  with 18 in 26
+  with 19 in 29
+  with 20 in 3
+  with 21 in 3
+  with 22 in 3
+  with 23 in 3
+  with 24 in 3
+  with 25 in 3
+  with 26 in 3
+  with 27 in 3
+  with 28 in 3
+  with 29 in 30
+  with 30 in 26
+  with 31 in 3
+  with 32 in 26
+  with 33 in 26
+  with 34 in 26
+  with 35 in 26
+  with 36 in 26
+  with 37 in 3
+  with 38 in 3
+  with 39 in 3
+State 2:
+  with 0 in 3
+  with 1 in 26
+  with 2 in 27
+  with 3 in 28
+  with 4 in 3
+  with 5 in 26
+  with 6 in 3
+  with 7 in 26
+  with 8 in 26
+  with 9 in 26
+  with 10 in 26
+  with 11 in 26
+  with 12 in 26
+  with 13 in 26
+  with 14 in 26
+  with 15 in 26
+  with 16 in 26
+  with 17 in 26
+  with 18 in 26
+  with 19 in 3
+  with 20 in 3
+  with 21 in 3
+  with 22 in 3
+  with 23 in 3
+  with 24 in 3
+  with 25 in 3
+  with 26 in 3
+  with 27 in 3
+  with 28 in 3
+  with 29 in 30
+  with 30 in 26
+  with 31 in 3
+  with 32 in 26
+  with 33 in 26
+  with 34 in 26
+  with 35 in 26
+  with 36 in 26
+  with 37 in 31
+  with 38 in 31
+  with 39 in 3
+State [FINAL] 3:
+State [FINAL] 4:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 5:
+  with 2 in 5
+  with 4 in 32
+  with 5 in 33
+  with 14 in 33
+State [FINAL] 6:
+  with 2 in 5
+State [FINAL] 7:
+State [FINAL] 8:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 34
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 9:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 35
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 36
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 10:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 37
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 11:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 38
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 12:
+State [FINAL] 13:
+  with 19 in 39
+  with 20 in 40
+State [FINAL] 14:
+State [FINAL] 15:
+State [FINAL] 16:
+State [FINAL] 17:
+State [FINAL] 18:
+State [FINAL] 19:
+State [FINAL] 20:
+State [FINAL] 21:
+State [FINAL] 22:
+State [FINAL] 23:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 41
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 24:
+  with 0 in 42
+  with 1 in 42
+  with 2 in 42
+  with 3 in 42
+  with 4 in 42
+  with 5 in 42
+  with 6 in 42
+  with 7 in 42
+  with 8 in 42
+  with 9 in 42
+  with 10 in 42
+  with 11 in 42
+  with 12 in 42
+  with 13 in 42
+  with 14 in 42
+  with 15 in 42
+  with 16 in 42
+  with 17 in 42
+  with 18 in 42
+  with 19 in 42
+  with 20 in 42
+  with 21 in 42
+  with 22 in 42
+  with 23 in 42
+  with 24 in 42
+  with 25 in 42
+  with 26 in 42
+  with 27 in 42
+  with 28 in 42
+  with 29 in 42
+  with 30 in 42
+  with 31 in 43
+  with 32 in 42
+  with 33 in 42
+  with 34 in 42
+  with 35 in 42
+  with 36 in 42
+  with 37 in 42
+  with 38 in 42
+  with 39 in 42
+State [FINAL] 25:
+State [FINAL] 26:
+  with 1 in 26
+  with 2 in 26
+  with 5 in 26
+  with 7 in 26
+  with 8 in 26
+  with 9 in 26
+  with 10 in 26
+  with 11 in 26
+  with 12 in 26
+  with 13 in 26
+  with 14 in 26
+  with 15 in 26
+  with 16 in 26
+  with 17 in 26
+  with 18 in 26
+  with 30 in 26
+  with 32 in 26
+  with 33 in 26
+  with 34 in 26
+  with 35 in 26
+  with 36 in 26
+State [FINAL] 27:
+  with 2 in 27
+  with 4 in 44
+  with 5 in 45
+  with 14 in 45
+State [FINAL] 28:
+  with 2 in 27
+State [FINAL] 29:
+  with 20 in 31
+State [FINAL] 30:
+  with 32 in 46
+State [FINAL] 31:
+State 32:
+  with 2 in 47
+State 33:
+  with 3 in 48
+  with 6 in 48
+State [FINAL] 34:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 49
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 35:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 50
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 36:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 37:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 51
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 38:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 52
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 39:
+State [FINAL] 40:
+State [FINAL] 41:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 53
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State 42:
+  with 0 in 42
+  with 1 in 42
+  with 2 in 42
+  with 3 in 42
+  with 4 in 42
+  with 5 in 42
+  with 6 in 42
+  with 7 in 42
+  with 8 in 42
+  with 9 in 42
+  with 10 in 42
+  with 11 in 42
+  with 12 in 42
+  with 13 in 42
+  with 14 in 42
+  with 15 in 42
+  with 16 in 42
+  with 17 in 42
+  with 18 in 42
+  with 19 in 42
+  with 20 in 42
+  with 21 in 42
+  with 22 in 42
+  with 23 in 42
+  with 24 in 42
+  with 25 in 42
+  with 26 in 42
+  with 27 in 42
+  with 28 in 42
+  with 29 in 42
+  with 30 in 42
+  with 31 in 43
+  with 32 in 42
+  with 33 in 42
+  with 34 in 42
+  with 35 in 42
+  with 36 in 42
+  with 37 in 42
+  with 38 in 42
+  with 39 in 42
+State [FINAL] 43:
+State 44:
+  with 2 in 54
+State 45:
+  with 3 in 55
+  with 6 in 55
+State 46:
+  with 33 in 56
+State [FINAL] 47:
+  with 2 in 47
+  with 5 in 33
+  with 14 in 33
+State 48:
+  with 2 in 57
+State [FINAL] 49:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 58
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 50:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 51:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 59
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 52:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 60
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 53:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 61
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 54:
+  with 2 in 54
+  with 5 in 45
+  with 14 in 45
+State 55:
+  with 2 in 62
+State 56:
+  with 34 in 63
+State [FINAL] 57:
+  with 2 in 57
+State [FINAL] 58:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 59:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 64
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 60:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 61:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 65
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 62:
+  with 2 in 62
+State 63:
+  with 35 in 66
+State [FINAL] 64:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 67
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 65:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 68
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State 66:
+  with 5 in 69
+State [FINAL] 67:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State [FINAL] 68:
+  with 1 in 4
+  with 2 in 4
+  with 5 in 4
+  with 7 in 4
+  with 8 in 4
+  with 9 in 4
+  with 10 in 4
+  with 11 in 4
+  with 12 in 4
+  with 13 in 4
+  with 14 in 4
+  with 15 in 4
+  with 16 in 4
+  with 17 in 4
+  with 18 in 4
+  with 30 in 4
+  with 32 in 4
+  with 33 in 4
+  with 34 in 4
+  with 35 in 4
+  with 36 in 4
+State 69:
+  with 36 in 70
+State 70:
+  with 28 in 71
+State [FINAL] 71:
+
+Old file "A4Scanner.java" saved as "A4Scanner.java~"
+Writing code to "A4Scanner.java"

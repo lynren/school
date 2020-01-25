@@ -1,0 +1,69 @@
+Lecture 3: Use Case Modeling II
+
+Diagrams in UML
+	Elements: icons, 2D symbols, paths, strings
+
+Use Case Diagrams
+	Elements: actors, use case, subsystem boundary, relationship between elements
+	Types:
+		-top-level diagram includes top-level use cases w/ 1+ actors
+		-sub-level diagram includes a few top-level use cases and other related use cases
+	-UCD shows the names of actors and use cases, plus their relationships
+
+Actors in a Use Case Diagram
+	-external entities who use the system
+		-external: not part of the system under construction
+		-primary actors: their goals are fulfilled by using services of the system
+		-supporting actors: provide services to the system, often external computer systems
+
+Name and Size of Use Cases
+	-UC tells what happens in the system when used by an actor for some goals
+	-focuses on what, not how, it happens, free of design details
+
+System Boundary
+	-UCM usually consists of multiple diagrams
+	-a boundary seperates top-level use cases from actors
+	-does not include UCs for internal behaviours
+
+Sub-System Boundary
+	-relationships b/w sub-level UCs are illustrated w/in boxes
+
+Relationships between Elements
+	Connecting Use Cases
+		-use of <<include>> relationship
+			-indicate 1+ UCs always include the flow of another UC
+		-use of <<extend>> relationship
+			-indicate one UC may directly flow from another
+		-arrow points to UC being included or extended
+
+Creating Use Case Diagrams
+	-Identify actors and use cases by:
+		-reviewing vision document, list of requirements
+	-Add elements to high/low-level diagrams by:
+		-showing system/sub-system boundary as boxes
+		-place actors outside of boxes, use cases inside the boxes
+		-associating actors w/ use cases
+	-Refine diagram by:
+		-adding use case and actor relationships
+		-linking UCs w/ important scenarios to use case documents
+
+3)	Activity Diagram
+	Used to:
+	-describe functionality of a UC, or the logic of an op
+	-model activities that make up the life cycle in the UP
+
+Creating Activity Diagrams
+	-identify actions and their order of flow
+	-work on the main flow of actions
+
+	MAIN FLOW
+	-create a start node
+	-place main actions in the order of flow
+	-adding a final node at the flow end
+	-linking actions and necessary decisions
+	-identifying and creating alternative flows
+	-introducing fork/joint nodes for parallel actions
+
+	REFINE DIAGRAM
+	-add objects and object flows
+	-refine some control flows and input/output pins

@@ -1,0 +1,116 @@
+Script started on Tue 30 Oct 2018 06:56:17 PM EDT
+]0;lyn@XPS15: ~/Desktoplyn@XPS15:~/Desktop$ sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Oct 30 18:56:19 2018
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: instagramlol
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> SELECT sr.customer_name, sr.flight_number
+FROM seat_reservation sr, airport, leg_instance li 
+WHERE airport.city='Windsor' and li.departure_airport_code=airport.airport_code and sr.flight_number=li.flight_number and sr.leg_number=li.leg_number;  2    3  
+
+CUSTOMER_NAME					   FLIGHT_NUMBER
+-------------------------------------------------- ---------------
+Karen Appa					   WJ250
+Tony Appa					   WJ250
+Mariane Mooer					   WJ250
+Peter Opo					   PA233
+
+SQL> SELECT flight_number, COUNT(leg_number) flight_legs
+FROM flight_leg
+HAVING COUNT(leg_number) > 1
+GROUP BY flight_number;  2    3    4  
+
+FLIGHT_NUMBER	FLIGHT_LEGS
+--------------- -----------
+AC275			  2
+WJ250			  2
+
+SQL> SELECT sr.flight_number, airline, fdate, count(customer_name) customers
+FROM seat_reservation sr, flight
+WHERE flight.flight_number=sr.flight_number
+GROUP BY sr.flight_number, airline, fdate;  2    3    4  
+
+FLIGHT_NUMBER	AIRLINE
+--------------- --------------------------------------------------
+FDATE		    CUSTOMERS
+------------------ ----------
+WJ250		WestJet
+17-JAN-15		    6
+
+AC275		Air Canada
+17-JAN-10		    2
+
+PA233		Porter Airline
+17-JAN-30		    1
+
+
+FLIGHT_NUMBER	AIRLINE
+--------------- --------------------------------------------------
+FDATE		    CUSTOMERS
+------------------ ----------
+PA280		Porter Airline
+17-JAN-20		    1
+
+
+SQL> SELECT sr.customer_name, sr.seat_number, sr.flight_number
+FROM seat_reservation sr, flight
+WHERE airline='Air Canada' and sr.flight_number=flight.flight_number;  2    3  
+
+CUSTOMER_NAME					   SEAT_NUMBER
+-------------------------------------------------- ---------------
+FLIGHT_NUMBER
+---------------
+Mark Black					   5C
+AC275
+
+Mark Black					   14B
+AC275
+
+
+SQL> SELECT distinct sr.customer_name, sr.flight_number, departure_airport_code, arrival_airport_code
+FROM seat_reservation sr, flight_leg fl
+WHERE fl.flight_number=sr.flight_number and fl.leg_number=sr.leg_number and sr.leg_number=1;  2    3  
+
+CUSTOMER_NAME					   FLIGHT_NUMBER
+-------------------------------------------------- ---------------
+DEPARTURE_AIRPO ARRIVAL_AIRPORT
+--------------- ---------------
+Tony Appa					   WJ250
+YQG		YYZ
+
+Chris Natta					   PA280
+YYZ		YQG
+
+Peter Opo					   PA233
+YQG		YYZ
+
+
+CUSTOMER_NAME					   FLIGHT_NUMBER
+-------------------------------------------------- ---------------
+DEPARTURE_AIRPO ARRIVAL_AIRPORT
+--------------- ---------------
+Karen Appa					   WJ250
+YQG		YYZ
+
+Mariane Mooer					   WJ250
+YQG		YYZ
+
+Mark Black					   AC275
+YQT		YYZ
+
+
+6 rows selected.
+
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+]0;lyn@XPS15: ~/Desktoplyn@XPS15:~/Desktop$ exit
+exit
+
+Script done on Tue 30 Oct 2018 06:58:32 PM EDT

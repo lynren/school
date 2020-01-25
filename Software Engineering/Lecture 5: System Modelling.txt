@@ -1,0 +1,64 @@
+Lecture 5: System Modelling
+
+System Modelling is the process of developing abstract models of a system. Each model presenting a different view or perspective of that system. It helps to understand the functionality of the system and used by developers to discuss possible design and implementation options. 
+
+System Perspectives/Views
+	-external: where you model the context or environment of the system
+	-interaction: model the interactions b/w a system and its environment, or b/w components of a system
+	-structural: model the organization of a system or the structure of the data that is processed by the system
+	-behavioural: model the dynamic behaviour of the system and how it responds to events
+
+How are Software Models/Architectures Described?
+	Informal: using natural language and informal notations. In this case the architecture can not formally be analyzed
+	Semi-formal: using standardized notations and well defined modelling languages. (UML, OMT)
+	Formal: using formal notations w/ a precise semantic based mathematical foundation. (OCL, ADL)
+
+Unified Modelling Language (UML)
+	Can be used to model system requirements, sys logical structure, sys workflows, sys interactions. UML diagrams are divided into two categories: structure diagrams and behavioural diagrams
+
+UML Structure Diagrams
+	Describe the static architecture of the system. They describe the key building blocks (classes, objects, components) of the model and the relations b/w these components (dependecies, composition, association, etc.)
+
+	STRUCTURE DIAGRAMS
+	Class: model system classes, interfaces, types and relations b/w them
+	Object: describe how the objects w/in the system would look in a particular scenario
+	Composite Stricture: model the internal structure of the system classes
+	Component Diagram: model the key components in the system and the interfaces they used to interact w/ each other
+	Package: model the hierarchical structure of system classes and components. Group cohesive classes and components and show the dependencies among packages
+	Deployment: model the physical view of the system as collection of software and hardware resources and how they are linked together
+	Profile: describe an extension to the UML by defining meta-model, constraints, stereotypes, and tagged values
+
+UML Behavioral Diagrams
+	Descibe the dynamic aspects of the system architecture. They describe the key functions/behaviours of the system during run-time/execution.
+
+	BEHAVIOURAL DIAGRAMS
+	Use Case: model interactions b/w your system and users or other external systems
+	Activity: model sequential and parallel activities w/in your system
+	Sequence: model interaactions b/w objects. Mainly useful when the order of the interactions is important
+	State Machine: model the states of an object during run time and the events that affect these states
+	Communication: model the communications/connections b/w objects that are needed to support interactions
+	Timing: model the interaction b/w objects amd how these interactions affect the object state. It fuses sequence and state diagrams
+	Interaction: provide a high-level view of how several interactions work together to implement a system function/behaviour. It combines both the activity and sequence diagram
+
+Object Constraint Language
+	-has well-defined syntax and semantics, types and operators
+	-3 types of constraints can be applied to UML class using OCL:
+		Invariant: constraint that must always be true. Defined on class attributes
+		Precondition: constraint that is defined on a class method. Usuallt used to validate input parameters
+		Postcondition: constraint that is defined on a class method. Checked after the method executes. Usually used to validate how values were changed by a method
+
+	SYNTAX STRUCTURE
+	Invariant:	context <classifier> inv [<constraint name>]: <Boolean OCL expression>
+	Precondition: context <classifier>::<operation> (<params>) pre [<constraint name>]:<Boolean OCL expression>
+	Postcondition
+	context <classifier>::<operation> (<parameters>) post [<constraint name>]: <Boolean OCL expr>
+
+Context Models
+	Used to illustrate the operational context of a system. They show what lies outside the system boundaries ie other systems in the environment, now how the system being developed is used in that environment. System boundaries are established to define what is inside and what is outside the system.
+
+	CONTEXT DIAGRAM
+	-includes key system dependencies and actors
+	-defines boundary b/w system and its environment, showing entities that interact w/ it
+	-represent all external entities that may interact w/ a system
+	-objective is to focus attention on external factors & events that should be considered in sytem development
+	

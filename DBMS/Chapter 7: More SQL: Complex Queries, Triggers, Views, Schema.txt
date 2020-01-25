@@ -1,0 +1,104 @@
+Chapter 7: More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+Expanded Block Structure of SQL Queries
+	SELECT 	<attribute and function list>
+	FROM 	<table list>
+	[WHERE 	<condition>]
+	[GROUP BY <grouping attribute(s)]
+	[HAVING <group condition>]
+	[ORDER BY <attribute list>];
+
+
+7.1 More Complex SQL Retrieval Queries
+
+Comparisons involving NULL
+
+	Truth Tables:
+	AND 		TRUE 		FALSE 		UNKNOWN
+	TRUE		true 		false 		unknown
+	FALSE 		false 		false 		false
+	UNKNOWN 	unknown 	false 		unknown
+
+	OR 			TRUE 		FALSE 		UNKNOWN
+	TRUE 		true 		true 		true
+	FALSE 		true 		false 		unknown
+	UNKNOWN 	true 		unknown 	unknown
+
+	NOT
+	TRUE 		false
+	FALSE 		true
+	UNKNOWN 	unknown
+
+	-in spj queries, tuples that evaluate WHERE as true are selected
+	-but for aggregate operations, all values may be selected
+	-IS or IS NOT operator checks whether attribute is NULL. eg: WHERE ssn IS NULL;
+
+Nested Queries, Tuples, and Set/Multiset Comparisons
+	Nested Queries:
+	-complete select-from-where blocks w/in another SQL query (outer query)
+	-nested queries can appear in WHERE, FROM, SELECT, or other SQL clauses as needed
+
+	-IN operator used with nested queries
+	-compares value v with a set of values V, evaluates to TRUE if v is an element of V
+	-can replace IN with = only if nested query returns a single attr or tuple
+	-= ANY (or = SOME) operator returns true if the value v is equal to some value in the set V, hence equivalent to IN
+	- >, >=, <, <=, <> can be combined with ANY (or SOME)
+	-ALL operator returns true if value v is equal to all values in set V (eg: v = ALL V)
+
+Correlated Nested Queries
+	-two queries are correlated if a condition in the WHERE clause of a nested query references some attrs of a relation declared in the outer query
+	-query written with nested select-from-where blocks and using IN op can always be expressed as a single block
+
+EXISTS and UNIQUE functions in SQL
+	-EXISTS checks whether result of nested query is empty or not, NOT EXISTS does opposite
+	-UNIQUE(Q) returns true if there are no duplicate tuples in result of query Q
+
+Explicit sets and renaming in SQL
+	-can use explicit set of values in WHERE clause in place of nested query
+	-can use qualifier AS followed by desired name to aliase in query
+
+Aggregate Functions in SQL
+	-used to summarize information from multiple tuples into a single tuple summary
+	-5 built in aggregate functions: COUNT, SUM, MAX, MIN, AVG
+	-grouping: used to create subgroups of tuples before summarizing
+	-to select entire groups, HAVING clause is used
+	-can be used in the SELECT or HAVING clause
+	-NULL values discarded when aggregate functions are applied
+
+GROUP BY and HAVING Clauses
+	-can apply aggregate functions to separate groups to get summary info about each group (GROUP BY)
+	-GROUP BY clause specifies grouping attributes
+	-if grouping attr has NULL as a possible value, a separate group is created for the null value
+
+	-HAVING clause provides a condition to select or reject an entire group
+
+7.2 Views (Virtual Tables) in SQL
+	-view is a virtual table whos tuples can be derived from physically stored base tables
+	-views are used for queries posed frequently
+	-can be defined using CREATE VIEW statement
+
+	Format:
+	CREATE VIEW <VIEW NAME>
+	AS SELECT <attribute or function list>
+	FROM <table list>
+	[GROUP BY <grouping attributes>]
+	[HAVING <group conditions>]
+	[ORDER BY <attributes list>];
+
+	CREATE VIEW command
+	-give table name, list of attribute names, and query to specify contents of the view
+	-views simplify thhe specification of certain queries
+	-drop a view with DROP VIEW command
+
+7.3 Schema Change Statements in SQL
+	DROP command
+	-used to drop named schema elements such as tables, domains, or constraints
+	-behaviour options: CASCADE and RESTRICT
+	-RETRICT drops schema only if it has no elements in it
+
+	ALTER command
+	-used to change definition of base table or other named schema elements
+	-to drop column we must choose CASCADE or RESTRICT 
+	-for CASCADE, all constraints and views that reference the column are dropped
+	-RESTRICT is successful if no views or constraints reference the column
+	-drop constraints and add constraints 

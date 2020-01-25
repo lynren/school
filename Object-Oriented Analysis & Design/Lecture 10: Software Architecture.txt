@@ -1,0 +1,94 @@
+Lecture 10: Software Architecture
+Software System
+	-software system consists of a set of components
+	-each component accomplish a set of functions
+Software Architecture
+	-the fundamental organization of a system
+
+Dimensions of Software Complexity
+	Higher Technical Complexity (N):
+		-embedded, real-time, distributed, fault-tolerant
+		-custom, unprecedented, architecture reengineering, high perfomance
+	Lower Technical Complexity (S):
+		-mostly 4GL, or component based
+		-application reengineering, interactive performance
+	Higher Management Complexity (E):
+		-large scale, contractual, many stakeholders, "projects"
+	Lower Management Complexity (W):
+		-small scale, informal, single stakeholder, "products"
+
+10.2 Architecture Style
+	-defines a family of systems in terms of pattern of structural organization
+	-decides a vocab of components and connector types, set of constraints on how they can be combined, one/more semantic models to specify how a system's overall properties can be determined by its parts
+
+Architecture Views: abstraction of a system from a perspective
+	Logical View: end-user, functionality
+	Process View: system integrators, performance, scalability, throughput
+	Implement View: programmers, software management
+	Deployment View: system engineering, system topology, delivery, installation, comms
+
+Design View: Logical Package Model
+	-capture logic structure of software design, organize classes, specify interfaces
+Process View: Component Diagram
+	-capture concurrency and synchronization, organize components, specify control
+Implement View: Component Diagram
+	-capture physical structure of implementation, organize src code, construct executable release, specify physical database
+Deployment View: Deployment Diagram
+	-capture topology of a system's hardware, specify distribution of components, identify performance bottlenecks
+
+10.3 Architecture Pattern and Principles
+Layers Pattern
+	Problem:how to reduce coupling among parts of system?
+			how to improve software maintainability and reusability?
+	Solution: organize large-scale structure of system into discrete layers of distinct related responsiblities
+			achieve clean and cohesive separation of concerns
+
+Layers: 6 Tier Structure
+	-Presentation, Application, Domain(s), Business Infrastructure, Technical Services, Foundation
+
+Software Subsystems
+	-subsystem typically groups together elements of system that share common properties
+	-subdivision of software system into subsystems has advantages:
+		-produce smaller units of development
+		-helps maximize reuse at component level
+		-helps developers to cope w/ complexity
+		-improves maintainability, aids portability
+
+Subsystem Communications
+	Client-server communication
+		-requires client to know interface of server subsystem
+		-client subsys requests service from server subsys, not vice versa
+	Peer-to-peer communication
+		-requires each subsys to know interface of the other, thus coupling them tightly
+		-communication two way since either peer subsys may request services from other
+
+Layering: places subsystems at different levels of abstraction
+Partitioning: produces subsystems w/ focuses on diff aspects of functionality in system
+-both often used together on one system
+
+Developing a Layered Architecture
+	1. Define criteria by which app will be grouped into layers (eg hardware)
+	2. Determine number of layers
+	3. Name layers and assign functionality to them
+	4. Specify services for each layer
+	5. Refine layering by iterating through steps 1-4
+	6. Specify interfaces for each layer
+	7. Specify structure of each layer. May involve partitioning w/in layer
+	8. Specify communication b/w adjacent layers (assumes closed layer architecture)
+	9. Reduce coupling b/w adjacent layers (each layer strongly encapsulated)
+
+Model-View Separation Principle
+	Problem: what kind of visibility should other packages have to presentation layer?
+	Solution: use app layer to avoid direct coupling of UI w/ other components. In principle of Model-View-Control, control classes act as intermediaries b/w UI and domain classes.
+		-UI passes an input to control
+		-Control manipulates info about new state of the domain classes to UI
+		-UI outputs result
+	-support models that focus on domain processes rather than UI
+	-allow model layer to be developed and executed separately from UI layers
+	-minimize impact of change to UI upon the domain
+	-allows multiple views
+	-but, inefficient polling when UI accesses information
+
+Better Communication
+	-use observer classes
+	-create presentation layer facade

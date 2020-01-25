@@ -1,0 +1,48 @@
+Lecture 3: Requirements Engineering
+
+Types of Requirements
+	Functional requirements: user/explicit requirements
+	Non-functional requirements: quality/implicit requirements
+	UI requirements: user interface requirements, usability
+	System requirements: requirements system needs to operate or meet expectation
+	User requirements: capture characteristics of inteded user group
+
+Architecturally Significant Requirement (ASR)
+	-software req. w/ measurable effects on the system architecture
+	-specifies system quality attribute, core features, constraints, and environment
+
+Common Activities in Requirements Engineering
+	-requirements elicitation and analysis, specifications, validation
+
+Primary User
+	-someone who interacts w/ system directly
+Secondary user
+	-doesn't interact with system directly but is affected by it
+
+Functional Requirements
+	-services the system should provide, how the systems reacts to input, system behaviour
+	-may state what system should not do
+	-must not be ambiguous
+	-requirement must be complete and consistent
+
+Non-Functional Requirements (NFRs)
+	-constrains on system services or functions such as time, standards
+	-domain requirements
+
+Quality Attributes
+	-refers to the largest subset of requirements in the NFRs set
+	-have significant influence on software architecture (QAs are ASRs)
+
+Requirements Analysis
+	4 phases:
+	1)	requirements discovery
+		-interacting with stakeholders/domain to discover requirements
+	2)	requirements classification and organisation
+		-grouping related requirements and organizing them into coherent clusters
+	3)	prioritization and negotiation
+		-prioritising requirements and resolving requirement conflicts
+	4)	requirements specification
+		-requirements are documented to construct the system specification
+
+	Discovery Techniques:
+		-interviewing, ethnography, stories and scenarios

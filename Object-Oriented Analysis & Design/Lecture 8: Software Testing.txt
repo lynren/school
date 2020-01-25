@@ -1,0 +1,69 @@
+Lecture 8: Software Testing
+
+8.1 Concepts
+
+-testing is an activity to execute a system or component under specified conditions
+-test case is a set of inputs, execution conditions, and expected results
+-test suite is a set of test cases related by a testing goal
+-test procedure is the detailed instructions for setup, execution, evaluation of results
+
+Characteristics of Good Test Cases
+	-develop a small number of test cases to find most defects in the software
+	-4 characteristics:
+		-is effective in detecting defects
+		-is exemplary in testing more to recude the total number of required test cases
+		-is economical to perform, analyze, and debug
+		-is evolvable towards software changes
+
+Activities of Software Testing
+
+	1) 	identify test conditions
+		-test condition is an item or event that could be verified by a test
+		-determines "what" can be tested
+
+	2)	design test cases
+		-each test comprises of specific input values, expected outcomes, other info
+		-determines how to test "what"
+
+	3)	build test cases
+		-test script is the data and/or instructions, automation tool to execute tests
+		-script implements one/more test cases, navigation, setup or clearup, verification
+		-test inputs and expected outcome may be included as part of a script
+
+	4)	execute the test case
+		-execute the software under test using the test cases
+
+	5)	compare the outcomes
+		-uses a tool to compare the set of test with expected outcomes and report differences
+
+	-automation works on repeated activities
+
+8.2 Testing Methods
+
+Black-Box Testing
+	-suitable for functionality based testing
+	-conducts tests against end user's external specifications
+	-common methods: equivalence partitioning, boundary-value analysis, error guessing
+
+
+Error Guessing
+	-ad hoc approach to identify tests that are considered likely to expose errors
+	-focus the testing activity on areas not handled by other more formal techniques
+	-is as important as equivalence partitioning and boundary value analysis bc it is inteded to compensate for them
+
+Required Skills
+	testers who are effective at error guessing must
+	-have knowledge about:
+		-the AUT (application under test)
+		-results of any earlier testing phases
+		-typical implementation errors
+	-have experience of testing similar or related problems
+	-general testing rules
+
+List of Possible Errors
+	list of possible errors or error-prone situations used to develop tests
+	-empty or null lists/strings
+	-zero instances/occurences
+	-blank or null characters in strings
+	-negative numbers
+	-division by zero

@@ -1,0 +1,59 @@
+Lecture 4: Agile Software Development
+
+PLAN-DRIVEN DEVELOPMENT
+	-plan-driven approach based around dev stages w/ outputs to be produced at each of these stages
+	-plan-driven, incremental development is possible
+	-iteraction occurs w/in activities
+
+AGILE DEVELOPMENT
+	-specs, design, implementation and testing are interleaved and outputs from dev process are decided thru a process of negotiation
+
+AGILE METHODS
+	-focus on code rather than design
+	-based on iterative approach
+	-intended to deliver working software quickly and evolve to meet changing reqs
+
+PRINCIPLES OF AGILE METHODS
+	-customer involvement
+	-incremental delivery
+	-people not process
+	-embrace change
+	-maintain simplicity
+
+AGILE DEVELOPMENT TECHNIQUES
+
+	EXTREME PROGRAMMING
+	-extreme approach to iterative development
+	-new versions may be built several times a day, increments delivered to client every 2 weeks
+	-build is only accepted if tests run successfully
+
+	EXTREME PROGRAMMING PRACTICES
+	-incremental planning
+		-reqs recorded on story cards. Break stories into dev 'tasks'
+	-small releases
+		-minimal useful set of functionality is developed first
+	-simple design
+	-test-first development
+	-refactoring code
+	-pair programming
+	-collective ownership
+	-continuous integration
+	-sustainable pace
+	-onsite customer
+
+AGILE PROJECT MANAGEMENT
+	SCRUM
+	-focuses on managing iterative development
+	-3 phases:
+		-outline planning phase, establish objectives for project, design software architecture
+		-followed by a series of sprint cycles, each cycle develops an increment of the system
+		-complete required documentation
+	SCRUM TERMINOLOGY
+		-development team
+		-portentially shippable product increment: needs no further work
+		-product backlog: to do list
+		-product owner: guy whos job is to identify product features or requirements
+		-scrum: daily meeting of scrum team that reviews progress and prioritizes work to be done
+		-scrumMaster: responsible for ensuring scrum process is followed and used effectively
+		-sprint: a development iteration. usually 2-4 weeks long
+		-velocity: an estima of how much product backlog effort that a team can cover in a sprint

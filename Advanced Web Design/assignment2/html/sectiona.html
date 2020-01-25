@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assignment 2: Section A</title>
+	</head>
+	<body>
+		<h1>Section A: XML Format & Design & System Administration</h2>
+		<h3>Q1: Convert the following loose HTML5 format into XML format. Mention the required changes as comments. Then write the code in the answer.</h3>
+		<p><code>
+			&lthtml&gt<br />
+			&emsp;&ltBody&gt &lt!-- in XML, all elements must be lowercase: &ltbody&gt --&gt <br />
+				&emsp;&emsp;&lt!-- incorrect nesting with italic element. put closing tag inside p --&gt<br />
+				&emsp;&emsp;&ltp&gt&ltitalic&gt Welcome to my web site&lt/p&gt&lt/italic&gt<br />
+
+				&emsp;&emsp;&lt!-- p element is not closed. It must be closed in XML --&gt<br />
+				&emsp;&emsp;&ltp&gtthe site more often PLEASE!<br />
+				&emsp;&lt/body&gt<br />
+			&lt/html&gt
+		</code></p>
+
+		<h4>XML code:</h4>
+		<p><code>
+			&lt!-- XML declaration with version and encoding type --&gt<br />
+			&lt?xml version="1.0" encoding="utf-8"?&gt<br />
+			&lthtml&gt<br />
+			&emsp;&ltbody&gt<br />
+			&emsp;&emsp;&ltp&gt&ltitalic&gtWelcome to my web site&lt/italic&gt&lt/p&gt<br />
+			&emsp;&emsp;&ltp&gtthe site more often PLEASE!&lt/p&gt<br />
+			&emsp;&lt/body&gt</br>
+			&lt/html&gt
+		</code></p>
+
+		<h3>Q2: Do the minimum changes to rename the following files so they are compatible with Windows 7 and higher versions of Windows OS, mention the reason why they are not compatible with these operating systems.</h3>
+
+		<h3>a. 0360-270/advancedWebsiteDesign.txt</h3>
+		<p>Windows does not allow the "/" character in a filename and is not case sensitive. We can replace the "/" with "-" and make all the letters lowercase. This gives us: <code>0360-270-advancedwebsitedesign.txt</code></p>
+
+		<h3>b. ?Webdesign.html</h3>
+		<p>Windows does not allow the "?" character in a file name and is not case sensitive. We can remove the "?" and make all the letters lowercase. This gives us: <code>webdesign.html</code></p>
+
+		<h3>c. &ltHello&gt.html</h3>
+		<p>Windows does not allow "&lt" and "&gt" characters in a filename and is not case sensitive. We can remove the "&lt" and "&gt" characters and make all the letters lowercase. This gives us: <code>hello.html</code></p>
+
+		<h3>Q3: Fill in the blank:</h3>
+		<h3>a. <u>Type selector</u>, the part of a style rule that determines which HTML element to match.</h3>
+		<h3>b. The <u>pseudo</u>-class selector lets you apply a style that appears when hover over an element with a pointer.</h3>
+		<h3>c. <u>Javascript</u> is a client-side scripting language used with HTML forms.</h3>
+
+		<h3>Q4: Browse the web, find a site that does not contain a user survey form. Write a user survey form with 10 questions that you would use on the site. Tailor the questions to the site's content goals. </h3>
+		<p>I made a user survey form for <a href='https://mikescomputershop.com' target='_blank'>Mike's Computer Shop</a>. The survey contains a mix of questions and general feedback for the website.</p>
+
+		<h1>User Survey Form</h1>
+		<form method='post' action='./submitted.html'>
+			<fieldset>
+			<legend><h3>Reason for feedback</h3></legend>
+			<h3>Select a reason:</h3>
+			<select name='criticizm' required>
+				<option>Page error</option>
+				<option>Suggestion</option>
+				<option>Compliment</option>
+				<option>Complaint</option>
+			</select>
+
+			<h3>Page comments:</h3>
+			<textarea name='pagecomments' rows='5' cols='80'>Enter your comments here</textarea>
+			</fieldset>
+			<fieldset>
+				<legend><h3>Page ratings</h3></legend>
+				<h3>Page content rating:</h3>
+				<input type='range' min='0' max='10' step='1' name='contentrating' id='contentvalueinid' oninput='contentvalueid.value = contentvalueinid.value' value='5' />
+				<output name='contentvalue' id='contentvalueid'>5</output>
+
+				<h3>Page design rating:</h3>
+				<input type='range' min='0' max='10'step='1' name='designrating' id='designratinginid' oninput='designvalueid.value = designratinginid.value' value='5' />
+				<output name='designvalue' id='designvalueid'>5</output>
+
+				<h3>Page usability rating:</h3>
+				<input type='range' min='0' max='10'step='1' name='designrating' id='usabilityratingid' oninput='usabilityvalueid.value = usabilityratingid.value' value='5' />
+				<output name='usabilityvalue' id='usabilityvalueid'>5</output>
+			</fieldset>
+			<fieldset>
+			<legend><h3>Shopping Experience</h3></legend>
+			<h3>Did you accomplish what you wanted to do on your visit?</h3>
+			<input type='radio' name='accomplishlist' value='yesyes' id='YesYes'>
+			<label for='YesYes'>Yes, easily</label>
+			<input type='radio' name='accomplishlist' value='yes' id='Yes'>
+			<label for='Yes'>Yes, somewhat easily</label>
+			<input type='radio' name='accomplishlist' value='yesno' id='YesNo'>
+			<label for='YesNo'>Yes, with difficulty</label>
+			<input type='radio' name='accomplishlist' value='no' id='No'>
+			<label for='No'>No, couldn't find product/info</label>
+			<input type='radio' name='accomplishlist' value='nono' id='NoNo'>
+			<label for='NoNo'>No, the website is broken</label>
+
+			<h3>If you did not accomplish what you wanted, will you tell us why</h3>
+			<textarea name='notaccomplish' rows='5' cols='80'>Why couldn't you accomplish what you wanted?</textarea>
+			
+			<h3>If you have any product suggestions, let us know here:</h3>
+			<textarea name='productsugg' rows='5' cols='80'>Enter product suggestions</textarea>
+
+			</fieldset>
+
+			<fieldset>
+			<legend><h3>About You</h3></legend>
+			<h3>How often do you visit mikescomputershop.com?</h3>
+			<select name='visitfreq' required>
+				<option>first visit</option>
+				<option>daily</option>
+				<option>weekly</option>
+				<option>monthly</option>
+				<option>every few months</option>
+			</select>
+
+			<h3>Enter your email so we can follow up if needed</h3>
+			<label for='useremailid'>Enter valid email:</label>
+			<input id='useremailid' type='text' name='useremail' required pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'>
+			</fieldset>
+			<input value='Submit form' type='submit'>
+			<input value='Clear the form' type='reset'>
+		</form>
+
+		<h3>Mike's Computer Shop survey wireframe</h3>
+		<img src='../pictures/survey_wireframe.png' alt='survey in the middle with two ads on the site. Nav menu is placed above the survey and social media links are below. Under the social media links is another navigation menu with store information. At the very top of the page is the MCS logo with search box and a small navigation menu' />
+	</body>
+</html>

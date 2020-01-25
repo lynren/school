@@ -1,0 +1,123 @@
+Chapter 5: Relational Data Model & Relational DB Constraints
+
+5.1 RELATIONAL MODEL CONCEPTS
+	-represents DB as a collection of relations
+	-composite, multivalued attrs not allowed in flat relational model
+	-multivalued -> seperate relations ; composite -> seperate attrs
+
+	DOMAINS, ATTRIBUTES, TUPLES, RELATIONS
+	DEFINITIONS
+	Key of a Relation:	each row has a data item that uniquely identifies that row in table
+	Schema of a Relation:
+		-denoted by R(A1,...,An)
+		-R is the name of the relation
+		-attributes of the relation are A1,...,An
+	Tuple:
+		-ordered set of values (enclosed in angled brackets '<...>')
+		-each value derived from appropriate domain
+		-a relation is a set of tuples
+		-r(R) is a relation state. This is a set of tuples
+		-all values are considered atomic, and must be from the domain
+		-null value is used for unknown values or not available or inapplicable
+		-refer to component values of a tuple by 't[Ai]' or 't.Ai', similarly: t[Au,Av,.,Aw]
+
+	Domain:
+		-has a logical definition and a data-type or format defined for it
+		-attr name designates the role played by a domain in a relation
+
+	CHARACTERISTICS OF RELATIONS
+	-ordering of tuples does not matter logically; a set has no order
+	-we consider the attributes in R(..) and the values in t=<..> to be ordered
+	-when attr name and value are included together in a tuple, it is 'self-describing data'
+
+5.2 RELATIONAL MODEL CONSTRAINTS & RELATIONAL DATABASE SCHEMAS
+
+	RELATIONAL INTEGRITY CONSTRAINTS
+	-constraints are conditions that must hold on all valid relation states
+	-3 main types of of schema-based constraints that can be expressed in rel model:
+		-key constraints
+		-entity integrity constraints
+		-referential integrity constraints
+		-domain constraint
+
+	KEY CONSTRAINTS
+	Superkey of R:
+	-set of attributes SK of R with the conditions:
+		-no two tuples in any value r(R) will have the same value for SK
+		-for any distinct tuples t1 and t2 in r(R), t1[SK] != t2[SK]
+		-condition must hold in any valid state r(R)
+
+	Key of R:
+		-a "minimal" superkey
+		-a key is a superkey K such that removal of any attr from K results in a set of attrs that is not a superkey
+
+	-any key is a superkey (but not vice versa)
+	-any set of attrs that includes a key is a superkey
+	-a minimal superkey is also a key
+	-if a rel has several candidate keys, one is chosen arbitrarily to be the primary key
+	-primary key used to uniquely identify each tuple in a relation
+	-also used to reference tuple from another tuple
+
+	RELATIONAL DATABASE SCHEMA
+	-a set S of rel sechmas that belong to the same DB
+	-S is the name of the whole DB schema
+	-S = {R1,...,Rn} and a set IC of integrity constraints
+	-R1,...Rn are the names of the individual relation schemas w/in the DB S
+
+	RELATIONAL DATABASE STATE
+	-relational DB state DB of S is a set of rel states DB={r1,...,rm} such that each ri is a state of Ri and such that ri satisfies the integrity constraints specified in IC
+	-a DB that does not meet the constraints is an invalid state
+
+	POPULATED DATABASE STATE
+	-each rel will have many tuples in its current rel state
+	-relational database state is a union of all individual relation states
+	-whenever the DB is changed, a state arises
+	-basic ops for changing DB: INSERT, DELETE, MODIFY
+
+	ENTITY INTEGRITY
+	-primary key attrs PK of each relation schema R in S cannot have null values 
+	-other attrs may be constrained to disallow null values, even tho they are not the primary key
+
+	REFERENTIAL INTEGRITY
+	-constraint involving two relations
+	-used to specify a relationship among tuples in two relations: referencing rel and referenced rel
+	-tuples in the referencing relation R1 have attrs FK (called foreign key attrs) that reference the primary key attrs PK of referenced relation R2
+	-displayed in relDb schema as a directed arc (arrow) from R1.FK to R2
+	-value in the FK columns of R1 can be either: a PK from R2 | null
+
+	SEMANTIC INTEGRITY
+	-based on application semantics and cannot be expressed by the model. ex) max no. of hours
+	-constraint specification lang may have to be used to express these
+
+5.3 UPDATE OPERATIONS, TRANSACTIONS, DEALING W/ CONSTRAINT VIOLATIONS
+
+	UPDATES
+	-INSERT, DELETE, MODIFY a tuple
+	-IC should not be violated by the update ops
+	-several update ops may have to be grouped together
+	-updates may propgate to cause other updates
+
+	CONSTRAINT VIOLATION
+	-cancel the op (RESTRICT or REJECT option)
+	-perform op but inform user of violation
+	-trigger additional updates so violation is corrected (CASCADE, SET NULL options)
+	-execute a user-specified error-correction routine
+
+	INSERT may violate and of the constraints:
+	-domain constraint (attr value provided isnt in domain)
+	-key constraint (key provided is not unique)
+	-referential integrity (a FK references a non-existent PK)
+	-entity integrity (PK value is null)
+
+	DELETE may violate only referential integrirty
+	-if PK of deletee is referenced from other tuples in DB
+	-remedied by RESTRICT, CASCASE, SET NULL
+		-RESTRICT:	reject the deletion
+		-CASCADE:	propogate the new PK into the FK of the referencing tuples
+		-SET NULL:	set the FK of referencing tuples to NULL
+	-one of these options must be specified during DB design for each FK constraint
+
+	-UPDATE may violate domain and NOT NULL constraint on an attr being modified
+	-updating PK 
+	-updating FK may violate referential integrity
+	

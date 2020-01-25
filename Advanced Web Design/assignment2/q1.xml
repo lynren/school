@@ -1,0 +1,13 @@
+<!-- XML declaration with version and encoding type -->
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+	<!-- <Body> must be written with lowercase letters -->
+	<body>
+		<p>
+			<!-- closing italic must be nested inside <p> as the opening tag is -->
+			<italic>Welcome to my web site</italic>
+		</p>
+		<p>the site more often PLEASE!</p>
+	</body>
+</html>
+

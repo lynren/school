@@ -1,0 +1,39 @@
+Lecture 2: Use Case Modeling
+
+2.1 SOFTWARE REQUIREMENTS 
+	Functional Requirements
+	-describe what a system must do
+	-includes processes, interfaces, data
+	-described with use case documents, modelled in OOA w/ use case diagrams
+
+	Non-Functional Requirements
+	-specify how well the system performs
+	-includes response times, volumes of data, security consideration
+	-documented in requirements list or use case model
+
+	Usability Requirements
+	-concerned w/ matching the system to the way that ppl work
+	-techniques: background reading, interviewing, observation, document sampling, surveys
+
+2.2	USE CASE DESCRIPTIONS
+	Use Case Modeling
+	-primarily an action of writing text, logging an actor interacting w/ the software
+	-may include use case diagram, showing relationships between actors
+	-use case driven development a key attr of UP, helps discover requirements, implementations, designs & solutions, tests, and maintenance
+	-Types: brief (1paragraph), casual (2+para), fully dressed
+
+	Stakeholder:	targeted users, clients
+	Preconditions:	conditions that must be true before main scenario w/o checking
+	Postconditions:	conditions that must be true on successful completion
+
+	Open Issues
+	-they include anything that has affect on the functionality of this use case
+	-clarifies the open issues and explain why they have not been decided yet
+
+	Main Success Scenario
+	-typical path to a successful outcome
+	-describes what needs to happen, not how
+	-includes only a single flow of events
+
+	Alternative Flows
+	-cover all other possible scenarios, leading to success or failure

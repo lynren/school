@@ -1,0 +1,113 @@
+Chapter 8: Relational Algebra and Relational Calculus
+
+8.1 Relational Algebra
+	-formal languages for relational model
+	-data model must have set of operations for manipulating its data structure and constraints
+	-basic set of operations for relational model is relational algebra which expresses the data retrieval requests as relational algebra expressions
+	-sequence of relational algebra operations is a relational algebra expression
+
+	provides:
+		-formal foundation for relational model operations
+		-is used for query processing and optimization
+		-some of its concepts are implemented in RDBMSs
+
+	-relational calculus provides a declarative language for specifying relational queries
+	-set of operations including SELECT, PROJECT, UNION, DIFFERENCE, RENAME, and CARTESIAN PRODUCT is called complete set because any other relational algebra expression can be expressed by a combination of these give operations
+
+Unary Relational Operations: SELECT (symbol: σ)
+	-used to select a subset of tuples from a relation based on a selection condition
+	-denoted by σ<selection condition> (R)
+	-tuples that make the selection true are selected
+	-SELECT produces a relation S with same schema as R
+	-SELECT is COMMUTATIVE
+
+Unary Relational Operations: PROJECT (symbol: π)
+	-keeps certain columns from a relation, discards others
+	-denoted by π<attribute list>(R)
+	-rename operations ρ (rho) to rename either relation or attributes or both
+	-ex. R(a1, a2,..,an) rename -> ρS(b1,b2,..,bn)(R) = rename R to S, a2->b2, etc
+	-project operations removes any duplicate tuples
+	-number of tuples in result is always less or equal to number of tuples in R
+	-if list of attrs includes a key of R, # of tuples is equal to # of tuples in R
+	-project is not commutative
+
+Relational Algebra Operations from Set Theory
+	-type compatibility of operands is required for the binary set operation UNION, INTERSECTION, SET DIFFERENCE
+	-R1(a1,..,an) and R2(b1,..,bn) are type compatible if:
+		-they have same # of attributes
+		-domains of corresponding attributes are type compatible (dom(ai)=dom(bi) for i=1,..,n)
+	-resulting relation has same attr name as the first operand relation
+
+Relational Algebra Operations from Set Theory: UNION
+	-binary operation, denoted by ∪
+	-result of R ∪ S is a rel that includes all tuples in R or S or R and S
+	-duplicates eliminated
+
+Relational Algebra Operations from Set Theory: INTERSECTION
+	-binary operation, denoted by ∩
+	-result of R ∩ S is a rel that includes all tuples in both R and S
+
+Relational Algebra Operations from Set Theory: SET DIFFERENCE
+	-binary operation, denoted by -
+	-result of R - S is a rel that includes all tuples in R but not in S
+
+Some Properties of UNION, INTERSECT, DIFFERENCE
+	-UNION and INTERSECTION are commutative
+	-UNION and INTERSECTION can be treated as n-ary operations, both are associative
+	-DIFFERENCE is not commutative
+
+Relational Algebra Operations from Set Theory: CARTESIAN PRODUCT
+	-combines tuples from two relations in a combinatorial fashion
+	-denoted by R1(a1,..,an) x R2(b1,..,bm)
+	-result is relation Q with degree n+m attributes Q(a1,..,an,b1,..,bm)
+	-resulting relation has one tuple for each combination of tuples
+	-hence if R has nR tuples and S has nS tuples, result will have nR*nS tuples
+	-two operands do NOT have to be type compatible
+
+Binary Relational Operations: JOIN ⋈
+	-denoted by ⋈<joincondition>
+	-combines CARTESIAN PRODUCT followed by SELECT into single operation
+	-allows us to combine related tuples from various relations
+	-general form of join op on relations R(a1,..,an) and S(b1,..,bm) is R⋈<joincond>S
+	-where R and S can be any relations that result from general relational algebra expressions
+	-result is a relation Q with degree n+m attributes
+	-if R has nR tuples and S has nS tuples, join result will generally have less than nR*nS tuples
+
+Division Operations ÷
+	-denoted by R(Z) ÷ S(X) where attrs of S are a subset of the attrs of R
+
+Aggregate Functions and Grouping
+	-functions on collections of values from the database
+	-commong functions applied to collections of numeric values: SUM, AVERAGE, MAXIMUM, MINIMUM
+	-COUNT function used for counting tuples or values
+
+	Use of Aggregate Functional operation F
+	<grouping attributes>Fsub<functionlist> (R)
+	where <grouping attributes> is a list of attributes of relation R
+	<functionlist> is a list of (<function><attribute>) pairs
+	function is SUM, AVERAGE, MAXIMUM, or COUNT
+
+select σ
+project π
+rename ρ
+join ⋈
+union ∪
+intersection ∩
+function ℑ
+division ÷
+
+8.2 Relational Calculus
+	-a formal query language for the relational model
+	-two variations: tuple relational calculus, domain relational calculus
+	-one declarative expression is written to specify a retrieval query
+	-specifies what is to be retrieved rather than how
+
+Tuple Relational Calculus
+	-based on specifying a number of tuple variables
+	-each tuple ranges over a particular db relation, the variable may take on a value of an individual tuple from the relation
+	-simple tuple relational calc query is of the form {t | COND(t)}
+	-cond is a condition (atom or formula) of TRC of the form:
+		i) relation (ti), eg. employee(t)
+		ii) t1.A op t1.B, eg. E.ssn = d.Essn
+		iii) t1.A op c or c op t1.A, eg Salary > 30000
+		iv) a formula F is made up of atoms connected with logical ops and quantifiers eg. F1 AND F2, NOT(F1)

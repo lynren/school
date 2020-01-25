@@ -1,0 +1,73 @@
+Lecture 5: Interaction Diagrams
+
+5.1 OOA/OOD: FOCUSES & RELATIONS
+	"WHAT": OOA focuses on doing the right thing
+		-analyzes services/constraints required by client
+		-examines action sequences while doing the right thing
+		-finds objects and relationships in the domain
+	"HOW": OOD focuses on doing the things right
+		-develops a conceptual solution to fulfill requirements
+		-derives software objects and decides their interactions
+		-determines the logical/physical models of the system
+		-takes output of OOA as its input
+
+5.2 SEQUENCE DIAGRAMS
+	-shows object interaction in time sequence
+		-contains objects & classes involved in scenario
+		-depicts the sequence of msg exchanges b/w objects when carrying out functionality of the scenario
+	-associated with use case realization
+		-black box of SSD is replaced by instances of classes
+		-may adapt conceptual classes in domain model
+		-will invent software classes to design for a solution
+	-show in sequence diagram
+		-parallel vertical lines for different processes or objects that live simult.
+		-horizontal arrows for msgs exchanged b/w processes & objects in the order they occur
+
+	BASIC FEATURES
+	-"found message" is a msg of which the caller is not shown
+	-"execution bar" shows focus of control
+	-"nested activation box" also shows focus of control
+	-"synchonous message" used when sender waits until rcvr has finished processing msg, only then does caller continue. Shown with filled-in arrowhead
+	-dashed "return" arrow goes from rcvr to sender. Shows msg has been processed, control returns to the sender. Used when a value is returned
+	-calls to constructor, object destruction
+	-UML loop fram w/ boolean guard expression for loops
+	-conditional and alternative flows
+	-can reference other diagrams
+
+	TARGETS: OBJECTS & CLASSES
+	-msgs can be sent to targets. Targets displayed as rectangles with text inside
+	-lifeline extends below a target
+	-lifeline is displayed as a vertical dashed line
+	-extends for as long as the target exists
+
+	OBJECTS: BASIC NOTATION
+	-"name"
+		-objects name in the context of the diagram
+		-situations to name an object:
+			-it is referred as a msg parameter or return value
+			-type is not mentioned
+			-there r other anonymous objects of the same type
+	-"type"
+		-can be optional but not together with name
+		-indicates the type of which the objects is an instance
+
+	GUIDELINES FOR SEQUENCE DIAGRAMS
+	1)	Decide at what level u r modelling the interaction
+	2)	Identify main elements involved in the interaction
+	3)	Consider alternative scenarios that may be needed
+	4)	Identify the main elements involved in the interaction
+	5)	Draw the outline structure of the diagram
+	6)	Add the detailed interaction
+	7)	Check for consistency w/ linked sequence diagrams and modify if needed
+	8)	Check for consistency w/ other UML diagrams or models
+
+5.3 COMMUNICATION DIAGRAMS
+	-shows object interactions w/ sequenced msgs in a free-form arrangement
+	-corresponds to a simple sequence diagram
+		-has no structuring mechanisms
+		-assumes msg overtaking won't happen
+		-holds the same information
+	-another type of UML interaction diagram
+		-shows links b/w collaborating objects
+		-captures sequence w/ number, not time sequence
+

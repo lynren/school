@@ -1,0 +1,115 @@
+ 	Chapter 3: Data Modeling Using the Entity-Relationship Model
+
+3.1 Using High-Level Conceptual Data Models for DB Design
+	-1st step is req collection and analysis (data requirements)
+	-2nd step is conceptual design. Create a conceptual schema
+	-3rd step is implementation of the DB using a commercial DBMS
+	-most DBMSs use an implementation data model. this step is called logical design/data model mapping
+	-4th step is physical design
+
+3.3 ENTITY TYPES, ENTITY SETS, ATTRIBUTES, AND KEYS
+Entities and Attributes
+	-entity may have a physical existence or conceptual
+	-entities have attributes - the properties that describe it
+	-attr can have a null value in some cases
+
+	Composite vs Simple (Atomic) Attributes
+	-composite can be divided into smaller subparts, representing more basic attrs
+	-attributes that are not divisible are called simple or atomic attrs
+
+	Single Valued vs Multivalued Attributes
+	-attr w/ a single value is single. ex age
+	-attrs w/ multiple values are multivalued. ex color
+	-multivalued attrs may have constraints
+
+	Stored vs Derived Attributes
+	-some attrs can be derived from other attrs or entities. ex age derived from bday
+
+	Complex Attributes
+	-can represent arbitrary nesting by grouping components of a composite attr b/w parens, seperating components w/ commas, and displaying multivalued attrs b/w braces
+
+	ER Diagrams
+	-attribute & composite attr names enclosed in ovals attached to entity by a line
+	-multivalued attributes displayed in double ovals
+
+Entity Types, Entity Sets, Keys, and Value Sets
+	Entity Type
+	-defines a collection of entities that have the same attributes
+	-in ER diagrams, represented as a rectangular box enclosing the entity type name
+
+	Entity Set
+	-collection of all entities of a particular entity type
+
+	Key Attributes
+	-uniqueness constraint on attribute(s)
+	-used to identify entity uniquely. ex SSN
+	-somtimes serveral attrs together form a key
+	-underlined in an oval in ER diagram
+
+	Value Sets (Domains) of Attributes
+	-each simple attr is associated w/ a value set, specifying the set of values that may be assigned to that attr.
+
+3.4 RELATIONSHIP TYPES, RELATIONSHIP SETS, ROLES, AND STRUCTURAL CONSTRAINTS
+	-a relationship type R among n entity types E1,...,En defines a relationship set
+	-in ER diagram, relationship types are displayed as diamond-shaped boxes, connecting to entity types
+
+	RELATIONSHIP DEGREE
+	-number of participating entity types
+
+	RELATIONSHIPS AS ATTRIBUTES
+	-an attribute of entity1, where the value set of the attr is the set of all entity2
+	-for binary relationships
+
+	ROLE NAMES
+	-signifies the role that a participating entity from the entity type plays in each relationship instance
+
+	RECURSIVE/SELF-REFERENCING RELATIONSHIPS
+	-when the same entity type participated more than once in a relationship in different roles
+
+	CARDINALITY RATIOS FOR BINARY RELATIONSHIPS
+	-specifies maximum number of relationship instances that an entity can participate in
+	-eg WORKS_FOR binary rel type DEPT:EMPLYEE is of cardinality 1:N
+
+	(MIN, MAX) NOTATION FOR RELATIONSHIP
+	-replaces cardinality ratio
+	-associates a pair of integers with each participation of an entity E in rel R
+
+	PARTICIPATION CONSTRAINTS AND EXISTENCE DEPENDENCIES
+	-specifies whether existence of an entity depends on it being related to another entity via relationship type
+	-specifies min number of rel instances each entity can participate in (min cardinality constraint)
+	-Total Participation: every entity in a entity set must be related to entity2 via a relationship. Also called existence dependency
+	-Partial Participation: some of the set of entities are related to entity2 via a rel, but not all
+	-cardinality ratio + participation constraints = structural constraints
+
+	ATTRIBUTE OF RELATIONSHIP TYPES
+	-relationship types can also have attributes, similar to entities
+	-attributes of 1:1 or 1:N relationship types can be migrated to one of the participating entity types
+
+3.5 WEAK ENTITY TYPES
+	-entity types that do not have a key attribute
+	-identified by being related to specific entities from another type in combo w/ one of their attr values. This is the identifying or owner entity type
+	-called the identifying relationship
+	-always has a total participation constraint wrt identifying relationship
+	-partial key can uniquely identify weak entities that are related to the same owner entity
+	-in ER diagram, weak entities and their identifying relatioships are distinguished by surrounding their boxes and diamonds with double lines
+	-in ER diagram, partial key is underlined with dotted line
+
+3.7 ER DIAGRAMS, NAMING CONVENTIONS, DESIGN ISSUES
+	-strong entity types are shown in rectangular boxes
+	-weak entity types distinguished by being placed in double rectangles and their identifying relationship placed in double diamonds
+	-relationships are shown in diamond-shaped boxes attached to participating entity types
+
+	-attrs shown in ovals
+	-component attrs of composite attr are attached to the oval representing composite attr
+	-multivalue attrs shown in double ovals
+	-partial key underlined with a dotted line
+	-key attrs have their name underlined
+	-derived attrs shown in dotted ovals
+
+	-cardinality ratio of each bin rltn type is specified by attaching 1, M, or N on each participating edge
+	-role names placed on edge of recursive relationship
+
+
+	PROPER NAMING OF SCHEMA CONSTRUCTS
+	-use singular names for entity types
+	-should be read from top to bottom, left to right

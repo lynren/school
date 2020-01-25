@@ -1,0 +1,124 @@
+Chapter 4: Network Layer - The Data Plane
+
+4.1 Overview of Network Layer
+	-transport segment from sending to receiving host
+	-sender encapsulates segments into datagrams
+	-receiver delivers segments to transport layer
+
+	Forwarding: move packets from router's input to appropriate router output
+	Routing: determine route taken by packets from src to dest
+
+	Data Plane
+	-local, per-router function
+	-determines how datagram is forwarded to router output port
+	-forwarding function
+
+	Control Plane
+	-network-wide logic
+	-determines how datagram is routed among routers along path from src host to dest host
+	-2 approaches: traditional routing algorithms (routers), software-defined networking (servers)
+
+	Per-Router Control Plane
+	-individual routing algorithm components in each and every router interact in control plane
+
+	Logically Centralized Control Plane
+	-distinct controller interacts with local control agents (CAs)
+
+4.2 What's Inside a Router
+	
+	Input Port Functions
+	-physical layer: bit-level reception
+	-data link layer: eg ethernet
+	-decentralized switching:
+		-using header field values, lookup output port using forwarding table in input port mem
+		-goal: complete input port processing at 'line speed'
+		-queuing: if datagrams arrive faster than forwarding rate into switch fabric
+
+	Switching Fabrics
+	-transfer packet from input buffer to appropriate output buffer
+	-switching rate: rate at which packets can transfer from inputs to outputs
+	-3 types: memory, bus, crossbar
+
+	Switching via memory
+	-switching controlled by CPU, packet copied to system memory
+	-speed limited by memory bandwidth
+
+	Switching via bus
+	-datagram from input port mem to output port mem via shared bus
+	-speed limited by bus bandwidth
+
+	Switching via interconnection network
+	-fragmenting datagrams into fixed length cells, switch cells through fabric
+
+	Output Ports
+	-buffering: required when datagrams arrive from fabric faster than transmission rate
+	-scheduling discipline: chooses among queued datagrams for transmission
+
+	Scheduling Mechanisms
+	-choose next packet to send on link
+	-FIFO: send in order of arrival to queue
+	-priority scheduling: send highest priority queued packet
+	-Round Robin scheduling: cyclically scans class queues, sending one complete packet from each class
+
+4.3 IP: Internet Protocol
+	
+	IP Fragmentation
+	-network links have MTU (max.transfer size)
+	-large IP datagrams divided within net, reassembled at final destination
+	-offset = bytes in data field/8
+
+	IPv4 Addressing
+	-IP address: 32-bit identifier for host, router interface
+	-interface: connection b/w host/router and physical link
+	-IP address associated with each interface
+
+	Subnets
+	-IP addr: subnet part - high order bits, host part - low order bits
+	-device interfaces w/ same subnet part of IP addr can physically reach each other w/o intervening router
+
+	CIDR: Classless InterDomain Routing
+	-subnet portion of address of arbitrary length
+	-address format: a.b.c.d/x where x is # bits in subnet portion of address
+
+	DHCP: Dynamic Host Configuration Protocol
+	-allow host to dynamically obtain its IP address from network server when it joins network
+	-host broadcasts "DHCP discover" msg [optional]
+	-DHCP server responds with "DHCP offer" msg [optional]
+	-host requests IP address: "DHCP request" msg
+	-DHCP server sends address: "DHCP ack" msg
+
+	NAT: network address translation
+	-local network uses just one IP addr as far as outside world is concerned
+	-replace (source IP addr, port #) with (NAT IP addr, new port #)
+	-NAT translation table has every ((src IP addr, port#),(NAT IP addr, new port#)) pair
+
+	IPv6
+	-header format helps speed processing/forwarding
+	-header changes to facilitate QoS
+	-connect with IPv4 routers thru IPv4 tunneling
+
+4.4 Generalized Forward and SDN
+
+	OpenFlow
+	-first standard comm interface defined b.w control and forwarding layers of an SDN architecture
+	-allows direct access to and manipulation of the forwarding plane of network devices such as switches and routers, both physical and virtual
+	-flow: defined by header fields
+	-generalized forwarding: simple packet-handling rules
+		-pattern: match values in packet header fields
+		-actions: for matched packet: drop, forward, modify, matched packet or send matched packet to controller
+
+	OpenFlow Abstraction
+	-match+action unifies different kinds of devices
+	-Router
+		-match: longest destination IP prefix
+		-action: forward out a link
+	-Firewall
+		-match: IP addresses and TCP/UDP port numbers
+		-action: permit or deny
+	-Switch
+		-match: destination MAC address
+		-action: forward or flood
+	-NAT
+		-match: IP addresses and port
+		-action: rewrite address and port
+		

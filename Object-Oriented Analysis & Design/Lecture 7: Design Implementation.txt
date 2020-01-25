@@ -1,0 +1,47 @@
+Lecture 7: Design Implementation
+
+7.1 Software Implementation
+
+Mapping Designs to Code
+	-UP: An Iterative Process
+		-coding produces a working system
+		-functionality accumulates over iterations until complete
+
+	-OOP: The Writing of Actual Codes
+		-coding starts with artifacts from OOD (and OOA)
+		-code classes with the fewest dependencies first
+
+7.2 Common Mistakes
+	Use Case Modeling
+		-write requirements instead of usage scenario text
+			-user scenario text describes user actions and system responses
+		-write the use cases too tersely
+			-UCs need to address all details of user actions and system responses as they are needed in OOD
+		-don't discuss user interface in usage text
+			-UCs need to describe scenarios from viewpoints of the users
+			-no need to discuss fields of interface or details about cosmetic appearance
+			-necessary to describe features of user interface
+		-describe only user actions, but no system responses
+		-omit text for alternative courses of action
+		-write fully-dressed descriptions for all use cases
+		-spending too much time trying to make use case diagrams "perfect" eg with includes/extends
+
+	Mistakes in OOD
+		-don't do sequence diagram for each use case
+		-don't identify all the necessary objects
+			-sequence of actions cannot be fulfilled
+		-produce a sequence diagram at a high level of abstraction
+		-turn a sequence diagram into a flowchart instead of using it to allocate behaviour among objects
+			-SD used for making behaviour allocation decisions
+		-focus on trivial getters and setters, instead of important software behaviour
+		-don't think carefully about the origins of messages
+			-flow of control needs to be explicit, should be obvious at all times which object is in control
+		-don't follow basic principles of responsibility-driven OOD when allocating behaviour to an object
+			-class should be focused on a strongly related set of behaviours w/ high cohesion and low coupling
+			-more general the objects and classes, higher prob that they are reusable
+			-when allocating behaviour to an object, is it a good fit for the object and is the task really relevant to the object?
+		-don't take system architecture into consideration when allocating behaviours to objects
+			-above 3 items apply to subsystems as well for desired software quality
+		-don't check consistence b/w class and sequence diagrams
+		-don't update diagrams while creating class and sequence diagrams for each of the use cases
+		

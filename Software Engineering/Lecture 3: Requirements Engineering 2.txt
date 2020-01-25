@@ -1,0 +1,74 @@
+Lecture 3: Requirements Engineering 2
+
+REQUIREMENTS PRIORITIZATION
+	-stakeholders should prioritize the requirements, not all SHs hold the same weight
+	-primary users most important class of SHs
+
+	NOMINAL SCALE PRIORITIZATION TECHNIQUES
+	-requirements categorized into groups based on importance, reqs in group have equal prio
+		TOP-TEN [K] REQUIREMENTS
+		-stakeholders pick their top-ten requirements w/ no order
+		-dev team chooses reqs based on the most common or shared reqs b/w SHs
+		-suitable for multiple stakeholders of equal importance
+
+	RATIO SCALE PRIORITIZATION TECHNIQUES
+	-show the relative difference b/w requirements
+	-"how important is one req compared to another?"
+		ANALYTIC HIERARCHY PROCESS (AHP)
+		-use pair-wise comparisons; for n reqs there are n(n-1)/2 comparisons
+		-compare all unique pairs of requirements to estimate relative importance
+		-suitable for prioritzing small number of requirements
+
+		100-DOLLAR TEST (CUMULATIVE VOTING)
+		-stakeholders given 100 coins to distribute b.w reqs
+		-less complex than AHP more reliable than MoSCoW
+
+		BINARY PRIORITY LIST (BPL)
+		-reqs prioritized using binary search tree, take a req as root
+		-insert reqs in tree based on priority
+		-traverse tree using in-order traversal
+
+	DEPENDENCY PRIORITIZATION TECHNIQUES
+		-takes into account the dependency b/w requirements when prioritizing
+		-if SR5 has higher req than SR2, but SR5 depends on SR2, SR2 will have higher prio
+
+REQUIREMENTS SPECIFICATION
+	-process of writing down the user and system requirements in a requirements document
+	-user requirements to be understandable by end-users
+	-system requirements more detailed reqs and may include more tech info
+
+	NATURAL LANGUAGE SPECIFICATION
+		-written as natural language sentences supplemented by diagrams and tables
+		-percision is difficult, functional and non-functional requirements may get mixed up
+
+	STRUCTURED SPECIFICATIONS
+		-limited to specific keywords and vocab based on system domain
+		-form-based specification is a common method
+
+	FORM-BASED SPECIFICAION
+		-defines function or entity, describes inputs & outputs, info needed for computation and other entities
+		-pre/post conditions, side effects of the function
+
+	TABULAR SPECIFICATION
+		-used to supplement natural language
+		-used to define a # of alternative courses of action
+
+	SOFTWARE REQUIREMENT DOCUMENT
+		-official statement of what is required of the system devs
+		-includes both a definition of user reqs and a specification of system reqs
+		-not a design document; should say what the system should do rather than how it should do it
+
+	REQUIREMENTS DOCUMENT VARIABILITY
+		-depend on type of system and process model used
+
+REQUIREMENTS VALIDATION
+	-validity, consistency, realism, verifiability
+
+	REQUIREMENTS VALIDATION TECHNIQUES
+		-requirements review
+		-prototyping
+		-test-case generation
+
+	REQUIREMENTS REVIEW
+		-varifiability, comprehensibilty, traceability, adaptability
+

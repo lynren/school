@@ -1,0 +1,65 @@
+Chapter 17: Indexing Structures for Files and Physical Database Design
+
+-chapter assumes that a file already exists with some primary organization such as unordered, ordered, or indexed
+-focus on additional auxillary access structures called indexes
+-index structures are:
+	-files on disk providing 2ndary alternative access paths to primary data file on disk
+	-allow efficient access to records based on indexing fields used to construct the index
+	-any field or set of fields of the file can be used to construct an index
+	-a file can have multiple indexes on different fields
+
+-indexes use different data structures to speed up the search
+-to find a record that meets a condition on an index field:
+	-index is searched
+	-leads to pointers to one or more disk blocks in the data file where records r located
+-most common types of indexes are:
+	-based on ordered files, and
+	-use of tree data structures to organize the index
+	-indexes can also be based on hashing or other search data structures
+
+-multilevel tree structured indexes include:
+	-indexed sequential access method (ISAM) which is a static structure
+	-B-trees and B+-trees used in DBMS to implement dynamically changing multilevel indexes
+
+17.1 Types of Single Level Ordered Indexes
+-for a file w/ a given record structure consisting of several fields,
+	-an index structure is defined on a single field called indexing field
+-index stores each value of the index field, w/ list of pointers to all disk blocks that contain records w/ that field value. Values in index are ordered
+
+-tree structured multileveled indexes:
+	-extend bin search, reducing search space form two way partitioning at each search step to an nary partitioning
+-primary index specified on the ordering key field of the ordered file
+-clustering index can be specified on a non-key clustiner field 
+
+Index Entry
+-one index entry in the index file for each block in data file
+-each index entry has:
+	-value of primary key field for the first record in a block
+	-pointer to that block in the index's two field values
+-two field values of index entry i are: <K(i),P(i)>, K(i)=key value for entry i, P(i)=pointer to disk block for record i
+
+17.2 Multilevel index
+-for ordered indexes, a bin search is applied to index to locate pointers to disk block
+-bin search required log2bi for an index file w/ bi blocks
+-multilevel index (i) w/ blocking factor for the index (bfri)
+-index search at each step will be reduced by bfri called fan out (fo) of multilevel index
+-record search space divided into two halves at each step during bin search but divided n-ways where n=fo at each step w/ multilevel indexing
+-searching multilevel index requires about logfo(bi) block access which is smaller than bin search
+
+17.3 Dynamic Multilevel Indexes Using B-Trees and B+-Trees
+-multilevel index is a variation of a search tree:
+	-each node in multi index has as many fo pointers and fo key values
+	-index field values in each node guide us to next node
+	-by following a pointer, we restrict search at each level to a subtree
+
+A B-tree of order p can be defiend as having the following properties:
+	-each internal node in B-tree is of the form <P1, <K1,Pr1>, <K2,Pr2>,..,<Kq-1, Prq-1> where q<=p
+	-each Pi is a tree pointer (pointer to another node in B-tree), each Pri is a data record pointer (pointer to record whose search key field value is equal to Ki)
+	-Within each node Key1<Key2<...Keyq-1
+	-for all search key field value X in subtree pointer at by Pi, Ki-1<X<...Ki for 1<i<q
+	-each node has at most p tree pointers
+	-each node except the root & leaf nodes has at least ceiling(p/2) tree pointers. The root has at least two tree pointers unless it is only node in tree.
+	-Node w/ q tree pointers q<=p, has q-1 search key field values (and hence q-1 ptrs)
+	-all leaf nodes are @ the same level have same structure as internal nodes except all of their tree pointers Pi are NULL
+
+B-Trees: Insertion and Deletion of Values

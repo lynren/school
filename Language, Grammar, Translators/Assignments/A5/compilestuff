@@ -1,0 +1,10 @@
+#!/bin/bash
+clear
+jflex A5_104566776_JF.flex
+echo
+echo jflex finished
+echo
+java -jar java-cup-11b.jar -interface -parser A5_104566776_Parser -symbols A5_104566776_Symbol A5_104566776_JC.cup
+javac -cp java-cup-11b-runtime.jar:. A5_104566776_JF.java A5_104566776_Parser.java  A5_104566776_Symbol.java Main.java
+echo
+echo cup finished

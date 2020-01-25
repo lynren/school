@@ -1,0 +1,40 @@
+Script started on Wed 14 Nov 2018 10:27:29 PM EST
+]0;lyn@XPS15: ~lyn@XPS15:~$ sql [Kplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Wed Nov 14 22:27:33 2018
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: instagramlol
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> SELECT s1.customer_name, s1.flight_number
+FROM seat_reservation s1
+WHERE NOT EXISTS
+(SELECT s2.flight_number
+FROM seat_reservation s2
+WHERE s2.customer_name=s1.customer_name and leg_number=1);  2    3    4    5    6  
+
+no rows selected
+
+SQL> SELECT s1.customer_name, s1.flight_number
+FROM seat_reservation s1
+WHERE NOT EXISTS
+(SELECT s2.flight_number
+FROM seat_reservation s2
+WHERE s2.customer_name=s1.customer_name and leg_number=2);  2    3    4    5    6  
+
+CUSTOMER_NAME					   FLIGHT_NUMBER
+-------------------------------------------------- ---------------
+Chris Natta					   PA280
+Peter Opo					   PA233
+
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+]0;lyn@XPS15: ~lyn@XPS15:~$ exit
+exit
+
+Script done on Wed 14 Nov 2018 10:29:14 PM EST

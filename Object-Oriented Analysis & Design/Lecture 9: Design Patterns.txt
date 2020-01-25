@@ -1,0 +1,123 @@
+Lecture 9: Design Patterns
+
+9.1 Software Design Patterns
+	-capture and communicate "best practice" and expertise
+	-"proven solution to a problem that recurs in a particular context"
+	-Framework: partially completed software system that may target specified type of application
+
+Pattern Templates
+	-Name, Problem, Context, Forces, Solution
+
+9.2 GRASP for OOD (General Responsibility Assignment Softawre Patterns)
+Responsibilities:
+	-they are obligation of class/module/component
+		-Doing:
+			-creating an object, performing calculation
+			-initiating action in other objects
+			-controlling and coordinating activities in other objects
+		-Knowing:
+			-about private, encapsulated data
+			-about related objects
+			-about things that it can derive or calculate
+	-methods are not responsibilities; they are implemented to fulfill responsibilities
+Nine Patterns: 
+
+Grasp Pattern 1: Information Expert
+	Problem: what is principle of assigning responsibilities to objects?
+	Solultion: assign responsibilities to info expert ie class w/ info to fulfill resp.
+	-objects use own information to fulfill task
+	-sometimes experts are not always best for the job!
+
+Grasp Pattern 2: Creator
+	Problem: who should be responsible for creating a new instance of a class?
+	Solution: class A vs class B
+		-assign B w/ responsiblity to create instance of A if:
+			-B aggregates A objects
+			-B contains A objects
+			-B records instances of A objects
+			-B has initialising data to be passed to A when it's created
+			-B closely uses A objects
+	-leads to low coupling, lower maintenance
+	-sometimes may be better to use factory class for creation
+
+Grasp Pattern 3: Low Coupling
+	Problem: how to support low dependency, low impact change, increased reuse?
+	Solution: assign responsibilities such that coupling remains low
+	-coupling measures how strongly one element:
+		-is connected to, has knowledge, relies on another element
+	-high coupling can mean a class is forced to change if related classes change
+	-no coupling leads to fewer, large, incohesive objects
+
+Grasp Pattern 4: High Cohesion
+	Problem: how to keep complexity manageable?
+	Solution: assign responsibilities such that cohesion remains high
+	-measures how items fit together in a unit. measures how:
+		-strongly related and focused responsibilities of an element are
+	-low cohesion: class hard to comprehend, reuse, maintain
+	-betters maintainability, easier to understand, improved reusability
+
+Grasp Pattern 5: Controller
+	Problem: who should be responsible for handling an input system event
+	Solution: assign responsiblity to a class representing:
+		-overall system or subsystem (facade controller)
+		-particular use-case scenario (use-case/session controller)
+	-facade suitable when:
+		-number of system events is small
+		-UI cannot redirect messages to alternate controllers
+	-session suitable when:
+		-many system events across different processes
+		-facade would lead to high coupling and low cohesion
+	-helps separate app logic from interface layer, producing reuse or plugin interfaces
+
+Grasp Pattern 6: Polymorphism
+	Problem: when related alternatives or behaviors vary by object type, how to handle?
+	Solution: use polymorphic ops to assign responsibilities for diff behaviors to types
+	-Inheritance: used to express similarities among objects that share some, not all, structure and behavior
+	-Pluggable Components: in client-server relationship, server component is pluggable if it can be replaced w/ another w/o affecting the client
+		-enables polymorphism by using some adapter interface
+
+Grasp Pattern 7: Pure Fabrication
+	Problem: what object should have responsibility?
+		-dont want to violate low coupling, high cohesion
+		-but solultions offered by info expert are not appropriate!
+	Solution: make one up!
+		-create an artifical class that does not represent problem domain concept but supports low cohesion, high coupling
+	-necessary to create a class for purpose of improving cohesion, especially when classes grow too big
+	-behavioural decomposition suggests creating objects for handling common behavior
+
+Grasp Pattern 8: Indirection
+	Problem: when assigning responsiblity, how to avoid direct coupling b/w 2+ objects to keep coupling low and support potential reuse?
+	Solution: assign responsiblity to intermediate object (from pure fabrication)
+
+Grasp Pattern 9: Protected Variations
+	Problem: how to design objects/systems so variation or instability in those elements doesn't impact negatively upon other elements
+	Solution: identify points of variation/instability, assign responsiblities to create an interface around them
+
+Before Using a Pattern:
+	-is there a pattern that addresses a similar problem?
+	-does pattern trigger an alt solution that may be more acceptable?
+	-is there a simpler solution? Don't use patterns for the sake of it
+
+A GoF (Gang of Four) Pattern: Abstract Factory
+	Intent: provide interface for creating families of related dependent objects w/o specifying concrete classes
+	Applicability - Use this pattern when:
+		-system should be independent of how its products are created, composed, represented
+		-system should be configured w/ one of multiple families of products
+		-family of related product objects is designed to be used together
+		-want to provide a class library of products, want to reveal their interfaces, not implementations
+
+Another GoF Pattern: Bridge
+	Intent: decouple abstraction from implementation so that the two can vary independently
+	Applicability - Use this pattern when:
+		-want to avoid permanent binding b/w an abstraction and its implementation
+		-both abstractions and their imps should be extensible using subclasses
+		-changes in implementation of abstraction should have no impact on clients
+		-want to hide implementation of abstraction completely from clients
+		-want to share implementation among multiple objects
+
+The GoF Collection
+Creational Design Patterns: creating process of objects and classes
+	-abstract factory, builder, prototype, factory method, singleton
+Structural Design Patterns:
+	-adapter, bridge, composite, decorator, facade, flyweight, proxy
+Behavioural Design Patterns: iterator, mediator, chain of responsiblity, command, interpreter, memento, observer, state, strategy, template, visitor

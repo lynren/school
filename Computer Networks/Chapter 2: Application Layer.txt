@@ -1,0 +1,205 @@
+Lecture 2: Application Layer
+
+2.1: PRINCIPLES OF NETWORK APPLICATIONS
+Creating a Network App
+	write programs that:
+		-run on (different) end systems
+		-communicate over net
+
+Client-server architecture
+	Server:	dedicated host, data centers for scaling
+	Clients: comm. w/ server, may be intermittently connected, dyanimc ip
+
+P2P architecture
+	-no dedicated server, arbitrary end systems w/ dynamic IPs directly communicate
+	-peers request service from other peers
+	-apps have client processes and server processes
+
+Addressing processes
+	-process must have identifier to recieve messages
+	-host has 32-bit IP address
+	-identifier includes both IP and port number associated with process on host
+
+App-layer protocol defines:
+	-types of messages exchanged, ex request, response
+	-message syntax, message semantics
+
+App transport services
+	-data integrity, throughput, timing, security
+
+Internet transport protocol services
+	TCP service:
+		-reliable transport
+		-flow control: sender won't overwhelm receiver
+		-congestion control: throttle sender when network overloaded
+		-does not provide: timing, minimum throughput guarantee, security
+		-connection oriented: setup required between client and server processes
+	UDP service:
+		-unreliable data transfer between sending and receiving process
+		-does not provide reliability, flow control, cong. control, timing, throughput, security, or connection setup
+
+Securing TCP
+	-TCP & UDP have no encryption. cleartex passwds sent into socket to internet in cleartext
+
+	SSL
+	-provides encrypted TCP connection via SSL libraries
+	-provides data integrity and end-point authentication, SSL socket API
+
+2.2 WEB AND HTTP
+HTTP: hypertext transfer protocol
+	-client/server model
+	Uses TCP:
+		-client initiates TCP connection to server, port 80, server accepts connection
+		-HTTP messages are exchanged, then tcp connection closed
+	-is "stateless", server maintains no information about past client requests
+
+	Non-Persistent HTTP
+		-at most 1 object send over TCP conn., conn. then closed
+		-RTT: time for a small packet to travel from client to server and back
+		-HTTP response time: 2RTT + file transmission time
+		-OS overhead for each TCP conn., browsers often open parallel TCP conn. to fetch objs
+	Persistent HTTP
+		-multiple objects send over single TCP conn. between client, server
+		-server leaves conn. open after sending response
+		-as little as 1 RTT for all referenced objs
+
+	HTTP request message
+	GET - request for file \r\n
+	Host - www.cs.umass.edu\r\n
+	User-Agent - browser
+	Keep-Alive - time in s\r\n
+	Connection - keep-alive\r\n
+
+	Uploading form input
+	Post method, URL method
+
+	Method types
+	-GET, POST, HEAD, PUT, DELETE
+
+	User-server state: Cookies
+	-four components: 
+		-cookie header line of HTTP request message
+		-cookie header line in next HTTP request message
+		-cookie file kept on user's host, managed by user's browser
+		-back-end database at web site
+	-used for auth, shopping carts, recommendations, session state
+	-state maintained at sender/receiver, http messages carry state
+
+	WEB CACHES (PROXY SERVER)
+	-satisfy client w/o involving origin server
+	-browser sends all HTTP reqs to cache
+		-objects in cache: cache returns object
+		-else cache requests object from origin server, then returns obj to client
+	-cache acts as both client and server
+
+	CONDITIONAL GET
+	-Goal:	dont send obj if cache has up-to-date cached version
+	-Cache:	specify date of cached copy in HTTP req. If-modified-since: <date>
+	-Server:response contains no obj if cached copy is up to date. HTTP/1.0 304 Not Modified
+
+2.3 ELECTRONIC MAIL
+	-Three major components: user agents, mail servers, simple mail transfer protocol (SMTP)
+
+	MAIL SERVERS
+	-mailbox contains incoming msgs for user
+	-message queue of outgoing mail msgs
+	-SMTP protocol b/w mail servers
+
+	SMTP
+	-uses TCP to reliably transfer email through port 25
+	-three phases of transfer: handshake, transfer of message, closure
+	-Commands: ASCII text, reponse: status code and phrase
+	-uses persistent connection
+	-uses CRLF to determine end of message
+
+	POP3
+	-stateless
+
+	IMAP
+	-keeps state across sessions
+
+2.4 DOMAIN NAME SYSTEM
+	-distributed database implemented in hierarchy of many name servers
+
+	DNS SERVICES, STRUCTURE
+	-hostname to IP address translation
+	-host, mail server aliasing
+
+	TOP-LEVEL DOMAIN
+	-responsible for com, org, net, edu, aero, etc, & all top level country domains
+
+	AUTHORITATIVE SERVERS
+	-org's own DNS server proving authoritative hostname to IP mappins for org's named hosts
+
+	LOCAL DNS NAME SERVER
+	-doesnt strictly belong to hierarchy
+
+	CACHING, UPDATING RECORDS
+	-once any name server learns mapping, it caches mapping
+
+
+	DNS RECORDS
+	DNS: distributed database storing resource records (RR)
+	RR format: (name, value, type, ttl)
+		type=A:	name is hostname, value is IP address
+		type=NS:name is domain (eg foo.com), value is hostname of authoritative name server
+		type=CNAME:	name is alias for some canonical name (eg www.ibm.com = servereast.backup2.ibm.com), value is canonical name
+		type=MX:	value is name of mailserver associated w/ name
+
+	INSERTING RECORDS INTO DNS
+	-register name foo.com at DNS registrar
+		-provide names, IP addresses of authoritative name server
+		-registrar inserts two RRs into .com TLD server
+
+	ATTACKING DNS
+	-DDoS attacks bombard root servers with traffic
+	-bombard TLD servers
+	-redirect attacks such as man-in-middle, DNS poisoning
+	-exploit DNS for DDoS
+
+2.5 P2P APPLICATIONS
+	
+	PURE P2P ARCHITECTURE
+	-no always-on server
+	-arbitrary end systems directly communicate
+	-peers intermittently connected and change IP addresses
+
+	FILE DISTRIBUTION TIME
+	Dp2p >= max(File/uploadspeed, File/Dmin, NFile/(uploadspeed + sum(uploadspeedi)))
+
+	P2P FILE DISTRIBUTION: BITTORRENT
+	-file divided into 256Kb chunks
+	-tracker tracks peers participating in torrent
+	-peers upload chunks to other peers
+
+	-requesting chunks:
+		-different peers have different subsets of file chunks
+		-periodically asks peers for list of chunks they have
+		-request missing chunks from peers, rarest first
+
+	-sending chunks:
+		-send chunks to four peers currently sending us chunks at higheste rate
+		-re-evaluate top 4 eery 10 seconds
+		-every 30s, randomly select another peer, start sending chunks
+
+2.6 VIDEO STREAMING AND CONTENT DISTRIBUTION NETWORKS
+
+	VIDEO
+	-video: sequence of images displayed at constant rate
+	-image:	array of pixels
+	-coding:use redundancy w/in and b/w images to decrease # of bits
+
+	CBR: constant bit rate. Video encoding rate fixed
+	VBR: variable bit rate: encoding rate changes as amount of spatial, temporal coding changes
+
+	STREAMING: DASH
+	-DASH: Dyanmin, Adaptive Streaming over HTTP
+	-server:
+		-divides video file into multiple chunks
+		-each chunks stored, encoded at different rates
+		-mainfest file: provides URLs for different chunks
+	-client:
+		-measures server-to-client bandwidth
+		-consulting manifest, requests one chunk at a time
+
+2.7 SOCKET PROGRAMMING WITH UDP & TCP

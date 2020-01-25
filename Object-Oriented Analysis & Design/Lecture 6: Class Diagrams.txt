@@ -1,0 +1,85 @@
+Lecture 6: Class Diagrams
+
+6.1 Design of Classes
+	-from OOA to OOD. Transiion from what to how the system does it
+	-what classes are needed to implement a software system that meets requirements?
+	-what fields or methods should each class have?
+	-how will the classes interact with each other?
+
+	-from OOD to OOP
+	-OOD: design conceptual solution for "how"
+	-OOP: implement solution by writing actual code to produce working system
+
+Class Diagrams
+	-show classes and relationships as designed solution for a given problem
+	-classes and their relationships, attrs with their types and visibilities, methods with params, return types, and visibilities, interfaces with operations, dependencies
+
+Actions vs Associationsk
+	-association is a relationship between classes
+	-multiplicity used to indicate number of objects partcipating in association
+
+Special Relationships
+	Aggregation
+	-models a whole-part relationship between an aggregate and its parts
+	Aggregation tests:
+	-does the phrase "is part of" describe the relationship?
+	-do operations on "whole" automatically apply to parts?
+	-do values of "whole" propogate to all or some of "parts"?
+	-is there an intrinsic asymmetry to the relationship where one class is subordinate to the other?
+
+	Composition
+	-is a strong form of aggregation, where the whole is the sole owner of its parts
+	-multiplicity on the whole side must be 0 or 1
+	-lifetime of the part is dependent on the whole
+
+	Generalization
+	-"is kind of" relationship, indicates that specialized (sub)classes are substitutable for objects of the generalized (super)class
+
+	Realization
+	-indicates that one class implements a behaviour specified by another class
+
+	Dependency
+	-weaker form of relationship
+	-indicates one class depends on another class bc it uses the other class at some point
+	-class depends on another if indep class is param variable or local variable of a method of the dependent class
+
+How to Create Class Diagrams
+	-draw for the whole system or a subsystem
+		-begin to draw a class diagram
+	-from domain model, look for inspiration of classes and attributes
+	-from sequence diagram
+		-identify which classes participate in interactions
+		-introduce new classes and attributes that are not in the domain model
+		-add methods and types
+		-add associations and navigability
+			-associate A w/ B if
+				-A sends message to B
+				-A creates an instance of B
+				-A needs to recognize (maintain a logical connection to) B
+			-add direction with an arrow
+	-working on class diagram
+		-determine multiplicity
+		-add visibility: "visibility_name : type [count] = default_value"
+			-methods and attributes by convention
+				-methods are public
+				-attributes are private
+			-change visibility otherwise
+				- # (protected), ~(package), / (derived)
+				- static attributes are underlined
+	-from more sequence diagrams
+		-identify more participating classes
+			-add/update software classes and attributes
+			-add/update methods, types, associations, and visibilities
+		-inheritance: generalization relationships
+			-hierarchies drawn with arrows pointing upward to parent
+			-use different line/arrow when parent is a(n)
+				-class: solid line, black arrow
+				-abstract: solid line, white arrow
+				-interface: dashed line, white arrow
+		-usage: association relationships
+			-may have multiplicity, name, role, and navigability
+			-describe how many elements taking part in interaction
+			-special types:
+				-aggregation ("is part of"): clear white diamond
+				-composition ("is entirely made of"): black diamond
+				-dependency ("relies on"): arrow with dotted line

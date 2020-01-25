@@ -1,0 +1,95 @@
+Chapter 14: Basics of Functional Dependencies & Normalization for Relational Databases
+
+14.1 INFORMAL DESIGN GUIDELINES FOR RELATION SCHEMAS
+	-make sure that the semantics of the attributes is clear in the schema
+	-reducing the redundant information in tuples
+	-reducing the NULL values in tuples
+	-disallowing the possibility of generating spurious tuples
+
+	-easier it is to explain semantics of a relation, the better the relation schema design will be
+
+	GUIDELINE 1
+	Design a relation schema so that it is easy to explain its meaning. Do not combine attributes from multiple entity types and relationship types into a single relation. Intuitively, if a relation schema corresponds to one entity type or one relationship type, it is straightforward to explain its meaning. Otherwise, if the relation corresponds to a mixture of multiple entities and relationships, semantic ambiguities will result and the relation cannot be easily explained. 
+
+	INSERTION ANOMALIES
+	-when inserting new item, data must be consistent
+	-can create null values for primary key
+
+	DELETION ANOMALIES
+	-certain attributes are lost because of the deletion of other attributes
+
+	MODIFICATION ANOMALIES
+	-data inconsistency resulting from data redundancy and a partial update
+
+	GUIDELINE 2
+	Design the base relation schemas so that no insertion, deletion, or modification anomalies are present in the relations. If any anomalies are present not them clearly and make sure that the programs that update the database will operate correctly.
+
+	NULL VALUES IN TUPLES
+	-NULL can waste space at storage level
+	-operation results on tuples can be unpredictable with NULL values
+	-NULL can have multiple interpretations
+
+	GUIDELINE 3
+	As far as possible, avoid placing attributes in base relation whose values may frequently be NULL. If NULLs are unavoidable, make sure that they apply in exceptional cases only and do not apply to a majority of tuples in the relation.
+
+	GENERATION OF SPURIOUS TUPLES
+	-a record produced as a result of a JOIN
+	-joining fields are neither a primary or foreign key
+
+	GUIDELINE 4
+	Design rel schemas so they can be joined with equality conditions on attrs that are appropriately related (primary key, foreign key) pairs in a way that guarantees that no spurious tuples are generated. Avoid relations that contain attributes that are not (foreign key, primary key) combinations because joining on such attributes may produce spurious tuples.
+
+14.2 FUNCTIONAL DEPENDENCIES
+	-a constraint b/w two sets of attributes from DB
+	-for any two tuples t1, t2 in r that have t1[X] = t2[X], they must also have t1[Y]=t2[Y]
+	-if a constraint on R states that a given X-value must be unique, X is a candidate key of R
+	-if X is a candidate key of R, then X -> R
+	-if X -> Y in R, this does not say whether or not Y -> X in R
+	-used to describe further a relation schema R by specifying constraints on its attrs that must hold at all times
+	-use diagrammatic notation for displaying FDs
+		-left hand attrs of FD are connected by vertical lines to the line representing the FD
+		-right hand attrs connected by likes with arrows pointing toward the attrs
+	-denote by F the set of functional dependencies that are specified on relation schema R
+
+14.3 NORMAL FORMS BASED ON PRIMARY KEYS
+	-we assume a set of FDs is given for each relation
+	-we assume each relation has a designated primary key
+	-most relational design projects take one of the following two approaches:
+		-perform a conceptual schema design using models such as ER and map the concept design into a set of relations
+		-design relations based on external knowledge derived from an existing implementation of files
+
+	NORMALIZATION OF RELATIONS
+	-normalization process takes a relation schema thru a series of tests to certify whether it satisfies a certain normal form
+	-normal forms are based on FDs among the attributes of a relation
+	-used to minimize redundancy and insertion, deletion, and update anomalies
+	-rel schema that doesnt pass normal form test is decomposed into small rel schemas that contain a subset of the attrs and pass the test
+	-normalization thru decomposition must confirm the existence of additional properties that the rel schemas, taken together, should posses:
+		NONADDITIVE JOIN / LOSSLESS JOIN PROPERTY
+		-guarantees spurious tuple generation does not occur
+		DEPENDANCY PRESERVATION PROPERTY
+		-ensures each FD is represented in some individual relation
+	-nonadditive property is critical and must be achieved, dependancy can be sacrificed
+
+	DEFINITIONS OF KEYS AND ATTRIBUTES PARTICIPATING IN KEYS
+	-a key with or without any set of attrs is a superkey
+	-attribute is a prime attribute if it is a member of some candidate key 
+	-attribute is nonprime if it is not a member of any candidate key
+
+	FIRST NORMAL FORM (1NF)
+	-disallows multivalued and composite attributes
+	-domain of an attribute must include only atomic values
+	-to normalize nested relation, pair partial key from nested rel and primary key into a new relation
+
+	SECOND NORMAL FORM (2NF)
+	-based on the concept of full functional dependency
+	-an FD X -> Y is a full func. dep. if removal of any attr A from X means the dependency does not hold anymore
+	-a rel schema R is in 2NF if every nonprime attr A in R is fully functionally dependent on the primary key of R
+	-test for 2NF involves testing for FDs whose left-hand side attrs are part of the primary key
+	-if primary key contains a single attribute, the test need not be applied at all
+
+	THIRD NORMAL FORM (3NF)
+	-based on the concept of transitive dependency
+	-an FD X -> Y in a rel schema R is a transitive dep. if there exists a set of attrs Z in R that is neither a candidate key nor a subset of any key of R, and both X -> Z and Z -> Y hold
+	-a rel schema R is in 3NF if it satisfies 2NF and no nonprime attr of R is transitvely dependent on the primary key
+
+	
