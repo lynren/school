@@ -1,7 +1,7 @@
 /**
- * a1.cxx filters punctuation characters read from the standard input, replacing them with a 
- * whitespace, then writes them to the standard output. Punctuation filtering does not apply 
- * to symbols within double quotes. Any non-punctuation symbols are simply written to the
+ * a1_pointers.cxx filters punctuation characters read from the standard input, replacing them
+ * with a  whitespace, then writes them to the standard output. Punctuation filtering does not 
+ * apply to symbols within double quotes. Any non-punctuation symbols are simply written to the
  * standard output.
  */  
 
